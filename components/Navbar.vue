@@ -1,8 +1,10 @@
 <template>
     <div id="navbar" class="bg-transparent fixed w-full transition-all duration-[1200ms]">
-            <div class="flex justify-between min-h-[60px] items-center px-10 border-1">
+            <div class="flex justify-between min-h-[60px] items-center px-2 border-1">
                 <div>
-                    <a class="text-black font-medium" href="/">Wang Pa Logo Here</a>
+                    <button class="fas fa-user-circle text-[30px] mt-1 p-2">
+                      
+                    </button>
                 </div>
                 <nav class="items-center gap-[30px] text-black font-normal hidden lg:flex">
                     <div>
@@ -12,10 +14,10 @@
                         <a href="">Login</a>
                     </div>
                 </nav>
-                <button class="lg:hidden grid gap-1 mt-1 bg-black/10 p-2 rounded-md" @click="hamberBTN">
-                    <span id="ham1" :class="{'rotate-45 translate-y-[9px]': istoggle == true}" class="w-6 h-1 bg-white transition-all duration-200"></span>
-                    <span id="ham2" :class="{'opacity-0': istoggle == true}" class="w-6 h-1 bg-white transition-all duration-200"></span>
-                    <span id="ham3" :class="{'-rotate-45 -translate-y-[7px]': istoggle == true}" class="w-6 h-1 bg-white transition-all duration-200"></span>
+                <button class="lg:hidden grid gap-1 mt-1 bg-transparent p-2 select-none" @click.prevent="hamberBTN">
+                    <span id="ham1" :class="{'rotate-45 translate-y-[9px]': istoggle == true}" class="w-6 h-1 bg-black rounded-[10px] transition-all duration-200"></span>
+                    <span id="ham2" :class="{'opacity-0': istoggle == true}" class="w-6 h-1 bg-black rounded-[10px] transition-all duration-200"></span>
+                    <span id="ham3" :class="{'-rotate-45 -translate-y-[7px]': istoggle == true}" class="w-6 h-1 bg-black rounded-[10px] transition-all duration-200"></span>
                 </button>
             </div>
             <div id="mobileMenu"
