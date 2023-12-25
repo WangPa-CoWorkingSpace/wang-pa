@@ -1,16 +1,18 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default ({
   devtools: { enabled: true },
+
   experimental: {
     payloadExtraction: false,
   },
+
   components: {
     dirs: ["~/components"],
   },
+
   css: ['~/assets/styles.css'],
-  modules: [
-    "@nuxtjs/tailwindcss",
-  ],
+  modules: ["@nuxtjs/tailwindcss", '@nuxt/image'],
+
   app: {
     head: {
       charset: 'utf-16',
@@ -22,4 +24,4 @@ export default ({
       script: [],
     }
   }
-})
+});

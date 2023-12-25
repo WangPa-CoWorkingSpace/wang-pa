@@ -1,0 +1,51 @@
+<template>
+    <div id="navbar" class="bg-transparent fixed w-full transition-all duration-[1200ms]">
+            <div class="flex justify-between min-h-[60px] items-center px-10 border-1">
+                <div>
+                    <a class="text-black font-medium" href="/">Wang Pa Logo Here</a>
+                </div>
+                <nav class="items-center gap-[30px] text-black font-normal hidden lg:flex">
+                    <div>
+                        <a href="">Sign up</a>
+                    </div>
+                    <div>
+                        <a href="">Login</a>
+                    </div>
+                </nav>
+                <button class="lg:hidden grid gap-1 mt-1 bg-black/10 p-2 rounded-md" @click="hamberBTN">
+                    <span id="ham1" :class="{'rotate-45 translate-y-[9px]': istoggle == true}" class="w-6 h-1 bg-white transition-all duration-200"></span>
+                    <span id="ham2" :class="{'opacity-0': istoggle == true}" class="w-6 h-1 bg-white transition-all duration-200"></span>
+                    <span id="ham3" :class="{'-rotate-45 -translate-y-[7px]': istoggle == true}" class="w-6 h-1 bg-white transition-all duration-200"></span>
+                </button>
+            </div>
+            <div id="mobileMenu"
+                class="lg:hidden justify-center space-y-2 text-center text-black transition-all duration-200 h-[0px] overflow-hidden">
+                <div>
+                    <a href="">
+                        Sign up</a>
+                </div>
+                <div>
+                    <a href="">
+                        Login</a>
+                </div>
+            </div>
+        </div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  data() {
+    return {
+      istoggle: false as boolean, // Declare searchQuery as a string
+    };
+  },
+
+  methods: {
+    async hamberBTN() {
+      this.istoggle = !this.istoggle;
+    },
+  },
+});
+</script>

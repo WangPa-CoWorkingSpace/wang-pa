@@ -1,6 +1,7 @@
 <template>
-    <div>
-      <NuxtWelcome/>
+    <Navbar/>
+    <div class="min-h-screen">
+      
     </div>
   </template>
   
