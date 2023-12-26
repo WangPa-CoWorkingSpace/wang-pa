@@ -50,7 +50,7 @@
       <div class="w-full max-w-[300px] mx-auto px-4 py-8">
         <div class="relative bg-slate-600 rounded-[10px] shadow-[0_0_20px_0_rgba(0,0,0,0.25)]"
           style="scroll-snap-type: x mandatory;">
-          <div class="flex overflow-x-auto" style="scroll-snap-align: start;">
+          <div class="flex" style="scroll-snap-align: start;">
             <!-- Slider Item 1 -->
             <div v-for="(slide, index) in slides" :key="index" class="scroll-snap-center shrink-0 w-full"
               :class="{ 'hidden': index !== currentIndex }">
@@ -106,7 +106,7 @@ export default defineComponent({
       {
         image: '/img/mspace.png',
         alt: 'Co-working space',
-        title: 'M-Space Major Ratchayothin',
+        title: 'M-Space Major ...',
         description: 'ฟรี',
         features: ['wifi', 'utensils', 'toilet', 'shopping-bag'],
         openingHours: 'เปิดทุกวัน 11:00 - 23:00',
