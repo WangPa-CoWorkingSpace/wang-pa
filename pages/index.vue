@@ -56,9 +56,9 @@
               :class="{ 'hidden': index !== currentIndex_near_me }">
               <div class="bg-white rounded-[10px]">
                 <NuxtImg class="rounded-t-[10px]" :src="slide.image" :alt="slide.alt" width="300px" height="256px"
-                  objectFit='contain' loading="lazy"/>
+                  objectFit='contain' loading="lazy" />
                 <div class="p-4">
-                  <h1 class="text-gray-900 font-medium text-2xl">{{ slide.title }}</h1>
+                  <h1 class="text-gray-900 font-medium text-2xl w-full h-[30px] overflow-hidden">{{ slide.title }}</h1>
                   <h4 class="text-[18px] text-[#1cb7d9]">{{ slide.description }}</h4>
                   <div class="h-[10px] w-full flex text-black/50 space-x-2 mb-5">
                     <i v-for="feature in slide.features" :class="`fas fa-${feature}`" :key="feature"></i>
@@ -79,7 +79,7 @@
                 </div>
               </div>
             </div>
-            </div>
+          </div>
 
           <!-- Carousel Controls -->
           <button @click="prevSlide_near_me"
@@ -97,8 +97,7 @@
     <!-- Part3 Content -->
     <div class="flex justify-between items-center mt-[100px] px-[20px]">
       <div>
-        <h4 class="font-medium text-[18px]"><i
-            class="fas fa-trophy text-yellow-400 text-[20px] pr-2"></i>Top 10</h4>
+        <h4 class="font-medium text-[18px]"><i class="fas fa-trophy text-yellow-400 text-[20px] pr-2"></i>Top 10</h4>
       </div>
       <div
         class="h-[25px] w-max px-4 border-[2px] border-black rounded-[20px] text-[13px] flex justify-center items-center">
@@ -117,9 +116,9 @@
               :class="{ 'hidden': index !== currentIndex_top10 }">
               <div class="bg-white rounded-[10px]">
                 <NuxtImg class="rounded-t-[10px]" :src="slide.image" :alt="slide.alt" width="300px" height="256px"
-                  objectFit='contain' loading="lazy"/>
+                  objectFit='contain' loading="lazy" />
                 <div class="p-4">
-                  <h1 class="text-gray-900 font-medium text-2xl">{{ slide.title }}</h1>
+                  <h1 class="text-gray-900 font-medium text-2xl w-full h-[30px] overflow-hidden">{{ slide.title }}</h1>
                   <h4 class="text-[18px] text-[#1cb7d9]">{{ slide.description }}</h4>
                   <div class="h-[10px] w-full flex text-black/50 space-x-2 mb-5">
                     <i v-for="feature in slide.features" :class="`fas fa-${feature}`" :key="feature"></i>
@@ -140,7 +139,7 @@
                 </div>
               </div>
             </div>
-            </div>
+          </div>
 
           <!-- Carousel Controls -->
           <button @click="prevSlide_top10"
@@ -153,6 +152,12 @@
           </button>
         </div>
       </div>
+    </div>
+
+    <!-- Part4 Content -->
+    <div class="px-[20px] mt-[50px]">
+      <h1 class="text-[28px] text-black">มีที่ดีๆอยากแชร์เหรอ</h1>
+      <h4 class="text-black/50 w-[300px]">ข้อมูลของคุณสำคัญกับเรามาก เราอยากให้เว็บของเราเป็นอีกหนึ่งสังคมที่รวมผู้คนที่ชอบทำงานด้านนอกบ้าน หรือ ออฟฟิศ ได้แชร์ที่นั่งทำงานดีๆให้กัน</h4>
     </div>
   </div>
 </template>
