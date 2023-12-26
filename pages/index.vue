@@ -24,12 +24,12 @@
     </div>
     <div class="flex justify-end mr-[10px]">
       <div class="absolute z-0">
-        <NuxtImg src="/img/co-work.png" sizes="170px" />
+        <NuxtImg class="object-contain" preload src="/img/co-work.png" loading="lazy" height="170px" width="130px" />
       </div>
     </div>
     <div class="flex justify-between mt-[30px]">
       <div class="ml-[20px]">
-        <NuxtImg src="/img/Review.png" sizes="200px" />
+        <NuxtImg preload src="/img/Review.png" loading="lazy" sizes="200px" />
       </div>
     </div>
 
@@ -55,8 +55,8 @@
             <div v-for="(slide, index) in slides" :key="index" class="scroll-snap-center shrink-0 w-full"
               :class="{ 'hidden': index !== currentIndex }">
               <div class="bg-white rounded-[10px]">
-                <NuxtImg class="rounded-t-[10px]" :src="slide.image" :alt="slide.alt" width="100%" height="256px"
-                  objectFit='contain' loading="lazy" />
+                <NuxtImg class="rounded-t-[10px]" :src="slide.image" :alt="slide.alt" width="300px" height="256px"
+                  objectFit='contain' loading="lazy"/>
                 <div class="p-4">
                   <h1 class="text-gray-900 font-medium text-2xl">{{ slide.title }}</h1>
                   <h4 class="text-[18px] text-[#1cb7d9]">{{ slide.description }}</h4>
