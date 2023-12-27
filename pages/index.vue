@@ -157,15 +157,25 @@
     <!-- Part4 Content -->
     <div class="px-[20px] mt-[50px]">
       <h1 class="text-[28px] text-black">มีที่ดีๆอยากแชร์เหรอ</h1>
-      <h4 class="text-black/50 w-[300px]">ข้อมูลของคุณสำคัญกับเรามาก เราอยากให้เว็บของเราเป็นอีกหนึ่งสังคมที่รวมผู้คนที่ชอบทำงานด้านนอกบ้าน หรือ ออฟฟิศ ได้แชร์ที่นั่งทำงานดีๆให้กัน</h4>
+      <h4 class="text-black/50 w-[300px]">ข้อมูลของคุณสำคัญกับเรามาก
+        เราอยากให้เว็บของเราเป็นอีกหนึ่งสังคมที่รวมผู้คนที่ชอบทำงานด้านนอกบ้าน หรือ ออฟฟิศ ได้แชร์ที่นั่งทำงานดีๆให้กัน
+      </h4>
+    </div>
+    <div id="layout" class="px-[20px] mt-[50px]">
+      <Map />
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
+import Map from '../components/MapPin.vue';
+import "../node_modules/mapbox-gl/dist/mapbox-gl.css"
 
 export default defineComponent({
+  components: {
+    Map
+  },
   setup() {
     //Near me
     const currentIndex_near_me = ref(0);
@@ -248,3 +258,11 @@ export default defineComponent({
   },
 });
 </script>
+
+<style>
+#layout {
+  flex: 1;
+  display: flex;
+  position: relative;
+}
+</style>

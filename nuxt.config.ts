@@ -19,9 +19,12 @@ export default defineNuxtConfig({
       viewport: 'width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no',
       link: [
         { rel: 'stylesheet', href: 'https://pro.fontawesome.com/releases/v5.15.0/css/all.css' },
+        { rel: 'stylesheet', href: 'https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.css' },
       ],
       title: 'Wang-Pa',
-      script: [],
-    }
+      script: [
+        { src: 'https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.js', type: 'text/javascript' },
+      ],
+    },
   }
 });

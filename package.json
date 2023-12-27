@@ -16,5 +16,10 @@
     "nuxt": "^3.8.0",
     "vue": "^3.3.7",
     "vue-router": "^4.2.5"
+  },
+  "dependencies": {
+    "@types/mapbox-gl": "^2.7.19",
+    "js-cookie": "^3.0.5",
+    "mapbox-gl": "^3.0.1"
   }
 }
