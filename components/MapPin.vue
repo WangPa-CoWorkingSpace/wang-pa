@@ -31,7 +31,7 @@ export default defineComponent({
             container: this.$refs.mapContainer,
             style: "mapbox://styles/mapbox/streets-v12",
             center: [100.4999, 13.7451],
-            zoom: 9,
+            zoom: 13,
         });
 
         // Add click event listener

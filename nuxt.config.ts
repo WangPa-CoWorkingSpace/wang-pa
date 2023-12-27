@@ -29,7 +29,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      VUE_APP_MAB_BOX_TOKEN: process.env.MAB_BOX_TOKEN
+      MAB_BOX_TOKEN: process.env.MAB_BOX_TOKEN
     }
   },
 });

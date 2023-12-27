@@ -161,8 +161,20 @@
         เราอยากให้เว็บของเราเป็นอีกหนึ่งสังคมที่รวมผู้คนที่ชอบทำงานด้านนอกบ้าน หรือ ออฟฟิศ ได้แชร์ที่นั่งทำงานดีๆให้กัน
       </h4>
     </div>
+
     <div id="layout" class="px-[20px] mt-[50px]">
       <Map />
+    </div>
+
+    <div class="flex justify-between items-center px-[20px] mt-[30px] space-x-2 overflow-x-hidden">
+      <button class="border-[2px] border-black/50 rounded-full">
+        <i class="fas fa-images text-black/50 p-2"></i>
+      </button>
+      <input class="border-[2px] border-black/50 rounded-[20px] px-2 py-1 w-[55%] placeholder:text-black/50 placeholder:text-[16px] focus:outline-none" placeholder="ชื่อ">
+      <input class="border-[2px] border-black/50 rounded-[20px] px-2 py-1 w-[30%] placeholder:text-black/50 placeholder:text-[16px] focus:outline-none" placeholder="ราคา">
+    </div>
+    <div class="px-[20px] mt-[20px]">
+      <input class="border-[2px] border-black/50 rounded-[20px] px-2 pb-[100px] py-1 min-h-[150px] min-w-full placeholder:text-black/50 placeholder:text-[16px] focus:outline-none" placeholder="คำอธิบาย">
     </div>
   </div>
 </template>
