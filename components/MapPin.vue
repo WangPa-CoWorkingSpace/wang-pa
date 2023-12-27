@@ -14,7 +14,10 @@ import mapboxgl from "mapbox-gl";
 import { defineComponent, ref } from 'vue';
 import Cookies from 'js-cookie';
 
-mapboxgl.accessToken = 'pk.eyJ1Ijoia2FuZzQ5IiwiYSI6ImNscW45d2lteDNjZDYya3ByMW95NGszcmwifQ.SDCJFKtiQr_zEja2XjHy8A'
+const config = useRuntimeConfig()
+
+mapboxgl.accessToken = (config.public.MAB_BOX_TOKEN)
+console.log(config)
 
 export default defineComponent({
     data() {

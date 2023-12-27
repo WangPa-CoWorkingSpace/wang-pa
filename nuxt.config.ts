@@ -26,5 +26,10 @@ export default defineNuxtConfig({
         { src: 'https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.js', type: 'text/javascript' },
       ],
     },
-  }
+  },
+  runtimeConfig: {
+    public: {
+      VUE_APP_MAB_BOX_TOKEN: process.env.MAB_BOX_TOKEN
+    }
+  },
 });
