@@ -176,16 +176,218 @@
 
       <input
         class="border-[2px] border-black/50 rounded-[20px] px-2 py-1 w-[55%] placeholder:text-black/50 placeholder:text-[16px] focus:outline-none"
-        placeholder="ชื่อ">
+        placeholder="ชื่อ" v-model="cws_name_form" @input="Form_Update('name')">
       <input
         class="border-[2px] border-black/50 rounded-[20px] px-2 py-1 w-[30%] placeholder:text-black/50 placeholder:text-[16px] focus:outline-none"
-        placeholder="ราคา">
+        placeholder="ราคา" v-model="cws_price_form">
     </div>
     <div class="px-[20px] mt-[20px]">
       <input
         class="border-[2px] border-black/50 rounded-[20px] px-2 pb-[100px] py-1 min-h-[150px] min-w-full placeholder:text-black/50 placeholder:text-[16px] focus:outline-none"
-        placeholder="คำอธิบาย">
+        placeholder="เขียนรีวิวและบรรยายบรรยากาศ" v-model="cws_review_form">
     </div>
+
+    <!-- Facilities Form -->
+    <h4 class="px-[20px] mt-[20px] text-black/50 text-[16px]">สิ่งอำนวยความสะดวก</h4>
+    <div class="flex justify-between items-center w-[70vw] px-[20px] mt-[10px] overflow-x-scroll">
+      <!-- Utensils -->
+      <div class="space-x-[15px]">
+        <i class="fal fa-utensils text-[20px] text-black/50 max-w-[15px]"></i>
+        <button class="text-[20px] text-black/50"
+          :class="{ 'fas fa-check-square': utensils_check, 'far fa-square': !utensils_check }"
+          @click.prevent="Facilities_Check('utensils')"></button>
+      </div>
+      <!-- Restroom -->
+      <div class="space-x-[15px]">
+        <i class="fal fa-restroom text-[20px] text-black/50 max-w-[15px]"></i>
+        <button class="text-[20px] text-black/50"
+          :class="{ 'fas fa-check-square': restroom_check, 'far fa-square': !restroom_check }"
+          @click.prevent="Facilities_Check('restroom')"></button>
+      </div>
+      <!-- Shopping -->
+      <div class="space-x-[15px]">
+        <i class="fal fa-shopping-cart text-[20px] text-black/50 max-w-[15px]"></i>
+        <button class="text-[20px] text-black/50"
+          :class="{ 'fas fa-check-square': shopping_check, 'far fa-square': !shopping_check }"
+          @click.prevent="Facilities_Check('shopping')"></button>
+      </div>
+    </div>
+
+    <div class="flex justify-between items-center w-[70vw] px-[20px] mt-[10px] overflow-x-scroll">
+      <!-- WiFi -->
+      <div class="space-x-[15px]">
+        <i class="far fa-wifi text-[20px] text-black/50 max-w-[15px]"></i>
+        <button class="text-[20px] text-black/50"
+          :class="{ 'fas fa-check-square': wifi_check, 'far fa-square': !wifi_check }"
+          @click.prevent="Facilities_Check('wifi')"></button>
+      </div>
+      <!-- Outlet -->
+      <div class="space-x-[15px]">
+        <i class="far fa-outlet text-[20px] text-black/50 max-w-[15px]"></i>
+        <button class="text-[20px] text-black/50"
+          :class="{ 'fas fa-check-square': outlet_check, 'far fa-square': !outlet_check }"
+          @click.prevent="Facilities_Check('outlet')"></button>
+      </div>
+      <!-- Air Conditioning -->
+      <div class="space-x-[15px]">
+        <i class="fal fa-air-conditioner text-[20px] text-black/50 max-w-[15px]"></i>
+        <button class="text-[20px] text-black/50"
+          :class="{ 'fas fa-check-square': air_check, 'far fa-square': !air_check }"
+          @click.prevent="Facilities_Check('air')"></button>
+      </div>
+    </div>
+
+    <!-- Time Form -->
+    <h4 class="px-[20px] mt-[20px] text-black/50 text-[16px]">เวลาทำการ</h4>
+    <!-- Open Time -->
+    <div class="flex items-center px-[20px] mt-[10px] space-x-[20px]">
+      <div class="w-[15px]">
+        <h4 class="text-black/50 text-[16px]">อา.</h4>
+      </div>
+      <button class="fas fa-toggle-on text-[#1cb7d9] text-[25px]"></button>
+      <VueDatePicker class="max-w-[30vw]" v-model="time" time-picker @update:model-value="openTime">
+        <template #trigger>
+          <div
+            class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
+            00:00</div>
+        </template>
+      </VueDatePicker>
+      <h4>-</h4>
+      <VueDatePicker class="max-w-[30vw]" v-model="time" time-picker @update:model-value="openTime">
+        <template #trigger>
+          <div
+            class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
+            00:00</div>
+        </template>
+      </VueDatePicker>
+    </div>
+    <div class="flex items-center px-[20px] mt-[10px] space-x-[20px]">
+      <div class="w-[15px]">
+        <h4 class="text-black/50 text-[16px]">จ.</h4>
+      </div>
+      <button class="fas fa-toggle-on text-[#1cb7d9] text-[25px]"></button>
+      <VueDatePicker class="max-w-[30vw]" v-model="time" time-picker @update:model-value="openTime">
+        <template #trigger>
+          <div
+            class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
+            00:00</div>
+        </template>
+      </VueDatePicker>
+      <h4>-</h4>
+      <VueDatePicker class="max-w-[30vw]" v-model="time" time-picker @update:model-value="openTime">
+        <template #trigger>
+          <div
+            class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
+            00:00</div>
+        </template>
+      </VueDatePicker>
+    </div>
+    <div class="flex items-center px-[20px] mt-[10px] space-x-[20px]">
+      <div class="w-[15px]">
+        <h4 class="text-black/50 text-[16px]">อ.</h4>
+      </div>
+      <button class="fas fa-toggle-on text-[#1cb7d9] text-[25px]"></button>
+      <VueDatePicker class="max-w-[30vw]" v-model="time" time-picker @update:model-value="openTime">
+        <template #trigger>
+          <div
+            class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
+            00:00</div>
+        </template>
+      </VueDatePicker>
+      <h4>-</h4>
+      <VueDatePicker class="max-w-[30vw]" v-model="time" time-picker @update:model-value="openTime">
+        <template #trigger>
+          <div
+            class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
+            00:00</div>
+        </template>
+      </VueDatePicker>
+    </div>
+    <div class="flex items-center px-[20px] mt-[10px] space-x-[20px]">
+      <div class="w-[15px]">
+        <h4 class="text-black/50 text-[16px]">พ.</h4>
+      </div>
+      <button class="fas fa-toggle-on text-[#1cb7d9] text-[25px]"></button>
+      <VueDatePicker class="max-w-[30vw]" v-model="time" time-picker @update:model-value="openTime">
+        <template #trigger>
+          <div
+            class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
+            00:00</div>
+        </template>
+      </VueDatePicker>
+      <h4>-</h4>
+      <VueDatePicker class="max-w-[30vw]" v-model="time" time-picker @update:model-value="openTime">
+        <template #trigger>
+          <div
+            class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
+            00:00</div>
+        </template>
+      </VueDatePicker>
+    </div>
+    <div class="flex items-center px-[20px] mt-[10px] space-x-[20px]">
+      <div class="w-[15px]">
+        <h4 class="text-black/50 text-[16px]">พฤ.</h4>
+      </div>
+      <button class="fas fa-toggle-on text-[#1cb7d9] text-[25px]"></button>
+      <VueDatePicker class="max-w-[30vw]" v-model="time" time-picker @update:model-value="openTime">
+        <template #trigger>
+          <div
+            class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
+            00:00</div>
+        </template>
+      </VueDatePicker>
+      <h4>-</h4>
+      <VueDatePicker class="max-w-[30vw]" v-model="time" time-picker @update:model-value="openTime">
+        <template #trigger>
+          <div
+            class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
+            00:00</div>
+        </template>
+      </VueDatePicker>
+    </div>
+    <div class="flex items-center px-[20px] mt-[10px] space-x-[20px]">
+      <div class="w-[15px]">
+        <h4 class="text-black/50 text-[16px]">ศ.</h4>
+      </div>
+      <button class="fas fa-toggle-on text-[#1cb7d9] text-[25px]"></button>
+      <VueDatePicker class="max-w-[30vw]" v-model="time" time-picker @update:model-value="openTime">
+        <template #trigger>
+          <div
+            class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
+            00:00</div>
+        </template>
+      </VueDatePicker>
+      <h4>-</h4>
+      <VueDatePicker class="max-w-[30vw]" v-model="time" time-picker @update:model-value="openTime">
+        <template #trigger>
+          <div
+            class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
+            00:00</div>
+        </template>
+      </VueDatePicker>
+    </div>
+    <div class="flex items-center px-[20px] mt-[10px] space-x-[20px]">
+      <div class="w-[15px]">
+        <h4 class="text-black/50 text-[16px]">ส.</h4>
+      </div>
+      <button class="fas fa-toggle-on text-[#1cb7d9] text-[25px]"></button>
+      <VueDatePicker class="max-w-[30vw]" v-model="time" time-picker @update:model-value="openTime">
+        <template #trigger>
+          <div
+            class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
+            00:00</div>
+        </template>
+      </VueDatePicker>
+      <h4>-</h4>
+      <VueDatePicker class="max-w-[30vw]" v-model="time" time-picker @update:model-value="openTime">
+        <template #trigger>
+          <div
+            class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
+            00:00</div>
+        </template>
+      </VueDatePicker>
+    </div>
+
   </div>
 </template>
 
@@ -193,10 +395,19 @@
 import { defineComponent, ref } from 'vue';
 import Map from '../components/MapPin.vue';
 import "../node_modules/mapbox-gl/dist/mapbox-gl.css"
+import VueDatePicker from '@vuepic/vue-datepicker';
+import '@vuepic/vue-datepicker/dist/main.css'
+import Cookies from 'js-cookie';
 
 export default defineComponent({
   components: {
-    Map
+    Map,
+    VueDatePicker
+  },
+  data() {
+    return {
+      //Data Out
+    };
   },
   setup() {
     //Near me
@@ -280,12 +491,70 @@ export default defineComponent({
         return;
       }
       const file = files[0];
-      if (file.size > 5242880) {
+      if (file.size > 2097152) {
         alert("Too large file. Limit 2MB");
       }
       // Process the selected file
       // console.log('Selected file:', file);
     };
+
+    const cws_name_form = ref('')
+    const cws_price_form = ref(0.0)
+    const cws_review_form = ref('')
+    //Form Update
+    function Form_Update(input_name: string) {
+      console.log(cws_name_form);
+
+      switch (input_name) {
+        case 'name':
+          Cookies.set('cws_name_form_Cookie', cws_name_form);
+          break
+      }
+    }
+
+    //Facilities Form Check
+    const utensils_check = ref(false);
+    const restroom_check = ref(false);
+    const shopping_check = ref(false);
+    const wifi_check = ref(false);
+    const outlet_check = ref(false);
+    const air_check = ref(false);
+
+    function Facilities_Check(facilitie: string) {
+      switch (facilitie) {
+        case 'utensils':
+          utensils_check.value = !utensils_check.value;
+          break;
+        case 'restroom':
+          restroom_check.value = !restroom_check.value;
+          break;
+        case 'shopping':
+          shopping_check.value = !shopping_check.value;
+          break;
+        case 'wifi':
+          wifi_check.value = !wifi_check.value;
+          break;
+        case 'outlet':
+          outlet_check.value = !outlet_check.value;
+          break;
+        case 'air':
+          air_check.value = !air_check.value;
+          break;
+        default:
+          // Optionally handle an unknown facility
+          console.warn("Unknown facility:", facilitie);
+      }
+    }
+
+    //Time Picker
+    const time = ref({
+      hours: new Date().getHours(),
+      minutes: new Date().getMinutes()
+    });
+
+    const openTime = () => {
+      console.log(time.value);
+    }
 
     return {
       currentIndex_near_me,
@@ -299,7 +568,26 @@ export default defineComponent({
 
       fileInput,
       openFileDialog,
-      handleFileChange
+      handleFileChange,
+
+      //form data
+      Form_Update,
+      cws_name_form,
+      cws_price_form,
+      cws_review_form,
+
+      // Facilities Check Function and Reactive References
+      Facilities_Check,
+      utensils_check,
+      restroom_check,
+      shopping_check,
+      wifi_check,
+      outlet_check,
+      air_check,
+
+      //Time Picker
+      time,
+      openTime
     };
   },
 });
