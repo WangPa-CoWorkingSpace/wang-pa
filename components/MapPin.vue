@@ -2,7 +2,7 @@
     <div id="mapContainer" ref="mapContainer" class="map-container h-[250px] w-full rounded-[20px] z-0">
 
         <!-- Current Location BTN -->
-        <button @click="goToCurrentLocation" class="current-location-btn bg-[#000000] rounded-full right-0 bottom-0 mb-[40px] mr-[7px] absolute z-10">
+        <button @click.prevent="goToCurrentLocation" class="current-location-btn bg-[#000000] rounded-full right-0 bottom-0 mb-[40px] mr-[7px] absolute z-10">
         <i class="fas fa-location-arrow text-white text-[15px] p-2"></i>
     </button>
     </div>
@@ -16,8 +16,7 @@ import Cookies from 'js-cookie';
 
 const config = useRuntimeConfig()
 
-mapboxgl.accessToken = (config.public.MAB_BOX_TOKEN)
-console.log(config)
+mapboxgl.accessToken = (config.public.MAB_BOX_TOKEN);
 
 export default defineComponent({
     data() {

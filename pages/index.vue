@@ -82,11 +82,11 @@
           </div>
 
           <!-- Carousel Controls -->
-          <button @click="prevSlide_near_me"
+          <button @click.prevent="prevSlide_near_me"
             class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-[#1cb7d9] text-white text-[25px] w-[40px] h-[80px] rounded-full -translate-x-[50px]">
             <i class="fas fa-chevron-left"></i>
           </button>
-          <button @click="nextSlide_near_me"
+          <button @click.prevent="nextSlide_near_me"
             class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-[#1cb7d9] text-white text-[25px] w-[40px] h-[80px] rounded-full translate-x-[50px]">
             <i class="fas fa-chevron-right"></i>
           </button>
@@ -142,11 +142,11 @@
           </div>
 
           <!-- Carousel Controls -->
-          <button @click="prevSlide_top10"
+          <button @click.prevent="prevSlide_top10"
             class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-[#1cb7d9] text-white text-[25px] w-[40px] h-[80px] rounded-full -translate-x-[50px]">
             <i class="fas fa-chevron-left"></i>
           </button>
-          <button @click="nextSlide_top10"
+          <button @click.prevent="nextSlide_top10"
             class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-[#1cb7d9] text-white text-[25px] w-[40px] h-[80px] rounded-full translate-x-[50px]">
             <i class="fas fa-chevron-right"></i>
           </button>
@@ -167,14 +167,24 @@
     </div>
 
     <div class="flex justify-between items-center px-[20px] mt-[30px] space-x-2 overflow-x-hidden">
-      <button class="border-[2px] border-black/50 rounded-full">
+      <button class="border-[2px] border-black/50 rounded-full" @click.prevent="openFileDialog">
         <i class="fas fa-images text-black/50 p-2"></i>
       </button>
-      <input class="border-[2px] border-black/50 rounded-[20px] px-2 py-1 w-[55%] placeholder:text-black/50 placeholder:text-[16px] focus:outline-none" placeholder="ชื่อ">
-      <input class="border-[2px] border-black/50 rounded-[20px] px-2 py-1 w-[30%] placeholder:text-black/50 placeholder:text-[16px] focus:outline-none" placeholder="ราคา">
+      <!-- Hidden file input -->
+      <input class="hidden" type="file" ref="fileInput" @change="handleFileChange" accept="image/*" multiple>
+
+
+      <input
+        class="border-[2px] border-black/50 rounded-[20px] px-2 py-1 w-[55%] placeholder:text-black/50 placeholder:text-[16px] focus:outline-none"
+        placeholder="ชื่อ">
+      <input
+        class="border-[2px] border-black/50 rounded-[20px] px-2 py-1 w-[30%] placeholder:text-black/50 placeholder:text-[16px] focus:outline-none"
+        placeholder="ราคา">
     </div>
     <div class="px-[20px] mt-[20px]">
-      <input class="border-[2px] border-black/50 rounded-[20px] px-2 pb-[100px] py-1 min-h-[150px] min-w-full placeholder:text-black/50 placeholder:text-[16px] focus:outline-none" placeholder="คำอธิบาย">
+      <input
+        class="border-[2px] border-black/50 rounded-[20px] px-2 pb-[100px] py-1 min-h-[150px] min-w-full placeholder:text-black/50 placeholder:text-[16px] focus:outline-none"
+        placeholder="คำอธิบาย">
     </div>
   </div>
 </template>
@@ -257,6 +267,26 @@ export default defineComponent({
       currentIndex_top10.value = (currentIndex_top10.value - 1 + slides_top10.value.length) % slides_top10.value.length;
     }
 
+    const fileInput = ref<HTMLInputElement | null>(null);
+
+    const openFileDialog = () => {
+      fileInput.value?.click();
+    };
+
+    const handleFileChange = (event: Event) => {
+      const files = (event.target as HTMLInputElement).files;
+      if (!files || files.length === 0) {
+        // console.log('No file selected.');
+        return;
+      }
+      const file = files[0];
+      if (file.size > 5242880) {
+        alert("Too large file. Limit 2MB");
+      }
+      // Process the selected file
+      // console.log('Selected file:', file);
+    };
+
     return {
       currentIndex_near_me,
       slides_near_me,
@@ -265,16 +295,12 @@ export default defineComponent({
       nextSlide_near_me,
       prevSlide_near_me,
       nextSlide_top10,
-      prevSlide_top10
+      prevSlide_top10,
+
+      fileInput,
+      openFileDialog,
+      handleFileChange
     };
   },
 });
 </script>
-
-<style>
-#layout {
-  flex: 1;
-  display: flex;
-  position: relative;
-}
-</style>
