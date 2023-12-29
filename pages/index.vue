@@ -179,12 +179,12 @@
         placeholder="ชื่อ" v-model="cws_name_form" @input="Form_Update('name')">
       <input
         class="border-[2px] border-black/50 rounded-[20px] px-2 py-1 w-[30%] placeholder:text-black/50 placeholder:text-[16px] focus:outline-none"
-        placeholder="ราคา" v-model="cws_price_form">
+        placeholder="ราคา" v-model="cws_price_form" @input="Form_Update('price')">
     </div>
     <div class="px-[20px] mt-[20px]">
       <input
         class="border-[2px] border-black/50 rounded-[20px] px-2 pb-[100px] py-1 min-h-[150px] min-w-full placeholder:text-black/50 placeholder:text-[16px] focus:outline-none"
-        placeholder="เขียนรีวิวและบรรยายบรรยากาศ" v-model="cws_review_form">
+        placeholder="เขียนรีวิวและบรรยายบรรยากาศ" v-model="cws_review_form" @input="Form_Update('review')">
     </div>
 
     <!-- Facilities Form -->
@@ -499,15 +499,19 @@ export default defineComponent({
     };
 
     const cws_name_form = ref('')
-    const cws_price_form = ref(0.0)
+    const cws_price_form = ref('')
     const cws_review_form = ref('')
     //Form Update
     function Form_Update(input_name: string) {
-      console.log(cws_name_form);
-
       switch (input_name) {
         case 'name':
-          Cookies.set('cws_name_form_Cookie', cws_name_form);
+          Cookies.set('cws_name_form_Cookie', encodeURIComponent(cws_name_form.value));
+          break
+        case 'price':
+          Cookies.set('cws_price_form_Cookie', encodeURIComponent(cws_price_form.value));
+          break
+        case 'review':
+          Cookies.set('cws_name_review_Cookie', encodeURIComponent(cws_review_form.value));
           break
       }
     }
