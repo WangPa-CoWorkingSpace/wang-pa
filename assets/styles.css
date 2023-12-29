@@ -25,7 +25,7 @@ html {
 
 
 body {
-    background-image: radial-gradient(circle at center top, rgba(89,200,247,1) -50%, rgba(255,255,255,0) 40%);
+    background-image: radial-gradient(circle at center top, rgba(89,200,247,1) -5%, rgba(255,255,255,0) 10%);
 }
 /* General style to remove outline */
 button {

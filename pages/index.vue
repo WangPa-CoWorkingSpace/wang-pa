@@ -620,7 +620,6 @@ export default defineComponent({
 
       const openTimeInMinutes = openHours * 60 + openMinutes;
       const closeTimeInMinutes = closeHours * 60 + closeMinutes;
-      console.log(openTimeInMinutes, closeTimeInMinutes)
       return closeTimeInMinutes >= openTimeInMinutes;
     }
 

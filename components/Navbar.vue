@@ -6,7 +6,7 @@
                       
                     </button>
                 </div>
-                <nav class="items-center gap-[30px] text-black font-normal hidden lg:flex">
+                <nav class="items-center gap-[30px] font-normal hidden lg:flex" :class="{'text-white': pageScroll, 'text-black': !pageScroll}">
                     <div>
                         <a href="">Sign up</a>
                     </div>
@@ -21,7 +21,7 @@
                 </button>
             </div>
             <div id="mobileMenu"
-                class="lg:hidden justify-center space-y-2 text-center text-black transition-all duration-200 h-[0px] overflow-hidden">
+                class="lg:hidden justify-center space-y-2 text-center transition-all duration-200 h-[0px] overflow-hidden" :class="{'text-white': pageScroll, 'text-black': !pageScroll}">
                 <div>
                     <a href="">
                         Sign up</a>
