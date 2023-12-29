@@ -167,11 +167,11 @@
     </div>
 
     <div class="flex justify-between items-center px-[20px] mt-[30px] space-x-2 overflow-x-hidden">
-      <button class="border-[2px] border-black/50 rounded-full" @click.prevent="openFileDialog">
+      <button class="border-[2px] border-black/50 rounded-full" @click.prevent="openImageDialog">
         <i class="fas fa-images text-black/50 p-2"></i>
       </button>
       <!-- Hidden file input -->
-      <input class="hidden" type="file" ref="fileInput" @change="handleFileChange" accept="image/*" multiple>
+      <input class="hidden" type="file" ref="imageInput" @change="handleImageChange" accept="image/*" multiple>
 
 
       <input
@@ -241,11 +241,12 @@
     <h4 class="px-[20px] mt-[20px] text-black/50 text-[16px]">เวลาทำการ</h4>
     <!-- Open Time -->
     <div class="flex items-center px-[20px] mt-[10px] space-x-[20px]">
-      <div class="w-[15px]">
+      <div class="w-[10px]">
         <h4 class="text-black/50 text-[16px]">อา.</h4>
       </div>
       <button class="fas fa-toggle-on text-[#1cb7d9] text-[25px]"></button>
-      <VueDatePicker class="max-w-[30vw]" v-model="time" time-picker @update:model-value="openTime">
+      <VueDatePicker class="max-w-[30vw] select-none touch-manipulation" v-model="time" time-picker
+        @update:model-value="TimeUpdate('sunday', 'open', time)">
         <template #trigger>
           <div
             class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
@@ -253,7 +254,8 @@
         </template>
       </VueDatePicker>
       <h4>-</h4>
-      <VueDatePicker class="max-w-[30vw]" v-model="time" time-picker @update:model-value="openTime">
+      <VueDatePicker class="max-w-[30vw] select-none touch-manipulation" v-model="time" time-picker
+        @update:model-value="TimeUpdate('sunday', 'close', time)">
         <template #trigger>
           <div
             class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
@@ -262,11 +264,12 @@
       </VueDatePicker>
     </div>
     <div class="flex items-center px-[20px] mt-[10px] space-x-[20px]">
-      <div class="w-[15px]">
+      <div class="w-[10px]">
         <h4 class="text-black/50 text-[16px]">จ.</h4>
       </div>
       <button class="fas fa-toggle-on text-[#1cb7d9] text-[25px]"></button>
-      <VueDatePicker class="max-w-[30vw]" v-model="time" time-picker @update:model-value="openTime">
+      <VueDatePicker class="max-w-[30vw] select-none touch-manipulation" v-model="time" time-picker
+        @update:model-value="TimeUpdate('monday', 'open', time)">
         <template #trigger>
           <div
             class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
@@ -274,7 +277,8 @@
         </template>
       </VueDatePicker>
       <h4>-</h4>
-      <VueDatePicker class="max-w-[30vw]" v-model="time" time-picker @update:model-value="openTime">
+      <VueDatePicker class="max-w-[30vw] select-none touch-manipulation" v-model="time" time-picker
+        @update:model-value="TimeUpdate('monday', 'close', time)">
         <template #trigger>
           <div
             class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
@@ -283,11 +287,12 @@
       </VueDatePicker>
     </div>
     <div class="flex items-center px-[20px] mt-[10px] space-x-[20px]">
-      <div class="w-[15px]">
+      <div class="w-[10px]">
         <h4 class="text-black/50 text-[16px]">อ.</h4>
       </div>
       <button class="fas fa-toggle-on text-[#1cb7d9] text-[25px]"></button>
-      <VueDatePicker class="max-w-[30vw]" v-model="time" time-picker @update:model-value="openTime">
+      <VueDatePicker class="max-w-[30vw] select-none touch-manipulation" v-model="time" time-picker
+        @update:model-value="TimeUpdate('tuesday', 'open', time)">
         <template #trigger>
           <div
             class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
@@ -295,7 +300,8 @@
         </template>
       </VueDatePicker>
       <h4>-</h4>
-      <VueDatePicker class="max-w-[30vw]" v-model="time" time-picker @update:model-value="openTime">
+      <VueDatePicker class="max-w-[30vw] select-none touch-manipulation" v-model="time" time-picker
+        @update:model-value="TimeUpdate('tuesday', 'close', time)">
         <template #trigger>
           <div
             class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
@@ -304,11 +310,12 @@
       </VueDatePicker>
     </div>
     <div class="flex items-center px-[20px] mt-[10px] space-x-[20px]">
-      <div class="w-[15px]">
+      <div class="w-[10px]">
         <h4 class="text-black/50 text-[16px]">พ.</h4>
       </div>
       <button class="fas fa-toggle-on text-[#1cb7d9] text-[25px]"></button>
-      <VueDatePicker class="max-w-[30vw]" v-model="time" time-picker @update:model-value="openTime">
+      <VueDatePicker class="max-w-[30vw] select-none touch-manipulation" v-model="time" time-picker
+        @update:model-value="TimeUpdate('wednesday', 'open', time)">
         <template #trigger>
           <div
             class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
@@ -316,7 +323,8 @@
         </template>
       </VueDatePicker>
       <h4>-</h4>
-      <VueDatePicker class="max-w-[30vw]" v-model="time" time-picker @update:model-value="openTime">
+      <VueDatePicker class="max-w-[30vw] select-none touch-manipulation" v-model="time" time-picker
+        @update:model-value="TimeUpdate('wednesday', 'close', time)">
         <template #trigger>
           <div
             class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
@@ -325,11 +333,12 @@
       </VueDatePicker>
     </div>
     <div class="flex items-center px-[20px] mt-[10px] space-x-[20px]">
-      <div class="w-[15px]">
+      <div class="w-[10px]">
         <h4 class="text-black/50 text-[16px]">พฤ.</h4>
       </div>
       <button class="fas fa-toggle-on text-[#1cb7d9] text-[25px]"></button>
-      <VueDatePicker class="max-w-[30vw]" v-model="time" time-picker @update:model-value="openTime">
+      <VueDatePicker class="max-w-[30vw] select-none touch-manipulation" v-model="time" time-picker
+        @update:model-value="TimeUpdate('thursday', 'open', time)">
         <template #trigger>
           <div
             class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
@@ -337,7 +346,8 @@
         </template>
       </VueDatePicker>
       <h4>-</h4>
-      <VueDatePicker class="max-w-[30vw]" v-model="time" time-picker @update:model-value="openTime">
+      <VueDatePicker class="max-w-[30vw] select-none touch-manipulation" v-model="time" time-picker
+        @update:model-value="TimeUpdate('thursday', 'close', time)">
         <template #trigger>
           <div
             class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
@@ -346,11 +356,12 @@
       </VueDatePicker>
     </div>
     <div class="flex items-center px-[20px] mt-[10px] space-x-[20px]">
-      <div class="w-[15px]">
+      <div class="w-[10px]">
         <h4 class="text-black/50 text-[16px]">ศ.</h4>
       </div>
       <button class="fas fa-toggle-on text-[#1cb7d9] text-[25px]"></button>
-      <VueDatePicker class="max-w-[30vw]" v-model="time" time-picker @update:model-value="openTime">
+      <VueDatePicker class="max-w-[30vw] select-none touch-manipulation" v-model="time" time-picker
+        @update:model-value="TimeUpdate('friday', 'open', time)">
         <template #trigger>
           <div
             class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
@@ -358,7 +369,8 @@
         </template>
       </VueDatePicker>
       <h4>-</h4>
-      <VueDatePicker class="max-w-[30vw]" v-model="time" time-picker @update:model-value="openTime">
+      <VueDatePicker class="max-w-[30vw] select-none touch-manipulation" v-model="time" time-picker
+        @update:model-value="TimeUpdate('friday', 'close', time)">
         <template #trigger>
           <div
             class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
@@ -367,11 +379,12 @@
       </VueDatePicker>
     </div>
     <div class="flex items-center px-[20px] mt-[10px] space-x-[20px]">
-      <div class="w-[15px]">
+      <div class="w-[10px]">
         <h4 class="text-black/50 text-[16px]">ส.</h4>
       </div>
       <button class="fas fa-toggle-on text-[#1cb7d9] text-[25px]"></button>
-      <VueDatePicker class="max-w-[30vw]" v-model="time" time-picker @update:model-value="openTime">
+      <VueDatePicker class="max-w-[30vw] select-none touch-manipulation" v-model="time" time-picker
+        @update:model-value="TimeUpdate('saturday', 'open', time)">
         <template #trigger>
           <div
             class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
@@ -379,7 +392,8 @@
         </template>
       </VueDatePicker>
       <h4>-</h4>
-      <VueDatePicker class="max-w-[30vw]" v-model="time" time-picker @update:model-value="openTime">
+      <VueDatePicker class="max-w-[30vw] select-none touch-manipulation" v-model="time" time-picker
+        @update:model-value="TimeUpdate('saturday', 'close', time)">
         <template #trigger>
           <div
             class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
@@ -478,13 +492,13 @@ export default defineComponent({
       currentIndex_top10.value = (currentIndex_top10.value - 1 + slides_top10.value.length) % slides_top10.value.length;
     }
 
-    const fileInput = ref<HTMLInputElement | null>(null);
+    const imageInput = ref<HTMLInputElement | null>(null);
 
-    const openFileDialog = () => {
-      fileInput.value?.click();
+    const openImageDialog = () => {
+      imageInput.value?.click();
     };
 
-    const handleFileChange = (event: Event) => {
+    const handleImageChange = (event: Event) => {
       const files = (event.target as HTMLInputElement).files;
       if (!files || files.length === 0) {
         // console.log('No file selected.');
@@ -551,13 +565,250 @@ export default defineComponent({
     }
 
     //Time Picker
-    const time = ref({
+    const time = ref<Time>({
       hours: new Date().getHours(),
       minutes: new Date().getMinutes()
     });
+    //Set type for time
+    type Time = {
+      hours: number;
+      minutes: number;
+    };
+    //Office Time Data
+    const openDateTime = ref([
+      {
+        sunday: {
+          open: false,
+          openTime: '',
+          closeTime: ''
+        },
+        monday: {
+          open: false,
+          openTime: '',
+          closeTime: ''
+        },
+        tuesday: {
+          open: false,
+          openTime: '',
+          closeTime: ''
+        },
+        wednesday: {
+          open: false,
+          openTime: '',
+          closeTime: ''
+        },
+        thursday: {
+          open: false,
+          openTime: '',
+          closeTime: ''
+        },
+        friday: {
+          open: false,
+          openTime: '',
+          closeTime: ''
+        },
+        saturday: {
+          open: false,
+          openTime: '',
+          closeTime: ''
+        }
+      }
+    ]);
+    function isValidTimeRange(openTime: string, closeTime: string): boolean {
+      const [openHours, openMinutes] = openTime.split(':').map(Number);
+      const [closeHours, closeMinutes] = closeTime.split(':').map(Number);
 
-    const openTime = () => {
-      console.log(time.value);
+      const openTimeInMinutes = openHours * 60 + openMinutes;
+      const closeTimeInMinutes = closeHours * 60 + closeMinutes;
+      console.log(openTimeInMinutes, closeTimeInMinutes)
+      return closeTimeInMinutes >= openTimeInMinutes;
+    }
+
+    function TimeUpdate(day: string, type: string, value: Time) {
+      switch (day) {
+        case 'sunday':
+          switch (type) {
+            case 'open':
+              openDateTime.value[0].sunday.openTime = `${value.hours}:${value.minutes}`;
+              if (openDateTime.value[0].sunday.closeTime != '') {
+                if (isValidTimeRange(`${openDateTime.value[0].sunday.openTime}`, `${openDateTime.value[0].sunday.closeTime}`)) {
+                  openDateTime.value[0].sunday.open = true;
+                } else {
+                  openDateTime.value[0].sunday.open = false
+                  alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                }
+              }
+              break;
+            case 'close':
+              openDateTime.value[0].sunday.closeTime = `${value.hours}:${value.minutes}`;
+              if (openDateTime.value[0].sunday.openTime != '') {
+                if (isValidTimeRange(`${openDateTime.value[0].sunday.openTime}`, `${openDateTime.value[0].sunday.closeTime}`)) {
+                  openDateTime.value[0].sunday.open = true;
+                } else {
+                  openDateTime.value[0].sunday.open = false
+                  alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                }
+              }
+              break;
+          }
+          break;
+        case 'monday':
+          switch (type) {
+            case 'open':
+              openDateTime.value[0].monday.openTime = `${value.hours}:${value.minutes}`;
+              if (openDateTime.value[0].monday.closeTime != '') {
+                if (isValidTimeRange(`${openDateTime.value[0].monday.openTime}`, `${openDateTime.value[0].monday.closeTime}`)) {
+                  openDateTime.value[0].monday.open = true;
+                } else {
+                  openDateTime.value[0].monday.open = false
+                  alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                }
+              }
+              break;
+            case 'close':
+              openDateTime.value[0].monday.closeTime = `${value.hours}:${value.minutes}`;
+              if (openDateTime.value[0].monday.openTime != '') {
+                if (isValidTimeRange(`${openDateTime.value[0].monday.openTime}`, `${openDateTime.value[0].monday.closeTime}`)) {
+                  openDateTime.value[0].monday.open = true;
+                } else {
+                  openDateTime.value[0].monday.open = false
+                  alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                }
+              }
+              break;
+          }
+          break;
+        case 'tuesday':
+          switch (type) {
+            case 'open':
+              openDateTime.value[0].tuesday.openTime = `${value.hours}:${value.minutes}`;
+              if (openDateTime.value[0].tuesday.closeTime != '') {
+                if (isValidTimeRange(`${openDateTime.value[0].tuesday.openTime}`, `${openDateTime.value[0].tuesday.closeTime}`)) {
+                  openDateTime.value[0].tuesday.open = true;
+                } else {
+                  openDateTime.value[0].tuesday.open = false
+                  alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                }
+              }
+              break;
+            case 'close':
+              openDateTime.value[0].tuesday.closeTime = `${value.hours}:${value.minutes}`;
+              if (openDateTime.value[0].tuesday.openTime != '') {
+                if (isValidTimeRange(`${openDateTime.value[0].tuesday.openTime}`, `${openDateTime.value[0].tuesday.closeTime}`)) {
+                  openDateTime.value[0].tuesday.open = true;
+                } else {
+                  openDateTime.value[0].tuesday.open = false
+                  alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                }
+              }
+              break;
+          }
+          break;
+        case 'wednesday':
+          switch (type) {
+            case 'open':
+              openDateTime.value[0].wednesday.openTime = `${value.hours}:${value.minutes}`;
+              if (openDateTime.value[0].wednesday.closeTime != '') {
+                if (isValidTimeRange(`${openDateTime.value[0].wednesday.openTime}`, `${openDateTime.value[0].wednesday.closeTime}`)) {
+                  openDateTime.value[0].wednesday.open = true;
+                } else {
+                  openDateTime.value[0].wednesday.open = false
+                  alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                }
+              }
+              break;
+            case 'close':
+              openDateTime.value[0].wednesday.closeTime = `${value.hours}:${value.minutes}`;
+              if (openDateTime.value[0].wednesday.openTime != '') {
+                if (isValidTimeRange(`${openDateTime.value[0].wednesday.openTime}`, `${openDateTime.value[0].wednesday.closeTime}`)) {
+                  openDateTime.value[0].wednesday.open = true;
+                } else {
+                  openDateTime.value[0].wednesday.open = false
+                  alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                }
+              }
+              break;
+          }
+          break;
+        case 'thursday':
+          switch (type) {
+            case 'open':
+              openDateTime.value[0].thursday.openTime = `${value.hours}:${value.minutes}`;
+              if (openDateTime.value[0].thursday.closeTime != '') {
+                if (isValidTimeRange(`${openDateTime.value[0].thursday.openTime}`, `${openDateTime.value[0].thursday.closeTime}`)) {
+                  openDateTime.value[0].thursday.open = true;
+                } else {
+                  openDateTime.value[0].thursday.open = false
+                  alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                }
+              }
+              break;
+            case 'close':
+              openDateTime.value[0].thursday.closeTime = `${value.hours}:${value.minutes}`;
+              if (openDateTime.value[0].thursday.openTime != '') {
+                if (isValidTimeRange(`${openDateTime.value[0].thursday.openTime}`, `${openDateTime.value[0].thursday.closeTime}`)) {
+                  openDateTime.value[0].thursday.open = true;
+                } else {
+                  openDateTime.value[0].thursday.open = false
+                  alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                }
+              }
+              break;
+          }
+          break;
+        case 'friday':
+          switch (type) {
+            case 'open':
+              openDateTime.value[0].friday.openTime = `${value.hours}:${value.minutes}`;
+              if (openDateTime.value[0].friday.closeTime != '') {
+                if (isValidTimeRange(`${openDateTime.value[0].friday.openTime}`, `${openDateTime.value[0].friday.closeTime}`)) {
+                  openDateTime.value[0].friday.open = true;
+                } else {
+                  openDateTime.value[0].friday.open = false
+                  alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                }
+              }
+              break;
+            case 'close':
+              openDateTime.value[0].friday.closeTime = `${value.hours}:${value.minutes}`;
+              if (openDateTime.value[0].friday.openTime != '') {
+                if (isValidTimeRange(`${openDateTime.value[0].friday.openTime}`, `${openDateTime.value[0].friday.closeTime}`)) {
+                  openDateTime.value[0].friday.open = true;
+                } else {
+                  openDateTime.value[0].friday.open = false
+                  alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                }
+              }
+              break;
+          }
+          break;
+        case 'saturday':
+          switch (type) {
+            case 'open':
+              openDateTime.value[0].saturday.openTime = `${value.hours}:${value.minutes}`;
+              if (openDateTime.value[0].saturday.closeTime != '') {
+                if (isValidTimeRange(`${openDateTime.value[0].saturday.openTime}`, `${openDateTime.value[0].saturday.closeTime}`)) {
+                  openDateTime.value[0].saturday.open = true;
+                } else {
+                  openDateTime.value[0].saturday.open = false
+                  alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                }
+              }
+              break;
+            case 'close':
+              openDateTime.value[0].saturday.closeTime = `${value.hours}:${value.minutes}`;
+              if (openDateTime.value[0].saturday.openTime != '') {
+                if (isValidTimeRange(`${openDateTime.value[0].saturday.openTime}`, `${openDateTime.value[0].saturday.closeTime}`)) {
+                  openDateTime.value[0].saturday.open = true;
+                } else {
+                  openDateTime.value[0].saturday.open = false
+                  alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                }
+              }
+              break;
+          }
+          break;
+      }
     }
 
     return {
@@ -570,9 +821,9 @@ export default defineComponent({
       nextSlide_top10,
       prevSlide_top10,
 
-      fileInput,
-      openFileDialog,
-      handleFileChange,
+      imageInput,
+      openImageDialog,
+      handleImageChange,
 
       //form data
       Form_Update,
@@ -590,8 +841,9 @@ export default defineComponent({
       air_check,
 
       //Time Picker
+      TimeUpdate,
       time,
-      openTime
+      openDateTime
     };
   },
 });
