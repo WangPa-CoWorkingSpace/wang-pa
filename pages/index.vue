@@ -189,7 +189,7 @@
 
     <!-- Facilities Form -->
     <h4 class="px-[20px] mt-[20px] text-black/50 text-[16px]">สิ่งอำนวยความสะดวก</h4>
-    <div class="flex justify-between items-center w-[70vw] px-[20px] mt-[10px] overflow-x-scroll">
+    <div class="flex justify-between items-center w-[70vw] px-[20px] mt-[10px]">
       <!-- Utensils -->
       <div class="space-x-[15px]">
         <i class="fal fa-utensils text-[20px] text-black/50 max-w-[15px]"></i>
@@ -213,7 +213,7 @@
       </div>
     </div>
 
-    <div class="flex justify-between items-center w-[70vw] px-[20px] mt-[10px] overflow-x-scroll">
+    <div class="flex justify-between items-center w-[70vw] px-[20px] mt-[10px]">
       <!-- WiFi -->
       <div class="space-x-[15px]">
         <i class="far fa-wifi text-[20px] text-black/50 max-w-[15px]"></i>
