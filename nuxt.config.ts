@@ -32,7 +32,8 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      MAB_BOX_TOKEN: process.env.MAB_BOX_TOKEN
+      MAB_BOX_TOKEN: process.env.MAB_BOX_TOKEN,
+      DATABASE_URL: process.env.DATABASE_URL
     }
   }
 });

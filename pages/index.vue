@@ -24,12 +24,12 @@
     </div>
     <div class="flex justify-end mr-[10px]">
       <div class="absolute z-0">
-        <NuxtImg class="object-contain" preload src="/img/co-work.png" loading="lazy" height="170px" width="130px" />
+        <NuxtImg class="object-contain" src="/img/co-work.png" loading="lazy" height="170px" width="130px" />
       </div>
     </div>
     <div class="flex justify-between mt-[30px]">
       <div class="ml-[20px]">
-        <NuxtImg preload src="/img/Review.png" loading="lazy" sizes="200px" />
+        <NuxtImg src="/img/Review.png" loading="lazy" sizes="200px" />
       </div>
     </div>
 
@@ -419,7 +419,7 @@
       <div class="hover:translate-y-[-30px] transition-all duration-500">
         <NuxtImg
           class="object-fit absolute ml-[3.5px] mt-[20px] rounded-full w-[25vw] max-w-[100px] h-[25vw] max-h-[100px]"
-          preload src="/img/niji.png" loading="lazy"></NuxtImg>
+          src="/img/niji.png" loading="lazy"></NuxtImg>
         <h1 class="absolute ml-[5px] mt-[120px] font-medium text-[15px] text-black">Niji</h1>
         <h4 class="absolute ml-[5px] mt-[140px] text-[8px] text-black/50">Suphawinee</h4>
         <h4 class="absolute ml-[5px] mt-[150px] text-[8px] text-black/50">Chatasawapreeda</h4>
@@ -484,6 +484,7 @@ import "../node_modules/mapbox-gl/dist/mapbox-gl.css"
 import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css'
 import Cookies from 'js-cookie';
+import Compressor from 'compressorjs';
 
 export default defineComponent({
   components: {
@@ -576,12 +577,48 @@ export default defineComponent({
         // console.log('No file selected.');
         return;
       }
-      const file = files[0];
-      if (file.size > 2097152) {
-        alert("Too large file. Limit 2MB");
+
+      // สร้าง FormData
+      const formData = new FormData();
+
+      for (let i = 0; i < files.length; i++) {
+        if (files[i].size > 15728640) { // 15MB
+          alert("Too large file. Limit 15MB");
+          return;
+        }
+
+        new Compressor(files[i], {
+          quality: 0.5,
+          convertSize: 524288,
+          convertTypes: ['image/png'],
+
+          success(result) {
+            // เพิ่มไฟล์ที่บีบอัดแล้วลงใน formData
+            formData.append('images', result);
+            // Check if all files have been processed
+            if (i + 1 === files.length) {
+              // ถ้าทุกไฟล์ได้รับการประมวลผลแล้ว, ส่งข้อมูลไปยังเซิร์ฟเวอร์
+              uploadImages(formData);
+            }
+          },
+          error(err) {
+            console.log(err.message);
+          },
+        });
       }
-      // Process the selected file
-      // console.log('Selected file:', file);
+    };
+
+    const uploadImages = async (formData: FormData) => {
+      try {
+        const response = await fetch('https://wangpa.tensormik.com/imgup/upload', {
+          method: 'POST',
+          body: formData,
+        });
+        const data = await response.json();
+        console.log(data);
+      } catch (error) {
+        console.error('Error during image upload:', error);
+      }
     };
 
     const cws_name_form = ref('')
