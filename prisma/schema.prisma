@@ -1,0 +1,118 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model blobs {
+  b_id              String             @id @db.Char(32)
+  b_key             String             @db.VarChar(255)
+  b_size            Int                @db.UnsignedInt
+  b_uplaod_date     DateTime           @default(now()) @db.DateTime(0)
+  b_signed_link_url String?            @db.Text
+  co_working_space  co_working_space[]
+  users             users[]
+}
+
+model co_working_space {
+  cws_id                                                            Int                           @id @default(autoincrement())
+  cws_name                                                          String                        @db.VarChar(255) @unique
+  cws_latitude                                                      String?                       @db.VarChar(255)
+  cws_longtitude                                                    String?                       @db.VarChar(255)
+  cws_price                                                         String?                       @db.VarChar(255)
+  cws_image_id                                                      String?                       @db.Char(32) @unique
+  cws_visitor                                                       Int?
+  cws_start_hot_users                                               DateTime?                     @db.Time(0)
+  cws_finish_hot_users                                              DateTime?                     @db.Time(0)
+  blobs                                                             blobs?                        @relation(fields: [cws_image_id], references: [b_id], onDelete: NoAction, onUpdate: NoAction, map: "cws_image_id")
+  co_working_space_facilities                                       co_working_space_facilities[]
+  co_working_space_review                                           co_working_space_review[]
+  co_working_space_time                                             co_working_space_time[]
+  user_favorites_user_favorites_ufav_cws_idToco_working_space       user_favorites[]              @relation("user_favorites_ufav_cws_idToco_working_space")
+  user_favorites_user_favorites_ufav_cws_image_idToco_working_space user_favorites[]              @relation("user_favorites_ufav_cws_image_idToco_working_space")
+  user_favorites_user_favorites_ufav_cws_nameToco_working_space     user_favorites[]              @relation("user_favorites_ufav_cws_nameToco_working_space")
+
+  @@index([cws_image_id], map: "cws_image_id")
+  @@index([cws_name], map: "cws_name")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model co_working_space_facilities {
+  cwsf_id          Int @unique
+  cwsf_food        Boolean
+  cwsf_toilet      Boolean
+  cwsf_shoping     Boolean
+  cwsf_wifi        Boolean
+  cwsf_charger     Boolean
+  cwsf_aircon      Boolean
+  co_working_space co_working_space @relation(fields: [cwsf_id], references: [cws_id], onDelete: NoAction, onUpdate: NoAction, map: "cwsf_id")
+
+  @@index([cwsf_id], map: "cwsf_id")
+}
+
+model co_working_space_review {
+  cwsr_id          Int              @id @default(autoincrement())
+  cwsr_cws_id      Int
+  cwsr_u_id        Int
+  cwsr_star        Int
+  cwsr_text        String           @db.Text
+  cwsr_upload_date DateTime         @default(now()) @db.DateTime(0)
+  co_working_space co_working_space @relation(fields: [cwsr_cws_id], references: [cws_id], onDelete: NoAction, onUpdate: NoAction, map: "cwsr_cws_id")
+  users            users            @relation(fields: [cwsr_u_id], references: [u_id], onDelete: NoAction, onUpdate: NoAction, map: "cwsr_u_id")
+
+  @@index([cwsr_cws_id], map: "cwsr_cws_id")
+  @@index([cwsr_u_id], map: "cwsr_u_id")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model co_working_space_time {
+  cwst_id          Int  @unique
+  cwst_sun_open    DateTime?        @db.Time(0)
+  cwst_sun_close   DateTime?        @db.Time(0)
+  cwst_mon_open    DateTime?        @db.Time(0)
+  cwst_mon_close   DateTime?        @db.Time(0)
+  cwst_tue_open    DateTime?        @db.Time(0)
+  cwst_tue_close   DateTime?        @db.Time(0)
+  cwst_wed_open    DateTime?        @db.Time(0)
+  cwst_wed_close   DateTime?        @db.Time(0)
+  cwst_thu_open    DateTime?        @db.Time(0)
+  cwst_thu_close   DateTime?        @db.Time(0)
+  cwst_fri_open    DateTime?        @db.Time(0)
+  cwst_fri_close   DateTime?        @db.Time(0)
+  cwst_sat_open    DateTime?        @db.Time(0)
+  cwst_sat_close   DateTime?        @db.Time(0)
+  co_working_space co_working_space @relation(fields: [cwst_id], references: [cws_id], onDelete: NoAction, onUpdate: NoAction, map: "cwst_id")
+
+  @@index([cwst_id], map: "cwst_id")
+}
+
+model user_favorites {
+  ufav_id                                                             Int              @id @default(autoincrement())
+  ufav_u_id                                                           Int
+  ufav_cws_id                                                         Int
+  ufav_cws_name                                                       String           @db.VarChar(255)
+  ufav_cws_image_id                                                   String           @db.Char(32)
+  co_working_space_user_favorites_ufav_cws_idToco_working_space       co_working_space @relation("user_favorites_ufav_cws_idToco_working_space", fields: [ufav_cws_id], references: [cws_id], onDelete: NoAction, onUpdate: NoAction, map: "ufav_cws_id")
+  co_working_space_user_favorites_ufav_cws_image_idToco_working_space co_working_space @relation("user_favorites_ufav_cws_image_idToco_working_space", fields: [ufav_cws_image_id], references: [cws_image_id], onDelete: NoAction, onUpdate: NoAction, map: "ufav_cws_image_id")
+  co_working_space_user_favorites_ufav_cws_nameToco_working_space     co_working_space @relation("user_favorites_ufav_cws_nameToco_working_space", fields: [ufav_cws_name], references: [cws_name], onDelete: NoAction, onUpdate: NoAction, map: "ufav_cws_name")
+  users                                                               users            @relation(fields: [ufav_u_id], references: [u_id], onDelete: NoAction, onUpdate: NoAction, map: "ufav_u_id")
+
+  @@index([ufav_cws_id], map: "ufav_cws_id")
+  @@index([ufav_cws_image_id], map: "ufav_cws_image_id")
+  @@index([ufav_cws_name], map: "ufav_cws_name")
+  @@index([ufav_u_id], map: "ufav_u_id")
+}
+
+model users {
+  u_id                    Int                       @id @default(autoincrement())
+  u_email                 String                    @db.VarChar(255)
+  u_avatar                String?                   @db.Char(32)
+  co_working_space_review co_working_space_review[]
+  user_favorites          user_favorites[]
+  blobs                   blobs?                    @relation(fields: [u_avatar], references: [b_id], onDelete: NoAction, onUpdate: NoAction, map: "user_avatar")
+
+  @@index([u_avatar], map: "u_avatar")
+}
