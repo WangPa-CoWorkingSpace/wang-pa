@@ -84,6 +84,13 @@ model co_working_space_time {
   cwst_fri_close   DateTime?        @db.Time(0)
   cwst_sat_open    DateTime?        @db.Time(0)
   cwst_sat_close   DateTime?        @db.Time(0)
+  cwst_sun_is_open Boolean
+  cwst_mon_is_open Boolean
+  cwst_tue_is_open Boolean
+  cwst_wed_is_open Boolean
+  cwst_thu_is_open Boolean
+  cwst_fri_is_open Boolean
+  cwst_sat_is_open Boolean
   co_working_space co_working_space @relation(fields: [cwst_id], references: [cws_id], onDelete: NoAction, onUpdate: NoAction, map: "cwst_id")
 
   @@index([cwst_id], map: "cwst_id")
