@@ -156,7 +156,7 @@
 
     <!-- Part4 Content -->
     <div class="px-[20px] mt-[50px]">
-      <h1 class="text-[28px] text-black">มีที่ดีๆอยากแชร์เหรอ</h1>
+      <h1 class="text-[24px] text-black">มีที่ดีๆอยากแชร์เหรอ?</h1>
       <h4 class="text-black/50 w-[300px]">ข้อมูลของคุณสำคัญกับเรามาก
         เราอยากให้เว็บของเราเป็นอีกหนึ่งสังคมที่รวมผู้คนที่ชอบทำงานด้านนอกบ้าน หรือ ออฟฟิศ ได้แชร์ที่นั่งทำงานดีๆให้กัน
       </h4>
@@ -401,7 +401,79 @@
         </template>
       </VueDatePicker>
     </div>
+    <button
+      class="flex justify-center items-center text-white text-[20px] rounded-[20px] bg-[#1cb7d9] mx-[20px] px-5 py-1 mt-[20px]"
+      @click.prevent="">
+      <i class="fas fa-map-marker-alt pr-2"></i>
+      <h4>Pin เลย !</h4>
+    </button>
 
+
+    <!-- Part 5 Content -->
+    <div class="flex justify-start items-center text-[24px] mt-[50px] px-[20px] font-medium">
+      <i class="far fa-code text-[#4ECB71] pr-2"></i>
+      <h1>นักพัฒนา</h1>
+    </div>
+    <div class="flex justify-evenly items-center px-[20px] mt-[50px] space-x-3">
+      <!-- Niji -->
+      <div class="hover:translate-y-[-30px] transition-all duration-500">
+        <NuxtImg
+          class="object-fit absolute ml-[3.5px] mt-[20px] rounded-full w-[25vw] max-w-[100px] h-[25vw] max-h-[100px]"
+          preload src="/img/niji.png" loading="lazy"></NuxtImg>
+        <h1 class="absolute ml-[5px] mt-[120px] font-medium text-[15px] text-black">Niji</h1>
+        <h4 class="absolute ml-[5px] mt-[140px] text-[8px] text-black/50">Suphawinee</h4>
+        <h4 class="absolute ml-[5px] mt-[150px] text-[8px] text-black/50">Chatasawapreeda</h4>
+        <div class="absolute ml-[5px] mt-[165px] h-[1px] w-[44px] bg-black"></div>
+        <h4 class="absolute ml-[5px] mt-[170px] text-[8px] text-black">Backend Dev</h4>
+        <div class="absolute ml-[5px] mt-[180px] w-[70px] space-x-1 text-black/50 text-[15px]">
+          <NuxtLink class="fab fa-facebook-square" to="https://www.facebook.com/nijiducky" target="_blank"></NuxtLink>
+          <NuxtLink class="fab fa-instagram" to="https://www.instagram.com/_ducky_way_/" target="_blank"></NuxtLink>
+          <NuxtLink class="fab fa-discord" to="https://discord.com/users/321924157677895680" target="_blank"></NuxtLink>
+        </div>
+        <NuxtImg class="shadow-[0_0_5px_2px_rgba(0,0,0,0.25)] rounded-[10px] w-[107px] h-[205px]" preload
+          src="/img/dev_card_bg.png"></NuxtImg>
+      </div>
+      <!-- Kan -->
+      <div class="hover:translate-y-[-30px] transition-all duration-500">
+        <NuxtImg
+          class="object-fit absolute ml-[3.5px] mt-[20px] rounded-full w-[25vw] max-w-[100px] h-[25vw] max-h-[100px]"
+          preload src="/img/kan.png" height="100px" width="100px" loading="lazy"></NuxtImg>
+        <h1 class="absolute ml-[5px] mt-[120px] font-medium text-[15px] text-black">Kan</h1>
+        <h4 class="absolute ml-[5px] mt-[140px] text-[8px] text-black/50">Kankawee Aramrak</h4>
+        <div class="absolute ml-[5px] mt-[155px] h-[1px] w-[44px] bg-black"></div>
+        <h4 class="absolute ml-[5px] mt-[160px] text-[8px] text-black">Full Stack Dev</h4>
+        <div class="absolute ml-[5px] mt-[180px] w-[70px] space-x-1 text-black/50 text-[15px]">
+          <NuxtLink class="fab fa-facebook-square" to="https://www.facebook.com/KankaweeG49/" target="_blank"></NuxtLink>
+          <NuxtLink class="fab fa-instagram" to="https://www.instagram.com/kan_g49/" target="_blank"></NuxtLink>
+          <NuxtLink class="fab fa-discord" to="https://discord.com/users/605305608085831681" target="_blank"></NuxtLink>
+        </div>
+        <NuxtImg class="shadow-[0_0_5px_2px_rgba(0,0,0,0.25)] rounded-[10px] w-[107px] h-[205px]" preload
+          src="/img/dev_card_bg.png"></NuxtImg>
+      </div>
+      <!-- Prite -->
+      <div class="hover:translate-y-[-30px] transition-all duration-500">
+        <NuxtImg
+          class="object-fit absolute ml-[3.5px] mt-[20px] rounded-full w-[25vw] max-w-[100px] h-[25vw] max-h-[100px]"
+          preload src="/img/prite.png" height="100px" width="100px" loading="lazy"></NuxtImg>
+        <h1 class="absolute ml-[5px] mt-[120px] font-medium text-[15px] text-black">Prite</h1>
+        <h4 class="absolute ml-[5px] mt-[140px] text-[8px] text-black/50">Pannawat Aungern</h4>
+        <div class="absolute ml-[5px] mt-[155px] h-[1px] w-[44px] bg-black"></div>
+        <h4 class="absolute ml-[5px] mt-[160px] text-[8px] text-black">Designer & Writer</h4>
+        <div class="absolute ml-[5px] mt-[180px] w-[70px] space-x-1 text-black/50 text-[15px]">
+          <NuxtLink class="fab fa-facebook-square" to="https://www.facebook.com/profile.php?id=100037783080563"
+            target="_blank"></NuxtLink>
+          <NuxtLink class="fab fa-instagram" to="https://www.instagram.com/pxnwat_t/" target="_blank"></NuxtLink>
+          <NuxtLink class="fab fa-discord" to="https://discord.com/users/560017469666754560" target="_blank"></NuxtLink>
+        </div>
+        <NuxtImg class="shadow-[0_0_5px_2px_rgba(0,0,0,0.25)] rounded-[10px] w-[107px] h-[205px]" preload
+          src="/img/dev_card_bg.png"></NuxtImg>
+      </div>
+    </div>
+
+    <!-- Part6 Content -->
+    <div class="mt-[70px]">
+      <Footer />
+    </div>
   </div>
 </template>
 

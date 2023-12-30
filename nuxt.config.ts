@@ -20,7 +20,7 @@ export default defineNuxtConfig({
         { name: 'theme-color', content: '#1cb7d9' },
       ],
       link: [
-        { rel: 'stylesheet', href: 'https://pro.fontawesome.com/releases/v5.15.0/css/all.css' },
+        { rel: 'stylesheet', href: 'https://pro.fontawesome.com/releases/v5.15.4/css/all.css' },
         { rel: 'stylesheet', href: 'https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.css' },
       ],
       title: 'Wang-Pa',
