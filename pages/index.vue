@@ -171,7 +171,7 @@
         <i class="fas fa-images text-black/50 p-2"></i>
       </button>
       <!-- Hidden file input -->
-      <input class="hidden" type="file" ref="imageInput" @change="handleImageChange" accept="image/*" multiple>
+      <input class="hidden" type="file" ref="imageInput" accept="image/*" multiple>
 
 
       <input
@@ -403,7 +403,7 @@
     </div>
     <button
       class="flex justify-center items-center text-white text-[20px] rounded-[20px] bg-[#1cb7d9] mx-[20px] px-5 py-1 mt-[20px]"
-      @click.prevent="">
+      @click.prevent="UploadFormToDB">
       <i class="fas fa-map-marker-alt pr-2"></i>
       <h4>Pin เลย !</h4>
     </button>
@@ -491,7 +491,7 @@ export default defineComponent({
     Map,
     VueDatePicker
   },
-  data() {
+  imageUrlRes() {
     return {
       //Data Out
     };
@@ -610,12 +610,11 @@ export default defineComponent({
 
     const uploadImages = async (formData: FormData) => {
       try {
-        const response = await fetch('https://wangpa.tensormik.com/imgup/upload', {
+        const response_imageUrl = await fetch('https://wangpa.tensormik.com/wangpa-api/upload', {
           method: 'POST',
           body: formData,
         });
-        const data = await response.json();
-        console.log(data);
+        const imageUrlRes = await response_imageUrl.json();
       } catch (error) {
         console.error('Error during image upload:', error);
       }
@@ -919,6 +918,30 @@ export default defineComponent({
       }
     }
 
+    async function UploadFormToDB() {
+      try {
+        await fetch('https://wangpa.tensormik.com/wangpa-api/upform', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            name: cws_name_form.value,
+            lat: Cookies.get('inform-lat'),
+            long: Cookies.get('inform-long'),
+            review: cws_review_form.value,
+            price: cws_price_form.value,
+            food: utensils_check.value,
+            toilet: restroom_check.value,
+            shopping: shopping_check.value,
+            wifi: wifi_check.value,
+            charger: outlet_check.value,
+            air_con: air_check.value
+          })
+        });
+      } catch (e){ console.error(e) }
+    }
+
     return {
       currentIndex_near_me,
       slides_near_me,
@@ -933,7 +956,8 @@ export default defineComponent({
       openImageDialog,
       handleImageChange,
 
-      //form data
+      //form imageUrlRes
+      UploadFormToDB,
       Form_Update,
       cws_name_form,
       cws_price_form,
