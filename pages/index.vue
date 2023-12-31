@@ -168,7 +168,7 @@
 
     <div class="flex justify-between items-center px-[20px] mt-[30px] space-x-2 overflow-x-hidden">
       <button class="border-[2px] border-black/50 rounded-full" @click.prevent="openImageDialog">
-        <i class="fas fa-images text-black/50 p-2"></i>
+        <i class="fas text-black/50 w-[32px] h-[32px] p-2" :class="{'fa-images':!isImgUp, 'fa-file-check':isImgUp}"></i>
       </button>
       <!-- Hidden file input -->
       <input class="hidden" type="file" ref="imageInput" @change="handleImageChange" accept="image/*" multiple>
@@ -491,7 +491,7 @@ export default defineComponent({
     Map,
     VueDatePicker
   },
-  imageUrlRes() {
+  data() {
     return {
       //Data Out
     };
@@ -571,10 +571,12 @@ export default defineComponent({
       imageInput.value?.click();
     };
 
+    var isImgUp = ref(false)
     var image_compressList: any[] = []
     const handleImageChange = async (event: Event) => {
       image_compressList = [];
       const files = (event.target as HTMLInputElement).files;
+      isImgUp.value = true
       if (!files || files.length === 0) {
         // console.log('No file selected.');
         return;
@@ -972,6 +974,7 @@ export default defineComponent({
       imageInput,
       openImageDialog,
       handleImageChange,
+      isImgUp,
 
       //form imageUrlRes
       UploadFormToDB,
