@@ -171,7 +171,7 @@
         <i class="fas fa-images text-black/50 p-2"></i>
       </button>
       <!-- Hidden file input -->
-      <input class="hidden" type="file" ref="imageInput" accept="image/*" multiple>
+      <input class="hidden" type="file" ref="imageInput" @change="handleImageChange" accept="image/*" multiple>
 
 
       <input
@@ -571,7 +571,9 @@ export default defineComponent({
       imageInput.value?.click();
     };
 
-    const handleImageChange = (event: Event) => {
+    var image_compressList: any[] = []
+    const handleImageChange = async (event: Event) => {
+      image_compressList = [];
       const files = (event.target as HTMLInputElement).files;
       if (!files || files.length === 0) {
         // console.log('No file selected.');
@@ -595,26 +597,33 @@ export default defineComponent({
           success(result) {
             // เพิ่มไฟล์ที่บีบอัดแล้วลงใน formData
             formData.append('images', result);
-            // Check if all files have been processed
-            if (i + 1 === files.length) {
-              // ถ้าทุกไฟล์ได้รับการประมวลผลแล้ว, ส่งข้อมูลไปยังเซิร์ฟเวอร์
-              uploadImages(formData);
-            }
+
+            const reader = new FileReader();
+            reader.readAsDataURL(result);
+            reader.onloadend = function () {
+              const base64data = reader.result;
+              image_compressList.push(base64data);
+            };
           },
           error(err) {
-            console.log(err.message);
+            console.error(err.message);
           },
         });
       }
     };
 
-    const uploadImages = async (formData: FormData) => {
+    const uploadImages = async (formData: any, cws_id_link: number) => {
       try {
         const response_imageUrl = await fetch('https://wangpa.tensormik.com/wangpa-api/upload', {
           method: 'POST',
-          body: formData,
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            images: formData,
+            cws_id_link: cws_id_link
+          })
         });
-        const imageUrlRes = await response_imageUrl.json();
       } catch (error) {
         console.error('Error during image upload:', error);
       }
@@ -918,9 +927,11 @@ export default defineComponent({
       }
     }
 
+    //UpForm
+    var upform_response: any;
     async function UploadFormToDB() {
       try {
-        await fetch('https://wangpa.tensormik.com/wangpa-api/upform', {
+        upform_response = await fetch('https://wangpa.tensormik.com/wangpa-api/upform', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -939,7 +950,13 @@ export default defineComponent({
             air_con: air_check.value
           })
         });
-      } catch (e){ console.error(e) }
+        const upform_responseData = await upform_response.json(); // Await the JSON response
+        const cws_id_res = await upform_responseData.cws_id
+
+        uploadImages(image_compressList, cws_id_res)
+      } catch (e) {
+        console.error(e)
+      }
     }
 
     return {
