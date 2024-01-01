@@ -11,7 +11,7 @@ export default defineNuxtConfig({
   },
 
   css: ['~/assets/styles.css'],
-  modules: ["@nuxtjs/tailwindcss", '@nuxt/image'],
+  modules: ["@nuxtjs/tailwindcss", '@nuxt/image', 'nuxt-vue3-google-signin'],
   app: {
     head: {
       charset: 'utf-16',
@@ -33,7 +33,10 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       MAB_BOX_TOKEN: process.env.MAB_BOX_TOKEN,
-      DATABASE_URL: process.env.DATABASE_URL
+      GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID
     }
+  },
+  googleSignIn: {
+    clientId: process.env.GOOGLE_CLIENT_ID,
   }
 });

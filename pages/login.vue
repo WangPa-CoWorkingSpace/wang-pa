@@ -9,35 +9,57 @@
             <div class="mt-[80px] flex justify-center">
                 <h1 class="text-[24px]">เข้าสู่ระบบ</h1>
             </div>
-            <center class="mt-[10px] px-[20px]">
+            <div class="mt-[10px] px-[20px]">
                 <div class="bg-[#A0DFFA] h-[200px] rounded-[20px] p-4">
-                    <button
-                        class="bg-white w-full flex justify-center items-center p-[5px] rounded-[20px] border-[1px] border-black/50" @click.prevent="googleLogin()">
-                        <NuxtImg src="/img/google_logo.png" width="23px"></NuxtImg>
-                        <h4 class="text-[14px] ml-[10px]">ดำเนินการต่อด้วย Google</h4>
-                    </button>
-                    <div class="h-[1px] w-[70%] bg-black/50 mt-[20px]"></div>
+                    <div class="flex justify-center">
+                        <button
+                            class="bg-white w-full flex justify-center items-center p-[5px] rounded-[20px] border-[1px] border-black/50"
+                            :disabled="!isReady" @click="() => login()">
+                            <NuxtImg src="/img/google_logo.png" width="23px"></NuxtImg>
+                            <h4 class="text-[14px] ml-[10px]">ดำเนินการต่อด้วย Google</h4>
+                        </button>
+                    </div>
+                    <div class="flex justify-center">
+                        <div class="h-[1px] w-[70%] bg-black/50 mt-[20px]"></div>
+                    </div>
                 </div>
-            </center>
+            </div>
         </div>
     </div>
 </template>
 
-<script>
-import { defineComponent, ref } from 'vue';
+<script setup lang="ts">
+import {
+    useTokenClient,
+    type AuthCodeFlowSuccessResponse,
+    type AuthCodeFlowErrorResponse,
+} from "vue3-google-signin";
+import axios from 'axios'
+import Cookies from 'js-cookie';
 
-    Vue.use(GAuth, gauthOption)
-export default defineComponent({
-    data() {
-    return {
-      //Data Out
-    };
-  },
-  setup() {
+const handleOnSuccess = async (response: AuthCodeFlowSuccessResponse) => {
 
-  },
-  methods: {
-    
-  }
-})
+    //Get user's data
+    try {
+        const userInfoResponse = await axios.get('https://www.googleapis.com/oauth2/v3/userinfo', {
+            headers: {
+                Authorization: `Bearer ${response.access_token}`,
+            },
+        });
+        //Save data to cookies
+        Cookies.set('user_full_name', userInfoResponse.data.name, { expires: 7 });
+        Cookies.set('user_email', userInfoResponse.data.email, { expires: 7 });
+        Cookies.set('user_avatar', userInfoResponse.data.picture, { expires: 7 });
+        // ต่อไปนี้คุณสามารถแสดงข้อมูลผู้ใช้ใน UI หรือทำอย่างอื่นตามที่ต้องการ
+    } catch {}
+};
+
+const handleOnError = (errorResponse: AuthCodeFlowErrorResponse) => {
+};
+
+const { isReady, login } = useTokenClient({
+    onSuccess: handleOnSuccess,
+    onError: handleOnError,
+    // other options
+});
 </script>
