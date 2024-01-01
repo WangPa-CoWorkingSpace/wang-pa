@@ -1,7 +1,7 @@
 <template>
   <Navbar />
 
-  <div class="min-h-screen">
+  <div class="min-h-screen main-gardient">
     <!--Part1 Content -->
     <div class="ml-[40px]">
       <div class="h-max text-black font-normal pt-[100px]">
@@ -24,12 +24,12 @@
     </div>
     <div class="flex justify-end mr-[10px]">
       <div class="absolute z-0">
-        <NuxtImg class="object-contain" src="/img/co-work.png" loading="lazy" height="170px" width="130px" />
+        <NuxtImg class="object-contain" src="/img/co-work.png" height="170px" width="130px" />
       </div>
     </div>
     <div class="flex justify-between mt-[30px]">
       <div class="ml-[20px]">
-        <NuxtImg src="/img/Review.png" loading="lazy" sizes="200px" />
+        <NuxtImg src="/img/Review.png" sizes="200px" />
       </div>
     </div>
 

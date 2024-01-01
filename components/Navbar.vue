@@ -7,11 +7,11 @@
                     </button>
                 </div>
                 <nav class="items-center gap-[30px] font-normal hidden lg:flex" :class="{'text-white': pageScroll, 'text-black': !pageScroll}">
-                    <div>
-                        <NuxtLink to="">Sign up</NuxtLink>
-                    </div>
-                    <div>
-                        <NuxtLink to="">Login</NuxtLink>
+                  <div>
+                      <NuxtLink to="/">Home</NuxtLink>
+                    </div>  
+                  <div>
+                      <NuxtLink to="/login">Login</NuxtLink>
                     </div>
                 </nav>
                 <button class="lg:hidden grid gap-1 mt-1 bg-transparent p-2 select-none" @click.prevent="hamberBTN">
@@ -23,10 +23,11 @@
             <div id="mobileMenu"
                 class="lg:hidden justify-center space-y-2 text-center transition-all duration-200 overflow-hidden" :class="{'text-white': pageScroll, 'text-black': !pageScroll, 'h-0': !istoggle, 'h-[100px]': istoggle}">
                 <div>
-                    <NuxtLink @click.prevent="hamberBTN" to="">Sign up</NuxtLink>
+                    <NuxtLink @click.prevent="hamberBTN" to="/">
+                        Home</NuxtLink>
                 </div>
                 <div>
-                    <NuxtLink @click.prevent="hamberBTN" to="">
+                    <NuxtLink @click.prevent="hamberBTN" to="/login">
                         Login</NuxtLink>
                 </div>
             </div>

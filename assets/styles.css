@@ -22,13 +22,12 @@ html {
     margin: 0;
     padding: 0;
   }
-
-
-body {
-    background-image: radial-gradient(circle at center top, rgba(89,200,247,1) -5%, rgba(255,255,255,0) 10%);
-}
 /* General style to remove outline */
 button {
     outline: none;
     -webkit-tap-highlight-color: transparent;
+}
+
+.main-gardient {
+    background-image: radial-gradient(circle at center top, rgba(89,200,247,1) -20vh, rgba(255,255,255,0) 20vh);
 }
