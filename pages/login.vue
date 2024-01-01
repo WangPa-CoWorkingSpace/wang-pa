@@ -15,7 +15,7 @@
                         <button
                             class="bg-white w-full flex justify-center items-center p-[5px] rounded-[20px] border-[1px] border-black/50"
                             :disabled="!isReady" @click="() => login()">
-                            <NuxtImg src="/img/google_logo.png" width="23px"></NuxtImg>
+                            <NuxtImg loading="eager" src="/img/google_logo.png" width="23px"></NuxtImg>
                             <h4 class="text-[14px] ml-[10px]">ดำเนินการต่อด้วย Google</h4>
                         </button>
                     </div>
@@ -36,6 +36,12 @@ import {
 } from "vue3-google-signin";
 import axios from 'axios'
 import Cookies from 'js-cookie';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+//If already login
+if (Cookies.get('user_full_name') && Cookies.get('user_email') && Cookies.get('user_avatar')) router.push('/')
 
 const handleOnSuccess = async (response: AuthCodeFlowSuccessResponse) => {
 
@@ -50,7 +56,7 @@ const handleOnSuccess = async (response: AuthCodeFlowSuccessResponse) => {
         Cookies.set('user_full_name', userInfoResponse.data.name, { expires: 7 });
         Cookies.set('user_email', userInfoResponse.data.email, { expires: 7 });
         Cookies.set('user_avatar', userInfoResponse.data.picture, { expires: 7 });
-        // ต่อไปนี้คุณสามารถแสดงข้อมูลผู้ใช้ใน UI หรือทำอย่างอื่นตามที่ต้องการ
+        router.push('/');
     } catch {}
 };
 
