@@ -585,7 +585,7 @@ export default defineComponent({
     var image_compressList: any[] = []
     const handleImageChange = async (event: Event) => {
       image_compressList = [];
-      const files = (event.target as HTMLInputElement).files;
+      let files = (event.target as HTMLInputElement).files;
       isImgUp.value = true
       if (!files || files.length === 0) {
         // console.log('No file selected.');
@@ -622,6 +622,7 @@ export default defineComponent({
           },
         });
       }
+      files = null
     };
     let isUploaded = ref('nan');
     const uploadImages = async (formData: any, cws_id_link: number) => {
