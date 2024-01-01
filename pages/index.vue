@@ -168,7 +168,8 @@
 
     <div class="flex justify-between items-center px-[20px] mt-[30px] space-x-2 overflow-x-hidden">
       <button class="border-[2px] border-black/50 rounded-full" @click.prevent="openImageDialog">
-        <i class="fas text-black/50 w-[32px] h-[32px] p-2" :class="{'fa-images':!isImgUp, 'fa-file-check':isImgUp}"></i>
+        <i class="fas text-black/50 w-[32px] h-[32px] p-2"
+          :class="{ 'fa-images': !isImgUp, 'fa-file-check': isImgUp }"></i>
       </button>
       <!-- Hidden file input -->
       <input class="hidden" type="file" ref="imageInput" @change="handleImageChange" accept="image/*" multiple>
@@ -244,13 +245,14 @@
       <div class="w-[10px]">
         <h4 class="text-black/50 text-[16px]">อา.</h4>
       </div>
-      <button class="fas fa-toggle-on text-[#1cb7d9] text-[25px]"></button>
+      <button class="fas text-[25px]" @click.prevent="dayToggle_BTN('sunday', openDateTime[0].sunday.open)"
+        :class="{ 'fa-toggle-on text-[#1cb7d9]': openDateTime[0].sunday.open, 'fa-toggle-off text-black/50': !openDateTime[0].sunday.open }"></button>
       <VueDatePicker class="max-w-[30vw] select-none touch-manipulation" v-model="time" time-picker
         @update:model-value="TimeUpdate('sunday', 'open', time)">
         <template #trigger>
           <div
             class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
-            00:00</div>
+            {{ `${openDateTime[0].sunday.openTime}` }}</div>
         </template>
       </VueDatePicker>
       <h4>-</h4>
@@ -259,7 +261,7 @@
         <template #trigger>
           <div
             class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
-            00:00</div>
+            {{ `${openDateTime[0].sunday.closeTime}` }}</div>
         </template>
       </VueDatePicker>
     </div>
@@ -267,13 +269,14 @@
       <div class="w-[10px]">
         <h4 class="text-black/50 text-[16px]">จ.</h4>
       </div>
-      <button class="fas fa-toggle-on text-[#1cb7d9] text-[25px]"></button>
+      <button class="fas text-[25px]" @click.prevent="dayToggle_BTN('monday', openDateTime[0].monday.open)"
+        :class="{ 'fa-toggle-on text-[#1cb7d9]': openDateTime[0].monday.open, 'fa-toggle-off text-black/50': !openDateTime[0].monday.open }"></button>
       <VueDatePicker class="max-w-[30vw] select-none touch-manipulation" v-model="time" time-picker
         @update:model-value="TimeUpdate('monday', 'open', time)">
         <template #trigger>
           <div
             class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
-            00:00</div>
+            {{ `${openDateTime[0].monday.openTime}` }}</div>
         </template>
       </VueDatePicker>
       <h4>-</h4>
@@ -282,7 +285,7 @@
         <template #trigger>
           <div
             class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
-            00:00</div>
+            {{ `${openDateTime[0].monday.closeTime}` }}</div>
         </template>
       </VueDatePicker>
     </div>
@@ -290,13 +293,14 @@
       <div class="w-[10px]">
         <h4 class="text-black/50 text-[16px]">อ.</h4>
       </div>
-      <button class="fas fa-toggle-on text-[#1cb7d9] text-[25px]"></button>
+      <button class="fas text-[25px]" @click.prevent="dayToggle_BTN('tuesday', openDateTime[0].tuesday.open)"
+        :class="{ 'fa-toggle-on text-[#1cb7d9]': openDateTime[0].tuesday.open, 'fa-toggle-off text-black/50': !openDateTime[0].tuesday.open }"></button>
       <VueDatePicker class="max-w-[30vw] select-none touch-manipulation" v-model="time" time-picker
         @update:model-value="TimeUpdate('tuesday', 'open', time)">
         <template #trigger>
           <div
             class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
-            00:00</div>
+            {{ `${openDateTime[0].tuesday.openTime}` }}</div>
         </template>
       </VueDatePicker>
       <h4>-</h4>
@@ -305,7 +309,7 @@
         <template #trigger>
           <div
             class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
-            00:00</div>
+            {{ `${openDateTime[0].tuesday.closeTime}` }}</div>
         </template>
       </VueDatePicker>
     </div>
@@ -313,13 +317,14 @@
       <div class="w-[10px]">
         <h4 class="text-black/50 text-[16px]">พ.</h4>
       </div>
-      <button class="fas fa-toggle-on text-[#1cb7d9] text-[25px]"></button>
+      <button class="fas text-[25px]" @click.prevent="dayToggle_BTN('wednesday', openDateTime[0].wednesday.open)"
+        :class="{ 'fa-toggle-on text-[#1cb7d9]': openDateTime[0].wednesday.open, 'fa-toggle-off text-black/50': !openDateTime[0].wednesday.open }"></button>
       <VueDatePicker class="max-w-[30vw] select-none touch-manipulation" v-model="time" time-picker
         @update:model-value="TimeUpdate('wednesday', 'open', time)">
         <template #trigger>
           <div
             class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
-            00:00</div>
+            {{ `${openDateTime[0].wednesday.openTime}` }}</div>
         </template>
       </VueDatePicker>
       <h4>-</h4>
@@ -328,7 +333,7 @@
         <template #trigger>
           <div
             class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
-            00:00</div>
+            {{ `${openDateTime[0].wednesday.closeTime}` }}</div>
         </template>
       </VueDatePicker>
     </div>
@@ -336,13 +341,14 @@
       <div class="w-[10px]">
         <h4 class="text-black/50 text-[16px]">พฤ.</h4>
       </div>
-      <button class="fas fa-toggle-on text-[#1cb7d9] text-[25px]"></button>
+      <button class="fas text-[25px]" @click.prevent="dayToggle_BTN('thursday', openDateTime[0].thursday.open)"
+        :class="{ 'fa-toggle-on text-[#1cb7d9]': openDateTime[0].thursday.open, 'fa-toggle-off text-black/50': !openDateTime[0].thursday.open }"></button>
       <VueDatePicker class="max-w-[30vw] select-none touch-manipulation" v-model="time" time-picker
         @update:model-value="TimeUpdate('thursday', 'open', time)">
         <template #trigger>
           <div
             class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
-            00:00</div>
+            {{ `${openDateTime[0].thursday.openTime}` }}</div>
         </template>
       </VueDatePicker>
       <h4>-</h4>
@@ -351,7 +357,7 @@
         <template #trigger>
           <div
             class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
-            00:00</div>
+            {{ `${openDateTime[0].thursday.closeTime}` }}</div>
         </template>
       </VueDatePicker>
     </div>
@@ -359,13 +365,14 @@
       <div class="w-[10px]">
         <h4 class="text-black/50 text-[16px]">ศ.</h4>
       </div>
-      <button class="fas fa-toggle-on text-[#1cb7d9] text-[25px]"></button>
+      <button class="fas text-[25px]" @click.prevent="dayToggle_BTN('friday', openDateTime[0].friday.open)"
+        :class="{ 'fa-toggle-on text-[#1cb7d9]': openDateTime[0].friday.open, 'fa-toggle-off text-black/50': !openDateTime[0].friday.open }"></button>
       <VueDatePicker class="max-w-[30vw] select-none touch-manipulation" v-model="time" time-picker
         @update:model-value="TimeUpdate('friday', 'open', time)">
         <template #trigger>
           <div
             class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
-            00:00</div>
+            {{ `${openDateTime[0].friday.openTime}` }}</div>
         </template>
       </VueDatePicker>
       <h4>-</h4>
@@ -374,7 +381,7 @@
         <template #trigger>
           <div
             class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
-            00:00</div>
+            {{ `${openDateTime[0].friday.closeTime}` }}</div>
         </template>
       </VueDatePicker>
     </div>
@@ -382,13 +389,14 @@
       <div class="w-[10px]">
         <h4 class="text-black/50 text-[16px]">ส.</h4>
       </div>
-      <button class="fas fa-toggle-on text-[#1cb7d9] text-[25px]"></button>
+      <button class="fas text-[25px]" @click.prevent="dayToggle_BTN('saturday', openDateTime[0].saturday.open)"
+        :class="{ 'fa-toggle-on text-[#1cb7d9]': openDateTime[0].saturday.open, 'fa-toggle-off text-black/50': !openDateTime[0].saturday.open }"></button>
       <VueDatePicker class="max-w-[30vw] select-none touch-manipulation" v-model="time" time-picker
         @update:model-value="TimeUpdate('saturday', 'open', time)">
         <template #trigger>
           <div
             class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
-            00:00</div>
+            {{ `${openDateTime[0].saturday.openTime}` }}</div>
         </template>
       </VueDatePicker>
       <h4>-</h4>
@@ -397,14 +405,16 @@
         <template #trigger>
           <div
             class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
-            00:00</div>
+            {{ `${openDateTime[0].saturday.closeTime}` }}</div>
         </template>
       </VueDatePicker>
     </div>
     <button
-      class="flex justify-center items-center text-white text-[20px] rounded-[20px] bg-[#1cb7d9] mx-[20px] px-5 py-1 mt-[20px]"
-      @click.prevent="UploadFormToDB">
-      <i class="fas fa-map-marker-alt pr-2"></i>
+      class="flex justify-center items-center text-white text-[20px] rounded-[20px] bg-[#1cb7d9] mx-[20px] px-5 py-1 mt-[20px] transition-all duration-300"
+      @click.prevent="UploadFormToDB" :class="{ 'disabled: bg-[#8888]': isUploaded === 'loading' }">
+      <div class="flex justify-center items-center mr-2">
+        <i class="fas fa-map-marker-alt" :class="{ 'fa-spin': isUploaded === 'loading' }"></i>
+      </div>
       <h4>Pin เลย !</h4>
     </button>
 
@@ -613,7 +623,7 @@ export default defineComponent({
         });
       }
     };
-
+    let isUploaded = ref('nan');
     const uploadImages = async (formData: any, cws_id_link: number) => {
       try {
         const response_imageUrl = await fetch('https://wangpa.tensormik.com/wangpa-api/upload', {
@@ -626,6 +636,16 @@ export default defineComponent({
             cws_id_link: cws_id_link
           })
         });
+        setTimeout(() => {
+          //Reset form after pin success
+          let day_List: any = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+          for (let i = 0; i < day_List.length; i++) {
+            ResetOpenDateTime(day_List[i])
+          }
+          ResetFacilities_Check(utensils_check, restroom_check, shopping_check, wifi_check, outlet_check, air_check);
+          ResetSimpleForm(cws_name_form, cws_price_form, cws_review_form)
+          ResetImageInputData()
+        }, 5000);
       } catch (error) {
         console.error('Error during image upload:', error);
       }
@@ -698,42 +718,61 @@ export default defineComponent({
       {
         sunday: {
           open: false,
-          openTime: '',
-          closeTime: ''
+          openTime: 'ปิดให้บริการ',
+          closeTime: 'ปิดให้บริการ'
         },
         monday: {
           open: false,
-          openTime: '',
-          closeTime: ''
+          openTime: 'ปิดให้บริการ',
+          closeTime: 'ปิดให้บริการ'
         },
         tuesday: {
           open: false,
-          openTime: '',
-          closeTime: ''
+          openTime: 'ปิดให้บริการ',
+          closeTime: 'ปิดให้บริการ'
         },
         wednesday: {
           open: false,
-          openTime: '',
-          closeTime: ''
+          openTime: 'ปิดให้บริการ',
+          closeTime: 'ปิดให้บริการ'
         },
         thursday: {
           open: false,
-          openTime: '',
-          closeTime: ''
+          openTime: 'ปิดให้บริการ',
+          closeTime: 'ปิดให้บริการ'
         },
         friday: {
           open: false,
-          openTime: '',
-          closeTime: ''
+          openTime: 'ปิดให้บริการ',
+          closeTime: 'ปิดให้บริการ'
         },
         saturday: {
           open: false,
-          openTime: '',
-          closeTime: ''
+          openTime: 'ปิดให้บริการ',
+          closeTime: 'ปิดให้บริการ'
         }
       }
     ]);
+    function dayToggle_BTN(day: keyof typeof openDateTime.value[0], current_state: boolean) {
+      if (day in openDateTime.value[0]) {
+        openDateTime.value[0][day].open = !current_state;
+        if (openDateTime.value[0][day].open === true) {
+          openDateTime.value[0][day].openTime = '00:00'
+          openDateTime.value[0][day].closeTime = '23:59'
+        }
+        else {
+          openDateTime.value[0][day].openTime = 'ปิดให้บริการ'
+          openDateTime.value[0][day].closeTime = 'ปิดให้บริการ'
+        }
+      } else {
+        console.error(`Invalid day: ${day}`);
+      }
+    }
+
     function isValidTimeRange(openTime: string, closeTime: string): boolean {
+      //First input
+      if (closeTime === 'ปิดให้บริการ') return false;
+
       const [openHours, openMinutes] = openTime.split(':').map(Number);
       const [closeHours, closeMinutes] = closeTime.split(':').map(Number);
 
@@ -753,7 +792,9 @@ export default defineComponent({
                   openDateTime.value[0].sunday.open = true;
                 } else {
                   openDateTime.value[0].sunday.open = false
-                  alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                  if (openDateTime.value[0].sunday.openTime !== 'ปิดให้บริการ' && openDateTime.value[0].sunday.closeTime !== 'ปิดให้บริการ') {
+                    alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                  }
                 }
               }
               break;
@@ -764,7 +805,9 @@ export default defineComponent({
                   openDateTime.value[0].sunday.open = true;
                 } else {
                   openDateTime.value[0].sunday.open = false
-                  alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                  if (openDateTime.value[0].sunday.openTime !== 'ปิดให้บริการ' || openDateTime.value[0].sunday.closeTime !== 'ปิดให้บริการ') {
+                    alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                  }
                 }
               }
               break;
@@ -779,7 +822,9 @@ export default defineComponent({
                   openDateTime.value[0].monday.open = true;
                 } else {
                   openDateTime.value[0].monday.open = false
-                  alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                  if (openDateTime.value[0].monday.openTime !== 'ปิดให้บริการ' && openDateTime.value[0].monday.closeTime !== 'ปิดให้บริการ') {
+                    alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                  }
                 }
               }
               break;
@@ -790,7 +835,9 @@ export default defineComponent({
                   openDateTime.value[0].monday.open = true;
                 } else {
                   openDateTime.value[0].monday.open = false
-                  alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                  if (openDateTime.value[0].monday.openTime !== 'ปิดให้บริการ' && openDateTime.value[0].monday.closeTime !== 'ปิดให้บริการ') {
+                    alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                  }
                 }
               }
               break;
@@ -805,7 +852,9 @@ export default defineComponent({
                   openDateTime.value[0].tuesday.open = true;
                 } else {
                   openDateTime.value[0].tuesday.open = false
-                  alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                  if (openDateTime.value[0].tuesday.openTime !== 'ปิดให้บริการ' && openDateTime.value[0].tuesday.closeTime !== 'ปิดให้บริการ') {
+                    alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                  }
                 }
               }
               break;
@@ -816,7 +865,9 @@ export default defineComponent({
                   openDateTime.value[0].tuesday.open = true;
                 } else {
                   openDateTime.value[0].tuesday.open = false
-                  alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                  if (openDateTime.value[0].tuesday.openTime !== 'ปิดให้บริการ' && openDateTime.value[0].tuesday.closeTime !== 'ปิดให้บริการ') {
+                    alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                  }
                 }
               }
               break;
@@ -831,7 +882,9 @@ export default defineComponent({
                   openDateTime.value[0].wednesday.open = true;
                 } else {
                   openDateTime.value[0].wednesday.open = false
-                  alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                  if (openDateTime.value[0].wednesday.openTime !== 'ปิดให้บริการ' && openDateTime.value[0].wednesday.closeTime !== 'ปิดให้บริการ') {
+                    alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                  }
                 }
               }
               break;
@@ -842,7 +895,9 @@ export default defineComponent({
                   openDateTime.value[0].wednesday.open = true;
                 } else {
                   openDateTime.value[0].wednesday.open = false
-                  alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                  if (openDateTime.value[0].wednesday.openTime !== 'ปิดให้บริการ' && openDateTime.value[0].wednesday.closeTime !== 'ปิดให้บริการ') {
+                    alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                  }
                 }
               }
               break;
@@ -857,7 +912,9 @@ export default defineComponent({
                   openDateTime.value[0].thursday.open = true;
                 } else {
                   openDateTime.value[0].thursday.open = false
-                  alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                  if (openDateTime.value[0].thursday.openTime !== 'ปิดให้บริการ' && openDateTime.value[0].thursday.closeTime !== 'ปิดให้บริการ') {
+                    alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                  }
                 }
               }
               break;
@@ -868,7 +925,9 @@ export default defineComponent({
                   openDateTime.value[0].thursday.open = true;
                 } else {
                   openDateTime.value[0].thursday.open = false
-                  alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                  if (openDateTime.value[0].thursday.openTime !== 'ปิดให้บริการ' && openDateTime.value[0].thursday.closeTime !== 'ปิดให้บริการ') {
+                    alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                  }
                 }
               }
               break;
@@ -883,7 +942,9 @@ export default defineComponent({
                   openDateTime.value[0].friday.open = true;
                 } else {
                   openDateTime.value[0].friday.open = false
-                  alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                  if (openDateTime.value[0].friday.openTime !== 'ปิดให้บริการ' && openDateTime.value[0].friday.closeTime !== 'ปิดให้บริการ') {
+                    alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                  }
                 }
               }
               break;
@@ -894,7 +955,9 @@ export default defineComponent({
                   openDateTime.value[0].friday.open = true;
                 } else {
                   openDateTime.value[0].friday.open = false
-                  alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                  if (openDateTime.value[0].friday.openTime !== 'ปิดให้บริการ' && openDateTime.value[0].friday.closeTime !== 'ปิดให้บริการ') {
+                    alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                  }
                 }
               }
               break;
@@ -909,7 +972,9 @@ export default defineComponent({
                   openDateTime.value[0].saturday.open = true;
                 } else {
                   openDateTime.value[0].saturday.open = false
-                  alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                  if (openDateTime.value[0].saturday.openTime !== 'ปิดให้บริการ' && openDateTime.value[0].saturday.closeTime !== 'ปิดให้บริการ') {
+                    alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                  }
                 }
               }
               break;
@@ -920,7 +985,9 @@ export default defineComponent({
                   openDateTime.value[0].saturday.open = true;
                 } else {
                   openDateTime.value[0].saturday.open = false
-                  alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                  if (openDateTime.value[0].saturday.openTime !== 'ปิดให้บริการ' && openDateTime.value[0].saturday.closeTime !== 'ปิดให้บริการ') {
+                    alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
+                  }
                 }
               }
               break;
@@ -932,6 +999,7 @@ export default defineComponent({
     //UpForm
     var upform_response: any;
     async function UploadFormToDB() {
+      isUploaded.value = 'loading'
       try {
         upform_response = await fetch('https://wangpa.tensormik.com/wangpa-api/upform', {
           method: 'POST',
@@ -939,25 +1007,84 @@ export default defineComponent({
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
+            //cws
             name: cws_name_form.value,
             lat: Cookies.get('inform-lat'),
             long: Cookies.get('inform-long'),
             review: cws_review_form.value,
             price: cws_price_form.value,
+            //cws_facilities
             food: utensils_check.value,
             toilet: restroom_check.value,
             shopping: shopping_check.value,
             wifi: wifi_check.value,
             charger: outlet_check.value,
-            air_con: air_check.value
+            air_con: air_check.value,
+            // cws_time
+            sunday_open: openDateTime.value[0].sunday.open,
+            sunday_openTime: openDateTime.value[0].sunday.openTime,
+            sunday_closeTime: openDateTime.value[0].sunday.closeTime,
+            monday_open: openDateTime.value[0].monday.open,
+            monday_openTime: openDateTime.value[0].monday.openTime,
+            monday_closeTime: openDateTime.value[0].monday.closeTime,
+            tuesday_open: openDateTime.value[0].tuesday.open,
+            tuesday_openTime: openDateTime.value[0].tuesday.openTime,
+            tuesday_closeTime: openDateTime.value[0].tuesday.closeTime,
+            wednesday_open: openDateTime.value[0].wednesday.open,
+            wednesday_openTime: openDateTime.value[0].wednesday.openTime,
+            wednesday_closeTime: openDateTime.value[0].wednesday.closeTime,
+            thursday_open: openDateTime.value[0].thursday.open,
+            thursday_openTime: openDateTime.value[0].thursday.openTime,
+            thursday_closeTime: openDateTime.value[0].thursday.closeTime,
+            friday_open: openDateTime.value[0].friday.open,
+            friday_openTime: openDateTime.value[0].friday.openTime,
+            friday_closeTime: openDateTime.value[0].friday.closeTime,
+            saturday_open: openDateTime.value[0].saturday.open,
+            saturday_openTime: openDateTime.value[0].saturday.openTime,
+            saturday_closeTime: openDateTime.value[0].saturday.closeTime
           })
         });
         const upform_responseData = await upform_response.json(); // Await the JSON response
         const cws_id_res = await upform_responseData.cws_id
-
         uploadImages(image_compressList, cws_id_res)
       } catch (e) {
         console.error(e)
+      }
+    }
+
+    //Reset form
+    function ResetImageInputData() {
+      image_compressList = [];
+      isUploaded.value = 'success';
+      isImgUp.value = false
+    }
+    function ResetSimpleForm(cws_name_form: any, cws_price_form: any, cws_review_form: any) {
+      cws_name_form.value = '';
+      cws_price_form.value = '';
+      cws_review_form.value = '';
+    }
+    function ResetFacilities_Check(
+      utensils_check: any,
+      restroom_check: any,
+      shopping_check: any,
+      wifi_check: any,
+      outlet_check: any,
+      air_check: any
+    ) {
+      utensils_check.value = false;
+      restroom_check.value = false;
+      shopping_check.value = false;
+      wifi_check.value = false;
+      outlet_check.value = false;
+      air_check.value = false;
+    }
+    function ResetOpenDateTime(day: keyof typeof openDateTime.value[0]) {
+      for (let i = 0; i < 7; i++) {
+        if (day in openDateTime.value[0]) {
+          openDateTime.value[0][day].open = false;
+          openDateTime.value[0][day].openTime = 'ปิดให้บริการ';
+          openDateTime.value[0][day].closeTime = 'ปิดให้บริการ';
+        }
       }
     }
 
@@ -995,7 +1122,11 @@ export default defineComponent({
       //Time Picker
       TimeUpdate,
       time,
-      openDateTime
+      openDateTime,
+      dayToggle_BTN,
+
+      //Pin BTN
+      isUploaded
     };
   },
 });
