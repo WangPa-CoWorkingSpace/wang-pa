@@ -33,7 +33,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       MAB_BOX_TOKEN: process.env.MAB_BOX_TOKEN,
-      GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID
+      GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
+      RECAPTCHA_SC_ID: process.env.RECAPTCHA_SC_ID
     }
   },
   googleSignIn: {

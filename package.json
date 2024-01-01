@@ -26,6 +26,7 @@
     "compressorjs": "^1.2.1",
     "js-cookie": "^3.0.5",
     "mapbox-gl": "^3.0.1",
-    "nuxt-vue3-google-signin": "^0.0.10"
+    "nuxt-vue3-google-signin": "^0.0.10",
+    "vue3-recaptcha2": "^1.8.0"
   }
 }
