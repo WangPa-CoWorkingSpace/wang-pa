@@ -1,5 +1,5 @@
 <template>
-    <div id="navbar" class="fixed z-40 w-full transition-all duration-[1200ms]" :class="{'bg-[#1cb6d9e5]': pageScroll}">
+    <div id="navbar" class="fixed z-40 w-full transition-all duration-[1200ms]" :class="{'bg-[#1cb6d9e5]': pageScroll, 'bg-black/20': istoggle && !pageScroll}">
             <div class="flex justify-between min-h-[60px] items-center px-2 border-1">
                 <div>
                     <button class="fas fa-user-circle text-[30px] mt-1 p-2" :class="{'text-white': pageScroll}">
