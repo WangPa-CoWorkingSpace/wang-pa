@@ -12,6 +12,9 @@ export default defineNuxtConfig({
 
   css: ['~/assets/styles.css'],
   modules: ["@nuxtjs/tailwindcss", '@nuxt/image', 'nuxt-vue3-google-signin'],
+  plugins: [
+    { src: '~/src/check_login_exp.ts', mode: 'client' }
+  ],
   app: {
     head: {
       charset: 'utf-16',

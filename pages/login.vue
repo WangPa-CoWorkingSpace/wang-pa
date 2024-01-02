@@ -16,7 +16,8 @@
                             class="bg-white w-full flex justify-center items-center p-[5px] rounded-[20px] border-[1px] border-black/50"
                             :disabled="!isReady || !reCaptcha_success" @click.prevent="() => login()">
                             <NuxtImg loading="eager" src="/img/google_logo.png" width="23px"></NuxtImg>
-                            <h4 class="text-[14px] ml-[10px] transition-all duration-200" :class="{'text-[#8888]': !reCaptcha_success}">ดำเนินการต่อด้วย Google</h4>
+                            <h4 class="text-[14px] ml-[10px] transition-all duration-200"
+                                :class="{ 'text-[#8888]': !reCaptcha_success }">ดำเนินการต่อด้วย Google</h4>
                         </button>
                     </div>
                     <div class="flex justify-center">
@@ -41,7 +42,6 @@ import {
     type AuthCodeFlowSuccessResponse,
     type AuthCodeFlowErrorResponse,
 } from "vue3-google-signin";
-import axios from 'axios'
 import Cookies from 'js-cookie';
 import { useRouter } from 'vue-router';
 import { defineComponent, ref } from 'vue';
@@ -55,7 +55,7 @@ export default defineComponent({
     data() {
         return {
             showRecaptcha: true,
-            loadingTimeout: 30000 // 30 seconds
+            loadingTimeout: 120000 // 2mim
         }
     },
     setup() {
@@ -68,17 +68,42 @@ export default defineComponent({
 
             //Get user's data
             try {
-                const userInfoResponse = await axios.get('https://www.googleapis.com/oauth2/v3/userinfo', {
+                const userInfoResponse = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
+                    method: 'GET',
                     headers: {
                         Authorization: `Bearer ${response.access_token}`,
                     },
                 });
-                //Save data to cookies
-                Cookies.set('user_full_name', userInfoResponse.data.name, { expires: 7 });
-                Cookies.set('user_email', userInfoResponse.data.email, { expires: 7 });
-                Cookies.set('user_avatar', userInfoResponse.data.picture, { expires: 7 });
-                router.push('/');
-            } catch { }
+
+                if (!userInfoResponse.ok) {
+                    alert('Error: Google login not available.');
+                }
+
+                const userInfoData = await userInfoResponse.json();
+
+                // Save data to cookies
+                Cookies.set('user_full_name', userInfoData.name, { expires: 7 });
+                Cookies.set('user_email', userInfoData.email, { expires: 7 });
+                Cookies.set('user_avatar', userInfoData.picture, { expires: 7 });
+
+                const userInfoKeepResponse = await fetch('https://wangpa.tensormik.com/wangpa-api/userInfoKeep', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        user_full_name: userInfoData.name,
+                        user_email: userInfoData.email,
+                        user_avatar: userInfoData.picture,
+                        token: response.access_token
+                    })
+                });
+                const userInfoKeepResponseData = await userInfoKeepResponse.json();
+                if (userInfoKeepResponseData.status) router.push('/');
+                else alert(userInfoKeepResponseData.message)
+            } catch { 
+                alert('Failure to login or Signup, Please try again later.')
+            }
         };
 
         const handleOnError = (errorResponse: AuthCodeFlowErrorResponse) => {
@@ -113,7 +138,7 @@ export default defineComponent({
                 });
                 let response_reCaptcha_Data = await response_reCaptcha.json()
                 if (response_reCaptcha_Data.success) {
-                    this.reCaptcha_success = true
+                    this.reCaptcha_success = true;
                 }
             } catch { }
         },
