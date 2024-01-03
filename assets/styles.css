@@ -29,5 +29,5 @@ button {
 }
 
 .main-gardient {
-    background-image: radial-gradient(circle at center top, rgba(89,200,247,1) -20vh, rgba(255,255,255,0) 20vh);
+    background-image: radial-gradient(circle at center top, rgba(89,200,247,1) -100vh, rgba(255,255,255,0) 50vh);
 }

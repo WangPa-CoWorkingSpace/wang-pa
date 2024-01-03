@@ -2,18 +2,22 @@
     <Navbar />
 
     <div class="h-screen main-gardient">
-        <div class="pt-[100px] px-[20px]">
-            <h1 class="text-[32px]">มารู้จักกันหน่อย!</h1>
-            <h1 class="text-[20px]">เราจะสามารถจำคุณได้เมื่อคุณกลับมา</h1>
-
-            <div class="mt-[80px] flex justify-center">
-                <h1 class="text-[24px]">เข้าสู่ระบบ</h1>
+        <div class="pt-[100px] px-[20px] lg:px-[90px] lg:pt-[80px]">
+            <div class="lg:flex lg:justify-center mr-[90px]">
+                <div>
+                    <h1 class="text-[32px] lg:text-[45px]">มารู้จักกันหน่อย!</h1>
+                    <h1 class="text-[20px] lg:text-[28px]">เราจะสามารถจำคุณได้เมื่อคุณกลับมา</h1>
+                </div>
             </div>
-            <div class="mt-[10px] px-[20px]">
-                <div class="bg-[#A0DFFA] rounded-[20px] p-4">
+
+            <div class="mt-[80px] flex justify-center lg:mt-[30px]">
+                <h1 class="text-[24px] lg:text-[30px]">เข้าสู่ระบบ</h1>
+            </div>
+            <div class="mt-[10px] justify-center flex">
+                <div class="bg-[#A0DFFA] rounded-[20px] p-4 lg:w-[500px]">
                     <div class="flex justify-center">
                         <button
-                            class="bg-white w-full flex justify-center items-center p-[5px] rounded-[20px] border-[1px] border-black/50"
+                            class="bg-white w-full flex justify-center items-center p-[5px] rounded-[20px] border-[1px] border-black/50 lg:w-[80%]"
                             :disabled="!isReady || !reCaptcha_success" @click.prevent="() => login()">
                             <NuxtImg loading="eager" src="/img/google_logo.png" width="23px"></NuxtImg>
                             <h4 class="text-[14px] ml-[10px] transition-all duration-200"
@@ -24,13 +28,16 @@
                         <div class="h-[1px] w-[70%] bg-black/50 mt-[20px]"></div>
                     </div>
                     <div class="flex justify-center mt-[20px]">
-                        <vue-recaptcha v-show="showRecaptcha" sitekey="6LehoUIpAAAAAMDXiwm0XdYLlQga69SvUbGzGd1p"
-                            size="normal" theme="light" hl="en" :loading-timeout="loadingTimeout"
-                            @verify="recaptchaVerified" @expire="recaptchaExpired" @fail="recaptchaFailed"
-                            @error="recaptchaError" ref="vueRecaptcha">
+                        <vue-recaptcha class="max-w-[310px]" v-show="showRecaptcha"
+                            sitekey="6LehoUIpAAAAAMDXiwm0XdYLlQga69SvUbGzGd1p" size="normal" theme="light" hl="en"
+                            :loading-timeout="loadingTimeout" @verify="recaptchaVerified" @expire="recaptchaExpired"
+                            @fail="recaptchaFailed" @error="recaptchaError" ref="vueRecaptcha">
                         </vue-recaptcha>
                     </div>
                 </div>
+            </div>
+            <div class="mt-[20px] text-[14px] px-[35px] text-black flex justify-center lg:px-[0]">
+                <h4>ในการสร้างบัญชี คุณยอมรับ<NuxtLink class="text-[#1cb7d9] px-1" to="" target="_blank">นโยบายความเป็นส่วนตัว</NuxtLink> และ <NuxtLink class="text-[#1cb7d9] px-1" to="" target="_blank">ข้อตกลงการใช้งาน</NuxtLink>ของเรา</h4>
             </div>
         </div>
     </div>
@@ -101,7 +108,7 @@ export default defineComponent({
                 const userInfoKeepResponseData = await userInfoKeepResponse.json();
                 if (userInfoKeepResponseData.status) router.push('/');
                 else alert(userInfoKeepResponseData.message)
-            } catch { 
+            } catch {
                 alert('Failure to login or Signup, Please try again later.')
             }
         };
