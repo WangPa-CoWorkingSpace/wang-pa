@@ -19,12 +19,12 @@
           </NuxtLink>
         </div>
         <!-- Middle lines -->
-        <div class="min-h-[30px] w-[3px] bg-black"></div>
+        <div class="min-h-[30px] w-[3px] bg-black" :class="{ 'bg-white': pageScroll, 'bg-black': !pageScroll }"></div>
         <!-- In Middle Line Items -->
         <NuxtLink class="fab fa-discord text-[30px] text-black" to="https://github.com/WangPa-CoWorkingSpace"
-          target="_blank"></NuxtLink>
-        <NuxtLink class="fab fa-github text-[30px] text-black" to="" target="_blank"></NuxtLink>
-        <div class="min-h-[30px] w-[3px] bg-black"></div>
+          target="_blank" :class="{ 'text-white': pageScroll, 'text-black': !pageScroll }"></NuxtLink>
+        <NuxtLink class="fab fa-github text-[30px] text-black" to="" target="_blank" :class="{ 'text-white': pageScroll, 'text-black': !pageScroll }"></NuxtLink>
+        <div class="min-h-[30px] w-[3px] bg-black" :class="{ 'bg-white': pageScroll, 'bg-black': !pageScroll }"></div>
         <!-- User Profile -->
         <div :class="{ 'hidden': !user_email_CK || !user_avatar_CK || !user_full_name_CK }">
           <NuxtLink @click.prevent="logoutBTN">Logout</NuxtLink>
