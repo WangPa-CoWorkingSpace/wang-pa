@@ -9,13 +9,13 @@
             :class="{ 'hidden': !user_avatar_CK }"></NuxtImg>
         </button>
       </div>
-      <nav class="items-center gap-[30px] font-normal hidden lg:flex lg:gap-[20px]"
+      <nav class="items-center gap-[30px] font-normal hidden lg:flex lg:gap-[20px] lg:mx-[30px]"
         :class="{ 'text-white': pageScroll, 'text-black': !pageScroll }">
         <div>
           <NuxtLink to="/">Home</NuxtLink>
         </div>
-        <div>
-          <NuxtLink :class="{ 'hidden': user_email_CK || user_avatar_CK || user_full_name_CK }" to="/login">Login
+        <div :class="{ 'hidden': user_email_CK || user_avatar_CK || user_full_name_CK }">
+          <NuxtLink to="/login">Login
           </NuxtLink>
         </div>
         <!-- Middle lines -->
@@ -29,8 +29,8 @@
         <div :class="{ 'hidden': !user_email_CK || !user_avatar_CK || !user_full_name_CK }">
           <NuxtLink @click.prevent="logoutBTN">Logout</NuxtLink>
         </div>
-        <div class="hidden lg:block pr-[30px]">
-          <button @click.prevent="hamberBTN" class="text-[30px]"
+        <div class="hidden lg:flex lg:items-center">
+          <button class="text-[30px]"
             :class="{ 'text-white': pageScroll, 'fas fa-user-circle': !user_avatar_CK }">
             <NuxtImg class="rounded-full w-[30px] border-[1px] border-white" :src="user_avatar_CK || '/'"
               :class="{ 'hidden': !user_avatar_CK }"></NuxtImg>
