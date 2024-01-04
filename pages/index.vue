@@ -3,10 +3,10 @@
 
   <div class="min-h-screen main-gardient">
     <!--Part1 Content -->
-    <div class="ml-[40px]">
+    <div class="ml-[40px] lg:mx-[100px]">
       <div class="h-max text-black font-normal pt-[100px]">
-        <h1 class="text-[40px]">ว่างปะ ?</h1>
-        <h2 class="text-[25px]">อยากได้ที่ว่างๆทำงานอยู่เหรอ?</h2>
+        <h1 class="text-[40px] lg:text-[60px]">ว่างปะ ?</h1>
+        <h2 class="text-[25px] lg:text-[37px]">อยากได้ที่ว่างๆทำงานอยู่เหรอ?</h2>
       </div>
       <div>
         <button class="w-[190px] h-max px-3 py-[2px] rounded-[20px] text-black/50 border-black/50 border-[1px] mt-3">
@@ -22,19 +22,19 @@
         </button>
       </div>
     </div>
-    <div class="flex justify-end mr-[10px]">
+    <div class="flex justify-end mr-[10px] lg:translate-y-[-150px] lg:mr-[70px]">
       <div class="absolute z-0">
-        <NuxtImg class="object-contain" src="/img/co-work.png" height="170px" width="130px" />
+        <NuxtImg class="object-contain h-[170px] w-[130px] lg:h-[450px] lg:w-[344px]" src="/img/co-work.png" />
       </div>
     </div>
     <div class="flex justify-between mt-[30px]">
-      <div class="ml-[20px]">
-        <NuxtImg src="/img/Review.png" sizes="200px" />
+      <div class="ml-[20px] lg:mx-[100px]">
+        <NuxtImg class="w-[200px] lg:w-[350px]" src="/img/Review.png" />
       </div>
     </div>
 
     <!-- Part2 Content -->
-    <div class="flex justify-between items-center mt-[100px] px-[20px]">
+    <div class="flex justify-between items-center mt-[100px] px-[20px] lg:mt-[150px]">
       <div>
         <h4 class="font-medium text-[18px]"><i
             class="fas fa-map-marker-alt text-[#F24E1E] text-[20px] pr-2"></i>ใกล้เคียงคุณ</h4>
