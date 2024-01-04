@@ -74,7 +74,8 @@
       </Slide>
     </Carousel>
     <!-- Carousel Slider Content Desktop-->
-    <Carousel class="hidden lg:block select-none" ref="near_me_slideLG" :itemsToShow="3" :wrapAround="true" :transition="500">
+    <Carousel class="hidden lg:block select-none" ref="near_me_slideLG" :itemsToShow="3" :wrapAround="true"
+      :transition="500">
       <Slide v-for="(slide, index) in slides_data_near_me" :key="index">
         <div class="carousel__item py-8 w-[270px]">
           <div class="bg-white rounded-[10px] shadow-[0_0_20px_0_rgba(0,0,0,0.25)]">
@@ -102,9 +103,11 @@
       </Slide>
     </Carousel>
     <div class="justify-center items-center space-x-[100px] hidden lg:flex">
-      <button class="fad fa-arrow-circle-left text-[35px] hover:scale-[120%] transition-all duration-300" @click.prevent="NearMeSlideBTN('prev')"
+      <button class="fad fa-arrow-circle-left text-[35px] hover:scale-[120%] transition-all duration-300"
+        @click.prevent="NearMeSlideBTN('prev')"
         style="--fa-primary-color: #ffffff; --fa-secondary-color: #1cb7d9; --fa-secondary-opacity: 1;"></button>
-      <button class="fad fa-arrow-circle-right text-[35px] hover:scale-[120%] transition-all duration-300" @click.prevent="NearMeSlideBTN('next')"
+      <button class="fad fa-arrow-circle-right text-[35px] hover:scale-[120%] transition-all duration-300"
+        @click.prevent="NearMeSlideBTN('next')"
         style="--fa-primary-color: #ffffff; --fa-secondary-color: #1cb7d9; --fa-secondary-opacity: 1;"></button>
     </div>
 
@@ -177,9 +180,11 @@
       </Slide>
     </Carousel>
     <div class="justify-center items-center space-x-[100px] hidden lg:flex">
-      <button class="fad fa-arrow-circle-left text-[35px] hover:scale-[120%] transition-all duration-300" @click.prevent="Top10SlideBTN('prev')"
+      <button class="fad fa-arrow-circle-left text-[35px] hover:scale-[120%] transition-all duration-300"
+        @click.prevent="Top10SlideBTN('prev')"
         style="--fa-primary-color: #ffffff; --fa-secondary-color: #1cb7d9; --fa-secondary-opacity: 1;"></button>
-      <button class="fad fa-arrow-circle-right text-[35px] hover:scale-[120%] transition-all duration-300" @click.prevent="Top10SlideBTN('next')"
+      <button class="fad fa-arrow-circle-right text-[35px] hover:scale-[120%] transition-all duration-300"
+        @click.prevent="Top10SlideBTN('next')"
         style="--fa-primary-color: #ffffff; --fa-secondary-color: #1cb7d9; --fa-secondary-opacity: 1;"></button>
     </div>
 
@@ -726,28 +731,20 @@ export default defineComponent({
     const air_check = ref(false);
 
     function Facilities_Check(facilitie: string) {
-      switch (facilitie) {
-        case 'utensils':
-          utensils_check.value = !utensils_check.value;
-          break;
-        case 'restroom':
-          restroom_check.value = !restroom_check.value;
-          break;
-        case 'shopping':
-          shopping_check.value = !shopping_check.value;
-          break;
-        case 'wifi':
-          wifi_check.value = !wifi_check.value;
-          break;
-        case 'outlet':
-          outlet_check.value = !outlet_check.value;
-          break;
-        case 'air':
-          air_check.value = !air_check.value;
-          break;
-        default:
-          // Optionally handle an unknown facility
-          console.warn("Unknown facility:", facilitie);
+      const facilityMapping: { [key: string]: Ref<boolean> } = {
+        utensils: utensils_check,
+        restroom: restroom_check,
+        shopping: shopping_check,
+        wifi: wifi_check,
+        outlet: outlet_check,
+        air: air_check
+      };
+
+      const facilityRef = facilityMapping[facilitie as keyof typeof facilityMapping];
+      if (facilityRef) {
+        facilityRef.value = !facilityRef.value;
+      } else {
+        console.warn("Unknown facility:", facilitie);
       }
     }
 
@@ -830,27 +827,27 @@ export default defineComponent({
     }
 
     function TimeUpdate(day: string, type: string, value: Time) {
-    const dayIndex = 0; // Assuming this is constant as per your original code
-    const timeString = `${value.hours}:${value.minutes}`;
-    const dayKey = day.toLowerCase() as keyof typeof openDateTime.value[0];
+      const dayIndex = 0;
+      const timeString = `${value.hours}:${value.minutes}`;
+      const dayKey = day.toLowerCase() as keyof typeof openDateTime.value[0];
 
-    if (['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'].includes(dayKey)) {
-      const selectedDay = openDateTime.value[dayIndex][dayKey];
+      if (['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'].includes(dayKey)) {
+        const selectedDay = openDateTime.value[dayIndex][dayKey];
 
-      const timeTypeKey = `${type}Time` as keyof typeof selectedDay;
-      if (timeTypeKey === 'openTime' || timeTypeKey === 'closeTime') {
-        selectedDay[timeTypeKey] = timeString;
+        const timeTypeKey = `${type}Time` as keyof typeof selectedDay;
+        if (timeTypeKey === 'openTime' || timeTypeKey === 'closeTime') {
+          selectedDay[timeTypeKey] = timeString;
 
-        if (selectedDay.openTime && selectedDay.closeTime) {
-          selectedDay.open = isValidTimeRange(selectedDay.openTime, selectedDay.closeTime);
+          if (selectedDay.openTime && selectedDay.closeTime) {
+            selectedDay.open = isValidTimeRange(selectedDay.openTime, selectedDay.closeTime);
 
-          if (!selectedDay.open && selectedDay.openTime !== 'ปิดให้บริการ' && selectedDay.closeTime !== 'ปิดให้บริการ') {
-            alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด');
+            if (!selectedDay.open && selectedDay.openTime !== 'ปิดให้บริการ' && selectedDay.closeTime !== 'ปิดให้บริการ') {
+              alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด');
+            }
           }
         }
       }
     }
-  }
 
 
     //UpForm
