@@ -73,7 +73,7 @@
       </Slide>
     </Carousel>
     <!-- Carousel Slider Content Desktop-->
-    <Carousel class="hidden lg:block select-none" :itemsToShow="4" :wrapAround="true" :transition="500">
+    <Carousel class="hidden lg:block select-none" :itemsToShow="3" :wrapAround="true" :transition="500">
       <Slide v-for="(slide, index) in slides_data_near_me" :key="index">
         <div class="carousel__item py-8 w-[270px]">
           <div class="bg-white rounded-[10px] shadow-[0_0_20px_0_rgba(0,0,0,0.25)]">
@@ -139,7 +139,7 @@
       </Slide>
     </Carousel>
      <!-- Carousel Slider Content Desktop-->
-     <Carousel class="hidden lg:block select-none" :itemsToShow="4" :wrapAround="true" :transition="500">
+     <Carousel class="hidden lg:block select-none" :itemsToShow="3" :wrapAround="true" :transition="500">
       <Slide v-for="(slide, index) in slides_data_top10" :key="index">
         <div class="carousel__item py-8 w-[270px]">
           <div class="bg-white rounded-[10px] shadow-[0_0_20px_0_rgba(0,0,0,0.25)]">
