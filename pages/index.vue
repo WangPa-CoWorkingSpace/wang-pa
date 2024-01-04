@@ -45,8 +45,35 @@
       </div>
     </div>
 
-    <!-- Carousel Slider Content -->
-    <Carousel :itemsToShow="itemsToShow" :wrapAround="true" :transition="500">
+    <!-- Carousel Slider Content Mobile-->
+    <Carousel class="lg:hidden select-none" :itemsToShow="1" :wrapAround="true" :transition="500">
+      <Slide v-for="(slide, index) in slides_data_near_me" :key="index">
+        <div class="carousel__item py-8 w-[270px]">
+          <div class="bg-white rounded-[10px] shadow-[0_0_20px_0_rgba(0,0,0,0.25)]">
+            <NuxtImg class="rounded-t-[10px]" :src="slide.image" :alt="slide.alt" width="300px" height="256px"
+              objectFit='contain' loading="lazy" />
+            <div class="p-4">
+              <h1 class="text-black font-medium text-[20px] text-left w-full h-[30px] overflow-hidden">{{ slide.title }}</h1>
+              <h4 class="text-[18px] text-left text-[#1cb7d9]">{{ slide.price }}</h4>
+              <div class="h-[10px] w-full flex text-black/50 space-x-2 mb-5">
+                <i v-for="feature in slide.features" :class="`fas fa-${feature}`" :key="feature"></i>
+              </div>
+              <h4 class="text-[15px] text-left text-black/50">{{ slide.openingHours }}</h4>
+              <div class="flex justify-between items-center mt-[30px]">
+                <div class="text-yellow-400">
+                  <i v-for="star in slide.stars" :key="star" :class="`${star} fa-star`"></i>
+                </div>
+                <div class="h-max w-max bg-[#20DE33] text-white text-[12px] py-[3px] px-[10px] rounded-[20px]">
+                  <h4>{{ slide.capacity }}</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Slide>
+    </Carousel>
+    <!-- Carousel Slider Content Desktop-->
+    <Carousel class="hidden lg:block select-none" :itemsToShow="4" :wrapAround="true" :transition="500">
       <Slide v-for="(slide, index) in slides_data_near_me" :key="index">
         <div class="carousel__item py-8 w-[270px]">
           <div class="bg-white rounded-[10px] shadow-[0_0_20px_0_rgba(0,0,0,0.25)]">
@@ -84,8 +111,35 @@
       </div>
     </div>
 
-    <!-- Carousel Slider Content -->
-    <Carousel :itemsToShow="itemsToShow" :wrapAround="true" :transition="500">
+    <!-- Carousel Slider Content Mobile-->
+    <Carousel class="lg:hidden select-none" :itemsToShow="1" :wrapAround="true" :transition="500">
+      <Slide v-for="(slide, index) in slides_data_top10" :key="index">
+        <div class="carousel__item py-8 w-[270px]">
+          <div class="bg-white rounded-[10px] shadow-[0_0_20px_0_rgba(0,0,0,0.25)]">
+            <NuxtImg class="rounded-t-[10px]" :src="slide.image" :alt="slide.alt" width="300px" height="256px"
+              objectFit='contain' loading="lazy" />
+            <div class="p-4">
+              <h1 class="text-black font-medium text-[20px] text-left w-full h-[30px] overflow-hidden">{{ slide.title }}</h1>
+              <h4 class="text-[18px] text-left text-[#1cb7d9]">{{ slide.price }}</h4>
+              <div class="h-[10px] w-full flex text-black/50 space-x-2 mb-5">
+                <i v-for="feature in slide.features" :class="`fas fa-${feature}`" :key="feature"></i>
+              </div>
+              <h4 class="text-[15px] text-left text-black/50">{{ slide.openingHours }}</h4>
+              <div class="flex justify-between items-center mt-[30px]">
+                <div class="text-yellow-400">
+                  <i v-for="star in slide.stars" :key="star" :class="`${star} fa-star`"></i>
+                </div>
+                <div class="h-max w-max bg-[#20DE33] text-white text-[12px] py-[3px] px-[10px] rounded-[20px]">
+                  <h4>{{ slide.capacity }}</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Slide>
+    </Carousel>
+     <!-- Carousel Slider Content Desktop-->
+     <Carousel class="hidden lg:block select-none" :itemsToShow="4" :wrapAround="true" :transition="500">
       <Slide v-for="(slide, index) in slides_data_top10" :key="index">
         <div class="carousel__item py-8 w-[270px]">
           <div class="bg-white rounded-[10px] shadow-[0_0_20px_0_rgba(0,0,0,0.25)]">
@@ -523,13 +577,6 @@ export default defineComponent({
       },
       // Add more slide objects as needed
     ]);
-    //Adjust item to show on corousel slide
-    const itemsToShow = ref(1);
-    if (window.innerWidth >= 1024) { // lg size for desktop
-        itemsToShow.value = 4;
-      } else {
-        itemsToShow.value = 1;
-    }
 
     //Image selector for upload
     const imageInput = ref<HTMLInputElement | null>(null);
@@ -1049,7 +1096,6 @@ export default defineComponent({
     return {
       slides_data_near_me,
       slides_data_top10,
-      itemsToShow,
 
       imageInput,
       openImageDialog,
