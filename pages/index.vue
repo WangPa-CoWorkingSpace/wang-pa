@@ -53,7 +53,8 @@
             <NuxtImg class="rounded-t-[10px]" :src="slide.image" :alt="slide.alt" width="300px" height="256px"
               objectFit='contain' loading="lazy" />
             <div class="p-4">
-              <h1 class="text-black font-medium text-[20px] text-left w-full h-[30px] overflow-hidden">{{ slide.title }}</h1>
+              <h1 class="text-black font-medium text-[20px] text-left w-full h-[30px] overflow-hidden">{{ slide.title }}
+              </h1>
               <h4 class="text-[18px] text-left text-[#1cb7d9]">{{ slide.price }}</h4>
               <div class="h-[10px] w-full flex text-black/50 space-x-2 mb-5">
                 <i v-for="feature in slide.features" :class="`fas fa-${feature}`" :key="feature"></i>
@@ -73,14 +74,15 @@
       </Slide>
     </Carousel>
     <!-- Carousel Slider Content Desktop-->
-    <Carousel class="hidden lg:block select-none" :itemsToShow="3" :wrapAround="true" :transition="500">
+    <Carousel class="hidden lg:block select-none" ref="near_me_slideLG" :itemsToShow="3" :wrapAround="true" :transition="500">
       <Slide v-for="(slide, index) in slides_data_near_me" :key="index">
         <div class="carousel__item py-8 w-[270px]">
           <div class="bg-white rounded-[10px] shadow-[0_0_20px_0_rgba(0,0,0,0.25)]">
             <NuxtImg class="rounded-t-[10px]" :src="slide.image" :alt="slide.alt" width="300px" height="256px"
               objectFit='contain' loading="lazy" />
             <div class="p-4">
-              <h1 class="text-black font-medium text-[20px] text-left w-full h-[30px] overflow-hidden">{{ slide.title }}</h1>
+              <h1 class="text-black font-medium text-[20px] text-left w-full h-[30px] overflow-hidden">{{ slide.title }}
+              </h1>
               <h4 class="text-[18px] text-left text-[#1cb7d9]">{{ slide.price }}</h4>
               <div class="h-[10px] w-full flex text-black/50 space-x-2 mb-5">
                 <i v-for="feature in slide.features" :class="`fas fa-${feature}`" :key="feature"></i>
@@ -99,6 +101,12 @@
         </div>
       </Slide>
     </Carousel>
+    <div class="justify-center items-center space-x-[100px] hidden lg:flex">
+      <button class="fad fa-arrow-circle-left text-[35px] hover:scale-[120%] transition-all duration-300" @click.prevent="NearMeSlideBTN('prev')"
+        style="--fa-primary-color: #ffffff; --fa-secondary-color: #1cb7d9; --fa-secondary-opacity: 1;"></button>
+      <button class="fad fa-arrow-circle-right text-[35px] hover:scale-[120%] transition-all duration-300" @click.prevent="NearMeSlideBTN('next')"
+        style="--fa-primary-color: #ffffff; --fa-secondary-color: #1cb7d9; --fa-secondary-opacity: 1;"></button>
+    </div>
 
     <!-- Part3 Content -->
     <div class="flex justify-between items-center mt-[100px] px-[20px]">
@@ -119,7 +127,8 @@
             <NuxtImg class="rounded-t-[10px]" :src="slide.image" :alt="slide.alt" width="300px" height="256px"
               objectFit='contain' loading="lazy" />
             <div class="p-4">
-              <h1 class="text-black font-medium text-[20px] text-left w-full h-[30px] overflow-hidden">{{ slide.title }}</h1>
+              <h1 class="text-black font-medium text-[20px] text-left w-full h-[30px] overflow-hidden">{{ slide.title }}
+              </h1>
               <h4 class="text-[18px] text-left text-[#1cb7d9]">{{ slide.price }}</h4>
               <div class="h-[10px] w-full flex text-black/50 space-x-2 mb-5">
                 <i v-for="feature in slide.features" :class="`fas fa-${feature}`" :key="feature"></i>
@@ -138,15 +147,17 @@
         </div>
       </Slide>
     </Carousel>
-     <!-- Carousel Slider Content Desktop-->
-     <Carousel class="hidden lg:block select-none" :itemsToShow="3" :wrapAround="true" :transition="500">
+    <!-- Carousel Slider Content Desktop-->
+    <Carousel class="hidden lg:block select-none" ref="top10_slideLG" :itemsToShow="3" :wrapAround="true"
+      :transition="500">
       <Slide v-for="(slide, index) in slides_data_top10" :key="index">
         <div class="carousel__item py-8 w-[270px]">
           <div class="bg-white rounded-[10px] shadow-[0_0_20px_0_rgba(0,0,0,0.25)]">
             <NuxtImg class="rounded-t-[10px]" :src="slide.image" :alt="slide.alt" width="300px" height="256px"
               objectFit='contain' loading="lazy" />
             <div class="p-4">
-              <h1 class="text-black font-medium text-[20px] text-left w-full h-[30px] overflow-hidden">{{ slide.title }}</h1>
+              <h1 class="text-black font-medium text-[20px] text-left w-full h-[30px] overflow-hidden">{{ slide.title }}
+              </h1>
               <h4 class="text-[18px] text-left text-[#1cb7d9]">{{ slide.price }}</h4>
               <div class="h-[10px] w-full flex text-black/50 space-x-2 mb-5">
                 <i v-for="feature in slide.features" :class="`fas fa-${feature}`" :key="feature"></i>
@@ -165,6 +176,12 @@
         </div>
       </Slide>
     </Carousel>
+    <div class="justify-center items-center space-x-[100px] hidden lg:flex">
+      <button class="fad fa-arrow-circle-left text-[35px] hover:scale-[120%] transition-all duration-300" @click.prevent="Top10SlideBTN('prev')"
+        style="--fa-primary-color: #ffffff; --fa-secondary-color: #1cb7d9; --fa-secondary-opacity: 1;"></button>
+      <button class="fad fa-arrow-circle-right text-[35px] hover:scale-[120%] transition-all duration-300" @click.prevent="Top10SlideBTN('next')"
+        style="--fa-primary-color: #ffffff; --fa-secondary-color: #1cb7d9; --fa-secondary-opacity: 1;"></button>
+    </div>
 
     <!-- Part4 Content -->
     <div class="px-[20px] mt-[50px]">
@@ -577,6 +594,32 @@ export default defineComponent({
       },
       // Add more slide objects as needed
     ]);
+
+    //Slide button
+    const top10_slideLG = ref(null)
+    const near_me_slideLG = ref(null)
+    function Top10SlideBTN(command: string) {
+      if (top10_slideLG.value) {
+        if (command === 'next') {
+          //@ts-ignore
+          top10_slideLG.value.next();
+        } else if (command === 'prev') {
+          //@ts-ignore
+          top10_slideLG.value.prev();
+        }
+      }
+    }
+    function NearMeSlideBTN(command: string) {
+      if (near_me_slideLG.value) {
+        if (command === 'next') {
+          //@ts-ignore
+          near_me_slideLG.value.next();
+        } else if (command === 'prev') {
+          //@ts-ignore
+          near_me_slideLG.value.prev();
+        }
+      }
+    }
 
     //Image selector for upload
     const imageInput = ref<HTMLInputElement | null>(null);
@@ -1096,6 +1139,10 @@ export default defineComponent({
     return {
       slides_data_near_me,
       slides_data_top10,
+      Top10SlideBTN,
+      NearMeSlideBTN,
+      near_me_slideLG,
+      top10_slideLG,
 
       imageInput,
       openImageDialog,
