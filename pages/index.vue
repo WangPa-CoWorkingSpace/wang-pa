@@ -830,219 +830,28 @@ export default defineComponent({
     }
 
     function TimeUpdate(day: string, type: string, value: Time) {
-      switch (day) {
-        case 'sunday':
-          switch (type) {
-            case 'open':
-              openDateTime.value[0].sunday.openTime = `${value.hours}:${value.minutes}`;
-              if (openDateTime.value[0].sunday.closeTime != '') {
-                if (isValidTimeRange(`${openDateTime.value[0].sunday.openTime}`, `${openDateTime.value[0].sunday.closeTime}`)) {
-                  openDateTime.value[0].sunday.open = true;
-                } else {
-                  openDateTime.value[0].sunday.open = false
-                  if (openDateTime.value[0].sunday.openTime !== 'ปิดให้บริการ' && openDateTime.value[0].sunday.closeTime !== 'ปิดให้บริการ') {
-                    alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
-                  }
-                }
-              }
-              break;
-            case 'close':
-              openDateTime.value[0].sunday.closeTime = `${value.hours}:${value.minutes}`;
-              if (openDateTime.value[0].sunday.openTime != '') {
-                if (isValidTimeRange(`${openDateTime.value[0].sunday.openTime}`, `${openDateTime.value[0].sunday.closeTime}`)) {
-                  openDateTime.value[0].sunday.open = true;
-                } else {
-                  openDateTime.value[0].sunday.open = false
-                  if (openDateTime.value[0].sunday.openTime !== 'ปิดให้บริการ' || openDateTime.value[0].sunday.closeTime !== 'ปิดให้บริการ') {
-                    alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
-                  }
-                }
-              }
-              break;
+    const dayIndex = 0; // Assuming this is constant as per your original code
+    const timeString = `${value.hours}:${value.minutes}`;
+    const dayKey = day.toLowerCase() as keyof typeof openDateTime.value[0];
+
+    if (['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'].includes(dayKey)) {
+      const selectedDay = openDateTime.value[dayIndex][dayKey];
+
+      const timeTypeKey = `${type}Time` as keyof typeof selectedDay;
+      if (timeTypeKey === 'openTime' || timeTypeKey === 'closeTime') {
+        selectedDay[timeTypeKey] = timeString;
+
+        if (selectedDay.openTime && selectedDay.closeTime) {
+          selectedDay.open = isValidTimeRange(selectedDay.openTime, selectedDay.closeTime);
+
+          if (!selectedDay.open && selectedDay.openTime !== 'ปิดให้บริการ' && selectedDay.closeTime !== 'ปิดให้บริการ') {
+            alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด');
           }
-          break;
-        case 'monday':
-          switch (type) {
-            case 'open':
-              openDateTime.value[0].monday.openTime = `${value.hours}:${value.minutes}`;
-              if (openDateTime.value[0].monday.closeTime != '') {
-                if (isValidTimeRange(`${openDateTime.value[0].monday.openTime}`, `${openDateTime.value[0].monday.closeTime}`)) {
-                  openDateTime.value[0].monday.open = true;
-                } else {
-                  openDateTime.value[0].monday.open = false
-                  if (openDateTime.value[0].monday.openTime !== 'ปิดให้บริการ' && openDateTime.value[0].monday.closeTime !== 'ปิดให้บริการ') {
-                    alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
-                  }
-                }
-              }
-              break;
-            case 'close':
-              openDateTime.value[0].monday.closeTime = `${value.hours}:${value.minutes}`;
-              if (openDateTime.value[0].monday.openTime != '') {
-                if (isValidTimeRange(`${openDateTime.value[0].monday.openTime}`, `${openDateTime.value[0].monday.closeTime}`)) {
-                  openDateTime.value[0].monday.open = true;
-                } else {
-                  openDateTime.value[0].monday.open = false
-                  if (openDateTime.value[0].monday.openTime !== 'ปิดให้บริการ' && openDateTime.value[0].monday.closeTime !== 'ปิดให้บริการ') {
-                    alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
-                  }
-                }
-              }
-              break;
-          }
-          break;
-        case 'tuesday':
-          switch (type) {
-            case 'open':
-              openDateTime.value[0].tuesday.openTime = `${value.hours}:${value.minutes}`;
-              if (openDateTime.value[0].tuesday.closeTime != '') {
-                if (isValidTimeRange(`${openDateTime.value[0].tuesday.openTime}`, `${openDateTime.value[0].tuesday.closeTime}`)) {
-                  openDateTime.value[0].tuesday.open = true;
-                } else {
-                  openDateTime.value[0].tuesday.open = false
-                  if (openDateTime.value[0].tuesday.openTime !== 'ปิดให้บริการ' && openDateTime.value[0].tuesday.closeTime !== 'ปิดให้บริการ') {
-                    alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
-                  }
-                }
-              }
-              break;
-            case 'close':
-              openDateTime.value[0].tuesday.closeTime = `${value.hours}:${value.minutes}`;
-              if (openDateTime.value[0].tuesday.openTime != '') {
-                if (isValidTimeRange(`${openDateTime.value[0].tuesday.openTime}`, `${openDateTime.value[0].tuesday.closeTime}`)) {
-                  openDateTime.value[0].tuesday.open = true;
-                } else {
-                  openDateTime.value[0].tuesday.open = false
-                  if (openDateTime.value[0].tuesday.openTime !== 'ปิดให้บริการ' && openDateTime.value[0].tuesday.closeTime !== 'ปิดให้บริการ') {
-                    alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
-                  }
-                }
-              }
-              break;
-          }
-          break;
-        case 'wednesday':
-          switch (type) {
-            case 'open':
-              openDateTime.value[0].wednesday.openTime = `${value.hours}:${value.minutes}`;
-              if (openDateTime.value[0].wednesday.closeTime != '') {
-                if (isValidTimeRange(`${openDateTime.value[0].wednesday.openTime}`, `${openDateTime.value[0].wednesday.closeTime}`)) {
-                  openDateTime.value[0].wednesday.open = true;
-                } else {
-                  openDateTime.value[0].wednesday.open = false
-                  if (openDateTime.value[0].wednesday.openTime !== 'ปิดให้บริการ' && openDateTime.value[0].wednesday.closeTime !== 'ปิดให้บริการ') {
-                    alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
-                  }
-                }
-              }
-              break;
-            case 'close':
-              openDateTime.value[0].wednesday.closeTime = `${value.hours}:${value.minutes}`;
-              if (openDateTime.value[0].wednesday.openTime != '') {
-                if (isValidTimeRange(`${openDateTime.value[0].wednesday.openTime}`, `${openDateTime.value[0].wednesday.closeTime}`)) {
-                  openDateTime.value[0].wednesday.open = true;
-                } else {
-                  openDateTime.value[0].wednesday.open = false
-                  if (openDateTime.value[0].wednesday.openTime !== 'ปิดให้บริการ' && openDateTime.value[0].wednesday.closeTime !== 'ปิดให้บริการ') {
-                    alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
-                  }
-                }
-              }
-              break;
-          }
-          break;
-        case 'thursday':
-          switch (type) {
-            case 'open':
-              openDateTime.value[0].thursday.openTime = `${value.hours}:${value.minutes}`;
-              if (openDateTime.value[0].thursday.closeTime != '') {
-                if (isValidTimeRange(`${openDateTime.value[0].thursday.openTime}`, `${openDateTime.value[0].thursday.closeTime}`)) {
-                  openDateTime.value[0].thursday.open = true;
-                } else {
-                  openDateTime.value[0].thursday.open = false
-                  if (openDateTime.value[0].thursday.openTime !== 'ปิดให้บริการ' && openDateTime.value[0].thursday.closeTime !== 'ปิดให้บริการ') {
-                    alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
-                  }
-                }
-              }
-              break;
-            case 'close':
-              openDateTime.value[0].thursday.closeTime = `${value.hours}:${value.minutes}`;
-              if (openDateTime.value[0].thursday.openTime != '') {
-                if (isValidTimeRange(`${openDateTime.value[0].thursday.openTime}`, `${openDateTime.value[0].thursday.closeTime}`)) {
-                  openDateTime.value[0].thursday.open = true;
-                } else {
-                  openDateTime.value[0].thursday.open = false
-                  if (openDateTime.value[0].thursday.openTime !== 'ปิดให้บริการ' && openDateTime.value[0].thursday.closeTime !== 'ปิดให้บริการ') {
-                    alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
-                  }
-                }
-              }
-              break;
-          }
-          break;
-        case 'friday':
-          switch (type) {
-            case 'open':
-              openDateTime.value[0].friday.openTime = `${value.hours}:${value.minutes}`;
-              if (openDateTime.value[0].friday.closeTime != '') {
-                if (isValidTimeRange(`${openDateTime.value[0].friday.openTime}`, `${openDateTime.value[0].friday.closeTime}`)) {
-                  openDateTime.value[0].friday.open = true;
-                } else {
-                  openDateTime.value[0].friday.open = false
-                  if (openDateTime.value[0].friday.openTime !== 'ปิดให้บริการ' && openDateTime.value[0].friday.closeTime !== 'ปิดให้บริการ') {
-                    alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
-                  }
-                }
-              }
-              break;
-            case 'close':
-              openDateTime.value[0].friday.closeTime = `${value.hours}:${value.minutes}`;
-              if (openDateTime.value[0].friday.openTime != '') {
-                if (isValidTimeRange(`${openDateTime.value[0].friday.openTime}`, `${openDateTime.value[0].friday.closeTime}`)) {
-                  openDateTime.value[0].friday.open = true;
-                } else {
-                  openDateTime.value[0].friday.open = false
-                  if (openDateTime.value[0].friday.openTime !== 'ปิดให้บริการ' && openDateTime.value[0].friday.closeTime !== 'ปิดให้บริการ') {
-                    alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
-                  }
-                }
-              }
-              break;
-          }
-          break;
-        case 'saturday':
-          switch (type) {
-            case 'open':
-              openDateTime.value[0].saturday.openTime = `${value.hours}:${value.minutes}`;
-              if (openDateTime.value[0].saturday.closeTime != '') {
-                if (isValidTimeRange(`${openDateTime.value[0].saturday.openTime}`, `${openDateTime.value[0].saturday.closeTime}`)) {
-                  openDateTime.value[0].saturday.open = true;
-                } else {
-                  openDateTime.value[0].saturday.open = false
-                  if (openDateTime.value[0].saturday.openTime !== 'ปิดให้บริการ' && openDateTime.value[0].saturday.closeTime !== 'ปิดให้บริการ') {
-                    alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
-                  }
-                }
-              }
-              break;
-            case 'close':
-              openDateTime.value[0].saturday.closeTime = `${value.hours}:${value.minutes}`;
-              if (openDateTime.value[0].saturday.openTime != '') {
-                if (isValidTimeRange(`${openDateTime.value[0].saturday.openTime}`, `${openDateTime.value[0].saturday.closeTime}`)) {
-                  openDateTime.value[0].saturday.open = true;
-                } else {
-                  openDateTime.value[0].saturday.open = false
-                  if (openDateTime.value[0].saturday.openTime !== 'ปิดให้บริการ' && openDateTime.value[0].saturday.closeTime !== 'ปิดให้บริการ') {
-                    alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด')
-                  }
-                }
-              }
-              break;
-          }
-          break;
+        }
       }
     }
+  }
+
 
     //UpForm
     var upform_response: any;
