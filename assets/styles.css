@@ -31,3 +31,30 @@ button {
 .main-gardient {
     background-image: radial-gradient(circle at center top, rgba(89,200,247,1) -100vh, rgba(255,255,255,0) 50vh);
 }
+
+/*Vue Carousel Config*/
+  .carousel__viewport {
+    perspective: 2000px;
+  }
+  
+  .carousel__track {
+    transform-style: preserve-3d;
+  }
+  
+  .carousel__slide--sliding {
+    transition: 0.5s;
+  }
+  
+  .carousel__slide {
+    opacity: 0.5;
+    transform: rotateY(-20deg) scale(0.9);
+  }
+  
+  .carousel__slide--active ~ .carousel__slide {
+    transform: rotateY(20deg) scale(0.9);
+  }
+  
+  .carousel__slide--active {
+    opacity: 1;
+    transform: rotateY(0) scale(1.1);
+  }
