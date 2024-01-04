@@ -34,13 +34,13 @@
     </div>
 
     <!-- Part2 Content -->
-    <div class="flex justify-between items-center mt-[100px] px-[20px] lg:mt-[150px]">
+    <div class="flex justify-between items-center mt-[100px] px-[20px] lg:mt-[150px] lg:px-[40px]">
       <div>
-        <h4 class="font-medium text-[18px]"><i
-            class="fas fa-map-marker-alt text-[#F24E1E] text-[20px] pr-2"></i>ใกล้เคียงคุณ</h4>
+        <h4 class="font-medium text-[18px] lg:text-[24px]"><i
+            class="fas fa-map-marker-alt text-[#F24E1E] text-[20px] pr-2 lg:text-[26px]"></i>ใกล้เคียงคุณ</h4>
       </div>
       <div
-        class="h-[25px] w-max px-4 border-[2px] border-black rounded-[20px] text-[13px] flex justify-center items-center">
+        class="h-[25px] w-max px-4 border-[2px] border-black rounded-[20px] text-[13px] flex justify-center items-center lg:text-[17px]">
         <h4>ดูทั้งหมด</h4>
       </div>
     </div>
@@ -112,12 +112,12 @@
     </div>
 
     <!-- Part3 Content -->
-    <div class="flex justify-between items-center mt-[100px] px-[20px]">
+    <div class="flex justify-between items-center mt-[100px] px-[20px] lg:px-[40px]">
       <div>
-        <h4 class="font-medium text-[18px]"><i class="fas fa-trophy text-yellow-400 text-[20px] pr-2"></i>Top 10</h4>
+        <h4 class="font-medium text-[18px] lg:text-[24px]"><i class="fas fa-trophy text-yellow-400 text-[20px] pr-2 lg:text-[26px]"></i>Top 10</h4>
       </div>
       <div
-        class="h-[25px] w-max px-4 border-[2px] border-black rounded-[20px] text-[13px] flex justify-center items-center">
+        class="h-[25px] w-max px-4 border-[2px] border-black rounded-[20px] text-[13px] flex justify-center items-center lg:text-[17px]">
         <h4>ดูทั้งหมด</h4>
       </div>
     </div>
@@ -189,18 +189,19 @@
     </div>
 
     <!-- Part4 Content -->
-    <div class="px-[20px] mt-[50px]">
-      <h1 class="text-[24px] text-black">มีที่ดีๆอยากแชร์เหรอ?</h1>
-      <h4 class="text-black/50 w-[300px]">ข้อมูลของคุณสำคัญกับเรามาก
+    <div class="px-[20px] mt-[50px] lg:px-[40px]">
+      <h1 class="text-[24px] text-black lg:text-[37px]">มีที่ดีๆอยากแชร์เหรอ?</h1>
+      <h4 class="text-black/50 w-[300px] lg:text-[22px] lg:w-[500px]">ข้อมูลของคุณสำคัญกับเรามาก
         เราอยากให้เว็บของเราเป็นอีกหนึ่งสังคมที่รวมผู้คนที่ชอบทำงานด้านนอกบ้าน หรือ ออฟฟิศ ได้แชร์ที่นั่งทำงานดีๆให้กัน
       </h4>
     </div>
 
-    <div id="layout" class="px-[20px] mt-[50px]">
+    <div id="layout" class="px-[20px] mt-[50px] lg:px-[40px]">
       <Map />
     </div>
 
-    <div class="flex justify-between items-center px-[20px] mt-[30px] space-x-2 overflow-x-hidden">
+    <div
+      class="flex justify-between items-center px-[20px] mt-[30px] space-x-2 overflow-x-hidden lg:px-[40px] lg:justify-start lg:overflow-visible">
       <button class="border-[2px] border-black/50 rounded-full" @click.prevent="openImageDialog">
         <i class="fas text-black/50 w-[32px] h-[32px] p-2"
           :class="{ 'fa-images': !isImgUp, 'fa-file-check': isImgUp }"></i>
@@ -210,238 +211,333 @@
 
 
       <input
-        class="border-[2px] border-black/50 rounded-[20px] px-2 py-1 w-[55%] placeholder:text-black/50 placeholder:text-[16px] focus:outline-none"
+        class="border-[2px] border-black/50 rounded-[20px] px-2 py-1 w-[55%] placeholder:text-black/50 placeholder:text-[16px] focus:outline-none lg:max-w-[300px]"
         placeholder="ชื่อ" v-model="cws_name_form" @input="Form_Update('name')">
       <input
-        class="border-[2px] border-black/50 rounded-[20px] px-2 py-1 w-[30%] placeholder:text-black/50 placeholder:text-[16px] focus:outline-none"
+        class="border-[2px] border-black/50 rounded-[20px] px-2 py-1 w-[30%] placeholder:text-black/50 placeholder:text-[16px] focus:outline-none lg:max-w-[100px]"
         placeholder="ราคา" v-model="cws_price_form" @input="Form_Update('price')">
+
+
+      <div class="hidden lg:block w-[460px] translate-y-[25px] lg:px-[40px]">
+        <h4 class="px-[20px] mt-[20px] text-black/50 text-[16px]">สิ่งอำนวยความสะดวก</h4>
+        <div class="flex justify-between items-center w-[300px] px-[20px] mt-[10px]">
+          <!-- Utensils -->
+          <div class="space-x-[15px]">
+            <i class="fal fa-utensils text-[20px] text-black/50 max-w-[15px]"></i>
+            <button class="text-[20px] text-[#1cb7d9]"
+              :class="{ 'fas fa-check-square': utensils_check, 'far fa-square': !utensils_check }"
+              @click.prevent="Facilities_Check('utensils')"></button>
+          </div>
+          <!-- Restroom -->
+          <div class="space-x-[15px]">
+            <i class="fal fa-restroom text-[20px] text-black/50 max-w-[15px]"></i>
+            <button class="text-[20px] text-[#1cb7d9]"
+              :class="{ 'fas fa-check-square': restroom_check, 'far fa-square': !restroom_check }"
+              @click.prevent="Facilities_Check('restroom')"></button>
+          </div>
+          <!-- Shopping -->
+          <div class="space-x-[15px]">
+            <i class="fal fa-shopping-cart text-[20px] text-black/50 max-w-[15px]"></i>
+            <button class="text-[20px] text-[#1cb7d9]"
+              :class="{ 'fas fa-check-square': shopping_check, 'far fa-square': !shopping_check }"
+              @click.prevent="Facilities_Check('shopping')"></button>
+          </div>
+        </div>
+
+        <div class="flex justify-between items-center w-[300px] px-[20px] mt-[10px]">
+          <!-- WiFi -->
+          <div class="space-x-[15px]">
+            <i class="far fa-wifi text-[20px] text-black/50 max-w-[15px]"></i>
+            <button class="text-[20px] text-[#1cb7d9]"
+              :class="{ 'fas fa-check-square': wifi_check, 'far fa-square': !wifi_check }"
+              @click.prevent="Facilities_Check('wifi')"></button>
+          </div>
+          <!-- Outlet -->
+          <div class="space-x-[15px]">
+            <i class="far fa-outlet text-[20px] text-black/50 max-w-[15px]"></i>
+            <button class="text-[20px] text-[#1cb7d9]"
+              :class="{ 'fas fa-check-square': outlet_check, 'far fa-square': !outlet_check }"
+              @click.prevent="Facilities_Check('outlet')"></button>
+          </div>
+          <!-- Air Conditioning -->
+          <div class="space-x-[15px]">
+            <i class="fal fa-air-conditioner text-[20px] text-black/50 max-w-[15px]"></i>
+            <button class="text-[20px] text-[#1cb7d9]"
+              :class="{ 'fas fa-check-square': air_check, 'far fa-square': !air_check }"
+              @click.prevent="Facilities_Check('air')"></button>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="px-[20px] mt-[20px]">
+    <div class="px-[20px] mt-[20px] lg:px-[40px] lg:mt-0 lg:translate-y-[-20px]">
       <input
-        class="border-[2px] border-black/50 rounded-[20px] px-2 pb-[100px] py-1 min-h-[150px] min-w-full placeholder:text-black/50 placeholder:text-[16px] focus:outline-none"
+        class="border-[2px] border-black/50 rounded-[20px] px-2 pb-[100px] py-1 min-h-[150px] w-full placeholder:text-black/50 placeholder:text-[16px] focus:outline-none lg:w-[460px]"
         placeholder="เขียนรีวิวและบรรยายบรรยากาศ" v-model="cws_review_form" @input="Form_Update('review')">
     </div>
 
     <!-- Facilities Form -->
-    <h4 class="px-[20px] mt-[20px] text-black/50 text-[16px]">สิ่งอำนวยความสะดวก</h4>
-    <div class="flex justify-between items-center w-[70vw] px-[20px] mt-[10px]">
-      <!-- Utensils -->
-      <div class="space-x-[15px]">
-        <i class="fal fa-utensils text-[20px] text-black/50 max-w-[15px]"></i>
-        <button class="text-[20px] text-black/50"
-          :class="{ 'fas fa-check-square': utensils_check, 'far fa-square': !utensils_check }"
-          @click.prevent="Facilities_Check('utensils')"></button>
+    <div class="lg:hidden">
+      <h4 class="px-[20px] mt-[20px] text-black/50 text-[16px]">สิ่งอำนวยความสะดวก</h4>
+      <div class="flex justify-between items-center w-[70vw] px-[20px] mt-[10px]">
+        <!-- Utensils -->
+        <div class="space-x-[15px]">
+          <i class="fal fa-utensils text-[20px] text-black/50 max-w-[15px]"></i>
+          <button class="text-[20px] text-[#1cb7d9]"
+            :class="{ 'fas fa-check-square': utensils_check, 'far fa-square': !utensils_check }"
+            @click.prevent="Facilities_Check('utensils')"></button>
+        </div>
+        <!-- Restroom -->
+        <div class="space-x-[15px]">
+          <i class="fal fa-restroom text-[20px] text-black/50 max-w-[15px]"></i>
+          <button class="text-[20px] text-[#1cb7d9]"
+            :class="{ 'fas fa-check-square': restroom_check, 'far fa-square': !restroom_check }"
+            @click.prevent="Facilities_Check('restroom')"></button>
+        </div>
+        <!-- Shopping -->
+        <div class="space-x-[15px]">
+          <i class="fal fa-shopping-cart text-[20px] text-black/50 max-w-[15px]"></i>
+          <button class="text-[20px] text-[#1cb7d9]"
+            :class="{ 'fas fa-check-square': shopping_check, 'far fa-square': !shopping_check }"
+            @click.prevent="Facilities_Check('shopping')"></button>
+        </div>
       </div>
-      <!-- Restroom -->
-      <div class="space-x-[15px]">
-        <i class="fal fa-restroom text-[20px] text-black/50 max-w-[15px]"></i>
-        <button class="text-[20px] text-black/50"
-          :class="{ 'fas fa-check-square': restroom_check, 'far fa-square': !restroom_check }"
-          @click.prevent="Facilities_Check('restroom')"></button>
-      </div>
-      <!-- Shopping -->
-      <div class="space-x-[15px]">
-        <i class="fal fa-shopping-cart text-[20px] text-black/50 max-w-[15px]"></i>
-        <button class="text-[20px] text-black/50"
-          :class="{ 'fas fa-check-square': shopping_check, 'far fa-square': !shopping_check }"
-          @click.prevent="Facilities_Check('shopping')"></button>
-      </div>
-    </div>
 
-    <div class="flex justify-between items-center w-[70vw] px-[20px] mt-[10px]">
-      <!-- WiFi -->
-      <div class="space-x-[15px]">
-        <i class="far fa-wifi text-[20px] text-black/50 max-w-[15px]"></i>
-        <button class="text-[20px] text-black/50"
-          :class="{ 'fas fa-check-square': wifi_check, 'far fa-square': !wifi_check }"
-          @click.prevent="Facilities_Check('wifi')"></button>
-      </div>
-      <!-- Outlet -->
-      <div class="space-x-[15px]">
-        <i class="far fa-outlet text-[20px] text-black/50 max-w-[15px]"></i>
-        <button class="text-[20px] text-black/50"
-          :class="{ 'fas fa-check-square': outlet_check, 'far fa-square': !outlet_check }"
-          @click.prevent="Facilities_Check('outlet')"></button>
-      </div>
-      <!-- Air Conditioning -->
-      <div class="space-x-[15px]">
-        <i class="fal fa-air-conditioner text-[20px] text-black/50 max-w-[15px]"></i>
-        <button class="text-[20px] text-black/50"
-          :class="{ 'fas fa-check-square': air_check, 'far fa-square': !air_check }"
-          @click.prevent="Facilities_Check('air')"></button>
+      <div class="flex justify-between items-center w-[70vw] px-[20px] mt-[10px]">
+        <!-- WiFi -->
+        <div class="space-x-[15px]">
+          <i class="far fa-wifi text-[20px] text-black/50 max-w-[15px]"></i>
+          <button class="text-[20px] text-[#1cb7d9]"
+            :class="{ 'fas fa-check-square': wifi_check, 'far fa-square': !wifi_check }"
+            @click.prevent="Facilities_Check('wifi')"></button>
+        </div>
+        <!-- Outlet -->
+        <div class="space-x-[15px]">
+          <i class="far fa-outlet text-[20px] text-black/50 max-w-[15px]"></i>
+          <button class="text-[20px] text-[#1cb7d9]"
+            :class="{ 'fas fa-check-square': outlet_check, 'far fa-square': !outlet_check }"
+            @click.prevent="Facilities_Check('outlet')"></button>
+        </div>
+        <!-- Air Conditioning -->
+        <div class="space-x-[15px]">
+          <i class="fal fa-air-conditioner text-[20px] text-black/50 max-w-[15px]"></i>
+          <button class="text-[20px] text-[#1cb7d9]"
+            :class="{ 'fas fa-check-square': air_check, 'far fa-square': !air_check }"
+            @click.prevent="Facilities_Check('air')"></button>
+        </div>
       </div>
     </div>
 
     <!-- Time Form -->
-    <h4 class="px-[20px] mt-[20px] text-black/50 text-[16px]">เวลาทำการ</h4>
+    <h4 class="px-[20px] mt-[20px] text-black/50 text-[16px] lg:px-[40px]">เวลาทำการ</h4>
     <!-- Open Time -->
-    <div class="flex items-center px-[20px] mt-[10px] space-x-[20px]">
-      <div class="w-[10px]">
-        <h4 class="text-black/50 text-[16px]">อา.</h4>
+    <div class="px-[20px] lg:px-[40px]">
+      <div class="flex items-center mt-[10px] space-x-[20px]">
+        <div class="w-[10px]">
+          <h4 class="text-black/50 text-[16px] lg:hidden">อา.</h4>
+          <h4 class="text-black/50 text-[16px] hidden lg:block">อาทิตย์</h4>
+        </div>
+        <button class="fas text-[25px] lg:pl-[50px]" @click.prevent="dayToggle_BTN('sunday', openDateTime[0].sunday.open)"
+          :class="{ 'fa-toggle-on text-[#1cb7d9]': openDateTime[0].sunday.open, 'fa-toggle-off text-black/50': !openDateTime[0].sunday.open }"></button>
+        <div class="hidden lg:block w-[30px]">
+          <h4 class="text-[16px] text-[#1cb7d9]" :class="{ 'hidden': !openDateTime[0].sunday.open }">เปิด</h4>
+          <h4 class="text-[16px] text-black/50" :class="{ 'hidden': openDateTime[0].sunday.open }">ปิด</h4>
+        </div>
+        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation lg:max-w-[150px]" v-model="time" time-picker
+          @update:model-value="TimeUpdate('sunday', 'open', time)">
+          <template #trigger>
+            <div
+              class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
+              {{ `${openDateTime[0].sunday.openTime}` }}</div>
+          </template>
+        </VueDatePicker>
+        <h4>-</h4>
+        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation lg:max-w-[150px]" v-model="time" time-picker
+          @update:model-value="TimeUpdate('sunday', 'close', time)">
+          <template #trigger>
+            <div
+              class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
+              {{ `${openDateTime[0].sunday.closeTime}` }}</div>
+          </template>
+        </VueDatePicker>
       </div>
-      <button class="fas text-[25px]" @click.prevent="dayToggle_BTN('sunday', openDateTime[0].sunday.open)"
-        :class="{ 'fa-toggle-on text-[#1cb7d9]': openDateTime[0].sunday.open, 'fa-toggle-off text-black/50': !openDateTime[0].sunday.open }"></button>
-      <VueDatePicker class="max-w-[30vw] select-none touch-manipulation" v-model="time" time-picker
-        @update:model-value="TimeUpdate('sunday', 'open', time)">
-        <template #trigger>
-          <div
-            class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
-            {{ `${openDateTime[0].sunday.openTime}` }}</div>
-        </template>
-      </VueDatePicker>
-      <h4>-</h4>
-      <VueDatePicker class="max-w-[30vw] select-none touch-manipulation" v-model="time" time-picker
-        @update:model-value="TimeUpdate('sunday', 'close', time)">
-        <template #trigger>
-          <div
-            class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
-            {{ `${openDateTime[0].sunday.closeTime}` }}</div>
-        </template>
-      </VueDatePicker>
-    </div>
-    <div class="flex items-center px-[20px] mt-[10px] space-x-[20px]">
-      <div class="w-[10px]">
-        <h4 class="text-black/50 text-[16px]">จ.</h4>
+      <div class="flex items-center mt-[10px] space-x-[20px]">
+        <div class="w-[10px]">
+          <h4 class="text-black/50 text-[16px] lg:hidden">จ.</h4>
+          <h4 class="text-black/50 text-[16px] hidden lg:block">จันทร์</h4>
+        </div>
+        <button class="fas text-[25px] lg:pl-[50px]" @click.prevent="dayToggle_BTN('monday', openDateTime[0].monday.open)"
+          :class="{ 'fa-toggle-on text-[#1cb7d9]': openDateTime[0].monday.open, 'fa-toggle-off text-black/50': !openDateTime[0].monday.open }"></button>
+        <div class="hidden lg:block w-[30px]">
+          <h4 class="text-[16px] text-[#1cb7d9]" :class="{ 'hidden': !openDateTime[0].monday.open }">เปิด</h4>
+          <h4 class="text-[16px] text-black/50" :class="{ 'hidden': openDateTime[0].monday.open }">ปิด</h4>
+        </div>
+        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation lg:max-w-[150px]" v-model="time" time-picker
+          @update:model-value="TimeUpdate('monday', 'open', time)">
+          <template #trigger>
+            <div
+              class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
+              {{ `${openDateTime[0].monday.openTime}` }}</div>
+          </template>
+        </VueDatePicker>
+        <h4>-</h4>
+        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation lg:max-w-[150px]" v-model="time" time-picker
+          @update:model-value="TimeUpdate('monday', 'close', time)">
+          <template #trigger>
+            <div
+              class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
+              {{ `${openDateTime[0].monday.closeTime}` }}</div>
+          </template>
+        </VueDatePicker>
       </div>
-      <button class="fas text-[25px]" @click.prevent="dayToggle_BTN('monday', openDateTime[0].monday.open)"
-        :class="{ 'fa-toggle-on text-[#1cb7d9]': openDateTime[0].monday.open, 'fa-toggle-off text-black/50': !openDateTime[0].monday.open }"></button>
-      <VueDatePicker class="max-w-[30vw] select-none touch-manipulation" v-model="time" time-picker
-        @update:model-value="TimeUpdate('monday', 'open', time)">
-        <template #trigger>
-          <div
-            class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
-            {{ `${openDateTime[0].monday.openTime}` }}</div>
-        </template>
-      </VueDatePicker>
-      <h4>-</h4>
-      <VueDatePicker class="max-w-[30vw] select-none touch-manipulation" v-model="time" time-picker
-        @update:model-value="TimeUpdate('monday', 'close', time)">
-        <template #trigger>
-          <div
-            class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
-            {{ `${openDateTime[0].monday.closeTime}` }}</div>
-        </template>
-      </VueDatePicker>
-    </div>
-    <div class="flex items-center px-[20px] mt-[10px] space-x-[20px]">
-      <div class="w-[10px]">
-        <h4 class="text-black/50 text-[16px]">อ.</h4>
+      <div class="flex items-center mt-[10px] space-x-[20px]">
+        <div class="w-[10px]">
+          <h4 class="text-black/50 text-[16px] lg:hidden">อ.</h4>
+          <h4 class="text-black/50 text-[16px] hidden lg:block">อังคาร</h4>
+        </div>
+        <button class="fas text-[25px] lg:pl-[50px]"
+          @click.prevent="dayToggle_BTN('tuesday', openDateTime[0].tuesday.open)"
+          :class="{ 'fa-toggle-on text-[#1cb7d9]': openDateTime[0].tuesday.open, 'fa-toggle-off text-black/50': !openDateTime[0].tuesday.open }"></button>
+        <div class="hidden lg:block w-[30px]">
+          <h4 class="text-[16px] text-[#1cb7d9]" :class="{ 'hidden': !openDateTime[0].tuesday.open }">เปิด</h4>
+          <h4 class="text-[16px] text-black/50" :class="{ 'hidden': openDateTime[0].tuesday.open }">ปิด</h4>
+        </div>
+        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation lg:max-w-[150px]" v-model="time" time-picker
+          @update:model-value="TimeUpdate('tuesday', 'open', time)">
+          <template #trigger>
+            <div
+              class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
+              {{ `${openDateTime[0].tuesday.openTime}` }}</div>
+          </template>
+        </VueDatePicker>
+        <h4>-</h4>
+        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation lg:max-w-[150px]" v-model="time" time-picker
+          @update:model-value="TimeUpdate('tuesday', 'close', time)">
+          <template #trigger>
+            <div
+              class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
+              {{ `${openDateTime[0].tuesday.closeTime}` }}</div>
+          </template>
+        </VueDatePicker>
       </div>
-      <button class="fas text-[25px]" @click.prevent="dayToggle_BTN('tuesday', openDateTime[0].tuesday.open)"
-        :class="{ 'fa-toggle-on text-[#1cb7d9]': openDateTime[0].tuesday.open, 'fa-toggle-off text-black/50': !openDateTime[0].tuesday.open }"></button>
-      <VueDatePicker class="max-w-[30vw] select-none touch-manipulation" v-model="time" time-picker
-        @update:model-value="TimeUpdate('tuesday', 'open', time)">
-        <template #trigger>
-          <div
-            class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
-            {{ `${openDateTime[0].tuesday.openTime}` }}</div>
-        </template>
-      </VueDatePicker>
-      <h4>-</h4>
-      <VueDatePicker class="max-w-[30vw] select-none touch-manipulation" v-model="time" time-picker
-        @update:model-value="TimeUpdate('tuesday', 'close', time)">
-        <template #trigger>
-          <div
-            class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
-            {{ `${openDateTime[0].tuesday.closeTime}` }}</div>
-        </template>
-      </VueDatePicker>
-    </div>
-    <div class="flex items-center px-[20px] mt-[10px] space-x-[20px]">
-      <div class="w-[10px]">
-        <h4 class="text-black/50 text-[16px]">พ.</h4>
+      <div class="flex items-center mt-[10px] space-x-[20px]">
+        <div class="w-[10px]">
+          <h4 class="text-black/50 text-[16px] lg:hidden">พ.</h4>
+          <h4 class="text-black/50 text-[16px] hidden lg:block">พุธ</h4>
+        </div>
+        <button class="fas text-[25px] lg:pl-[50px]"
+          @click.prevent="dayToggle_BTN('wednesday', openDateTime[0].wednesday.open)"
+          :class="{ 'fa-toggle-on text-[#1cb7d9]': openDateTime[0].wednesday.open, 'fa-toggle-off text-black/50': !openDateTime[0].wednesday.open }"></button>
+        <div class="hidden lg:block w-[30px]">
+          <h4 class="text-[16px] text-[#1cb7d9]" :class="{ 'hidden': !openDateTime[0].wednesday.open }">เปิด</h4>
+          <h4 class="text-[16px] text-black/50" :class="{ 'hidden': openDateTime[0].wednesday.open }">ปิด</h4>
+        </div>
+        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation lg:max-w-[150px]" v-model="time" time-picker
+          @update:model-value="TimeUpdate('wednesday', 'open', time)">
+          <template #trigger>
+            <div
+              class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
+              {{ `${openDateTime[0].wednesday.openTime}` }}</div>
+          </template>
+        </VueDatePicker>
+        <h4>-</h4>
+        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation lg:max-w-[150px]" v-model="time" time-picker
+          @update:model-value="TimeUpdate('wednesday', 'close', time)">
+          <template #trigger>
+            <div
+              class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
+              {{ `${openDateTime[0].wednesday.closeTime}` }}</div>
+          </template>
+        </VueDatePicker>
       </div>
-      <button class="fas text-[25px]" @click.prevent="dayToggle_BTN('wednesday', openDateTime[0].wednesday.open)"
-        :class="{ 'fa-toggle-on text-[#1cb7d9]': openDateTime[0].wednesday.open, 'fa-toggle-off text-black/50': !openDateTime[0].wednesday.open }"></button>
-      <VueDatePicker class="max-w-[30vw] select-none touch-manipulation" v-model="time" time-picker
-        @update:model-value="TimeUpdate('wednesday', 'open', time)">
-        <template #trigger>
-          <div
-            class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
-            {{ `${openDateTime[0].wednesday.openTime}` }}</div>
-        </template>
-      </VueDatePicker>
-      <h4>-</h4>
-      <VueDatePicker class="max-w-[30vw] select-none touch-manipulation" v-model="time" time-picker
-        @update:model-value="TimeUpdate('wednesday', 'close', time)">
-        <template #trigger>
-          <div
-            class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
-            {{ `${openDateTime[0].wednesday.closeTime}` }}</div>
-        </template>
-      </VueDatePicker>
-    </div>
-    <div class="flex items-center px-[20px] mt-[10px] space-x-[20px]">
-      <div class="w-[10px]">
-        <h4 class="text-black/50 text-[16px]">พฤ.</h4>
+      <div class="flex items-center mt-[10px] space-x-[20px]">
+        <div class="w-[10px]">
+          <h4 class="text-black/50 text-[16px] lg:hidden">พฤ.</h4>
+          <h4 class="text-black/50 text-[16px] hidden lg:block">พฤหัสบดี</h4>
+        </div>
+        <button class="fas text-[25px] lg:pl-[50px]"
+          @click.prevent="dayToggle_BTN('thursday', openDateTime[0].thursday.open)"
+          :class="{ 'fa-toggle-on text-[#1cb7d9]': openDateTime[0].thursday.open, 'fa-toggle-off text-black/50': !openDateTime[0].thursday.open }"></button>
+        <div class="hidden lg:block w-[30px]">
+          <h4 class="text-[16px] text-[#1cb7d9]" :class="{ 'hidden': !openDateTime[0].thursday.open }">เปิด</h4>
+          <h4 class="text-[16px] text-black/50" :class="{ 'hidden': openDateTime[0].thursday.open }">ปิด</h4>
+        </div>
+        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation lg:max-w-[150px]" v-model="time" time-picker
+          @update:model-value="TimeUpdate('thursday', 'open', time)">
+          <template #trigger>
+            <div
+              class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
+              {{ `${openDateTime[0].thursday.openTime}` }}</div>
+          </template>
+        </VueDatePicker>
+        <h4>-</h4>
+        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation lg:max-w-[150px]" v-model="time" time-picker
+          @update:model-value="TimeUpdate('thursday', 'close', time)">
+          <template #trigger>
+            <div
+              class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
+              {{ `${openDateTime[0].thursday.closeTime}` }}</div>
+          </template>
+        </VueDatePicker>
       </div>
-      <button class="fas text-[25px]" @click.prevent="dayToggle_BTN('thursday', openDateTime[0].thursday.open)"
-        :class="{ 'fa-toggle-on text-[#1cb7d9]': openDateTime[0].thursday.open, 'fa-toggle-off text-black/50': !openDateTime[0].thursday.open }"></button>
-      <VueDatePicker class="max-w-[30vw] select-none touch-manipulation" v-model="time" time-picker
-        @update:model-value="TimeUpdate('thursday', 'open', time)">
-        <template #trigger>
-          <div
-            class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
-            {{ `${openDateTime[0].thursday.openTime}` }}</div>
-        </template>
-      </VueDatePicker>
-      <h4>-</h4>
-      <VueDatePicker class="max-w-[30vw] select-none touch-manipulation" v-model="time" time-picker
-        @update:model-value="TimeUpdate('thursday', 'close', time)">
-        <template #trigger>
-          <div
-            class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
-            {{ `${openDateTime[0].thursday.closeTime}` }}</div>
-        </template>
-      </VueDatePicker>
-    </div>
-    <div class="flex items-center px-[20px] mt-[10px] space-x-[20px]">
-      <div class="w-[10px]">
-        <h4 class="text-black/50 text-[16px]">ศ.</h4>
+      <div class="flex items-center mt-[10px] space-x-[20px]">
+        <div class="w-[10px]">
+          <h4 class="text-black/50 text-[16px] lg:hidden">ศ.</h4>
+          <h4 class="text-black/50 text-[16px] hidden lg:block">ศุกร์</h4>
+        </div>
+        <button class="fas text-[25px] lg:pl-[50px]" @click.prevent="dayToggle_BTN('friday', openDateTime[0].friday.open)"
+          :class="{ 'fa-toggle-on text-[#1cb7d9]': openDateTime[0].friday.open, 'fa-toggle-off text-black/50': !openDateTime[0].friday.open }"></button>
+        <div class="hidden lg:block w-[30px]">
+          <h4 class="text-[16px] text-[#1cb7d9]" :class="{ 'hidden': !openDateTime[0].friday.open }">เปิด</h4>
+          <h4 class="text-[16px] text-black/50" :class="{ 'hidden': openDateTime[0].friday.open }">ปิด</h4>
+        </div>
+        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation lg:max-w-[150px]" v-model="time" time-picker
+          @update:model-value="TimeUpdate('friday', 'open', time)">
+          <template #trigger>
+            <div
+              class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
+              {{ `${openDateTime[0].friday.openTime}` }}</div>
+          </template>
+        </VueDatePicker>
+        <h4>-</h4>
+        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation lg:max-w-[150px]" v-model="time" time-picker
+          @update:model-value="TimeUpdate('friday', 'close', time)">
+          <template #trigger>
+            <div
+              class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
+              {{ `${openDateTime[0].friday.closeTime}` }}</div>
+          </template>
+        </VueDatePicker>
       </div>
-      <button class="fas text-[25px]" @click.prevent="dayToggle_BTN('friday', openDateTime[0].friday.open)"
-        :class="{ 'fa-toggle-on text-[#1cb7d9]': openDateTime[0].friday.open, 'fa-toggle-off text-black/50': !openDateTime[0].friday.open }"></button>
-      <VueDatePicker class="max-w-[30vw] select-none touch-manipulation" v-model="time" time-picker
-        @update:model-value="TimeUpdate('friday', 'open', time)">
-        <template #trigger>
-          <div
-            class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
-            {{ `${openDateTime[0].friday.openTime}` }}</div>
-        </template>
-      </VueDatePicker>
-      <h4>-</h4>
-      <VueDatePicker class="max-w-[30vw] select-none touch-manipulation" v-model="time" time-picker
-        @update:model-value="TimeUpdate('friday', 'close', time)">
-        <template #trigger>
-          <div
-            class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
-            {{ `${openDateTime[0].friday.closeTime}` }}</div>
-        </template>
-      </VueDatePicker>
-    </div>
-    <div class="flex items-center px-[20px] mt-[10px] space-x-[20px]">
-      <div class="w-[10px]">
-        <h4 class="text-black/50 text-[16px]">ส.</h4>
+      <div class="flex items-center mt-[10px] space-x-[20px]">
+        <div class="w-[10px]">
+          <h4 class="text-black/50 text-[16px] lg:hidden">ส.</h4>
+          <h4 class="text-black/50 text-[16px] hidden lg:block">เสาร์</h4>
+        </div>
+        <button class="fas text-[25px] lg:pl-[50px]"
+          @click.prevent="dayToggle_BTN('saturday', openDateTime[0].saturday.open)"
+          :class="{ 'fa-toggle-on text-[#1cb7d9]': openDateTime[0].saturday.open, 'fa-toggle-off text-black/50': !openDateTime[0].saturday.open }"></button>
+        <div class="hidden lg:block w-[30px]">
+          <h4 class="text-[16px] text-[#1cb7d9]" :class="{ 'hidden': !openDateTime[0].saturday.open }">เปิด</h4>
+          <h4 class="text-[16px] text-black/50" :class="{ 'hidden': openDateTime[0].saturday.open }">ปิด</h4>
+        </div>
+        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation lg:max-w-[150px]" v-model="time" time-picker
+          @update:model-value="TimeUpdate('saturday', 'open', time)">
+          <template #trigger>
+            <div
+              class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
+              {{ `${openDateTime[0].saturday.openTime}` }}</div>
+          </template>
+        </VueDatePicker>
+        <h4>-</h4>
+        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation lg:max-w-[150px]" v-model="time" time-picker
+          @update:model-value="TimeUpdate('saturday', 'close', time)">
+          <template #trigger>
+            <div
+              class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
+              {{ `${openDateTime[0].saturday.closeTime}` }}</div>
+          </template>
+        </VueDatePicker>
       </div>
-      <button class="fas text-[25px]" @click.prevent="dayToggle_BTN('saturday', openDateTime[0].saturday.open)"
-        :class="{ 'fa-toggle-on text-[#1cb7d9]': openDateTime[0].saturday.open, 'fa-toggle-off text-black/50': !openDateTime[0].saturday.open }"></button>
-      <VueDatePicker class="max-w-[30vw] select-none touch-manipulation" v-model="time" time-picker
-        @update:model-value="TimeUpdate('saturday', 'open', time)">
-        <template #trigger>
-          <div
-            class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
-            {{ `${openDateTime[0].saturday.openTime}` }}</div>
-        </template>
-      </VueDatePicker>
-      <h4>-</h4>
-      <VueDatePicker class="max-w-[30vw] select-none touch-manipulation" v-model="time" time-picker
-        @update:model-value="TimeUpdate('saturday', 'close', time)">
-        <template #trigger>
-          <div
-            class="text-black/50 text-[16px] rounded-[20px] border-black/50 border-[2px] flex justify-center px-[10px]">
-            {{ `${openDateTime[0].saturday.closeTime}` }}</div>
-        </template>
-      </VueDatePicker>
     </div>
     <button
       class="flex justify-center items-center text-white text-[20px] rounded-[20px] bg-[#1cb7d9] mx-[20px] px-5 py-1 mt-[20px] transition-all duration-300"
@@ -454,11 +550,11 @@
 
 
     <!-- Part 5 Content -->
-    <div class="flex justify-start items-center text-[24px] mt-[50px] px-[20px] font-medium">
+    <div class="flex justify-start items-center text-[24px] mt-[50px] px-[20px] font-medium lg:px-[40px] lg:text-[24px]">
       <i class="far fa-code text-[#4ECB71] pr-2"></i>
       <h1>นักพัฒนา</h1>
     </div>
-    <div class="flex justify-evenly items-center px-[20px] mt-[50px] space-x-3">
+    <div class="flex justify-evenly items-center px-[20px] mt-[50px] space-x-3 lg:px-[40px] lg:space-x-[-250px] lg:justfly-center">
       <!-- Niji -->
       <div class="hover:translate-y-[-30px] transition-all duration-500">
         <NuxtImg
