@@ -62,9 +62,8 @@ button {
 /* MapBox Design */
 
 .findPage_MapBox .mapboxgl-popup-content {
-  min-width: 320px;
-  height: auto;
-  height: 400px;
+  width: 320px;
+  height: 500px;
   border-radius: 20px;
   background-color: #F2FBFF;
 }

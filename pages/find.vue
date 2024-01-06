@@ -33,6 +33,7 @@ export default defineComponent({
                 cws_image: ['/img/mspace.png', '/img/mspace.png', '/img/mspace.png', '/img/mspace.png', '/img/mspace.png', '/img/mspace.png'], // Replace with actual image paths
                 cws_price: '250',
                 cws_review: ['Good', 'Best place'],
+                cws_star: 5,
                 cws_openToday: '08:00 - 20:30',
                 cws_facilities: ['plug', 'toilet', 'wifi'],
                 cws_latitude: '13.7451',
@@ -43,6 +44,7 @@ export default defineComponent({
                 cws_image: ['/img/kan.png', 'image2.png'], // Replace with actual image paths
                 cws_price: '250',
                 cws_review: ['Good', 'Best place'],
+                cws_star: 5,
                 cws_openToday: '08:00 - 20:30',
                 cws_facilities: ['plug', 'toilet', 'wifi'],
                 cws_latitude: '13.7451',
@@ -77,11 +79,25 @@ export default defineComponent({
                                 </div>`;
 
                 const cws_image_element = dataItem.cws_image.map(imageSrc => 
-                    `<div class="col-image"><img class="rounded-[5px] w-[95px] h-[60px] object-cover" src="${imageSrc}" alt="Image"></div>`
+                    `<div class="col-image">
+                        <img class="rounded-[5px] w-[95px] h-[60px] object-cover" src="${imageSrc}" alt="Image">
+                    </div>`
                 ).join('');
 
+                const cws_reviewBox_element = dataItem.cws_review.map(message => 
+                    `<div class="col-review">
+                        <div class="border-[1px] w-[200px] h-[80px] border-black/50 rounded-[10px]">
+                            <div class="flex items-center justify-between">
+                                <div class="flex">
+                                    //ระหว่างทำต่อ รอ database structure
+                                </div>
+                            </div>
+                        </div>
+                    </div>`
+                ).join('');
+                
                 const popupContent = `
-                <div class="popup-content">
+                <div class="popup-content select-none">
                     <div class="flex space-x-[5px]">
                         <div class="popup-images">
                             <img class="w-[120px] h-[80px] rounded-[5px] object-cover" src="${imageSrc}">
@@ -97,16 +113,23 @@ export default defineComponent({
                             </div>
                         </div>
                     </div>
-                    <div class="w-full h-[1px] bg-[#8888] mt-[20px]"></div>
-                    <div class="flex justify-center items-center space-x-[5px] my-[10px]">
-                        <button class="text-black/50 px-2 rounded-[20px] w-[70px] flex justify-center items-center" :class="{'bg-black/20': currentPopupMenu == 'img'}" @click.prevent="PopupMenuBTN('img')">
-                            <h4>รูปภาพ</h4>
-                        </button>
-                        <button class="text-black/50 px-2 rounded-[20px] w-[70px] flex justify-center items-center" :class="{'bg-black/20': currentPopupMenu == 'review'}" @click.prevent="PopupMenuBTN('review')">
-                            <h4>รีวิว</h4>
-                        </button>
+                    <div class="w-full h-[1px] bg-[#8888] my-[20px]"></div>
+                    <div class="grid grid-cols-3 gap-2 h-[120px] overflow-y-scroll">${cws_image_element}</div>
+                    <div class="w-full h-[1px] bg-[#8888] my-[20px]"></div>
+                    <div class="flex justify-between">
+                        <div class="flex items-center text-yellow-400 text-[20px]">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <h4 class="text-black/50 text-[15px] mt-[10px] ml-[10px]">${dataItem.cws_star}ดาว</h4>
+                        </div>
+                        <div flex items-center>
+                            <h4 class="text-black/50 mt-[10px]">ความคิดเห็น ${dataItem.cws_review.length} รายการ</h4>    
+                        </div>
                     </div>
-                    <div class="grid grid-cols-3 gap-2 h-full overflow-y-scroll">${cws_image_element}</div>
+                    <div class="flex space-x-2 w-full h-[100px] mt-[10px] overflow-x-scroll">${cws_reviewBox_element}</div>
                 </div>
             `;
                 
@@ -116,8 +139,7 @@ export default defineComponent({
                         offset: 50,
                         className: 'findPage_MapBox',
                         closeButton: false
-                    })
-                    .setHTML(popupContent);
+                }).setHTML(popupContent);
 
                 // Check if the map instance is available before adding the marker
                 if (map.value) {
@@ -153,12 +175,6 @@ export default defineComponent({
             });
         });
 
-        let currentPopupMenu = ref('img');
-
-        function PopupMenuBTN(menu: string) {
-            currentPopupMenu.value = menu
-        }
-
         const goToCurrentLocation = () => {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(position => {
@@ -185,9 +201,7 @@ export default defineComponent({
 
         return {
             mapContainer,
-            goToCurrentLocation,
-            PopupMenuBTN,
-            currentPopupMenu
+            goToCurrentLocation
         };
     }
 });
