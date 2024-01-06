@@ -18,6 +18,10 @@
           <NuxtLink to="/login">Login
           </NuxtLink>
         </div>
+        <div :class="{ 'hidden': user_email_CK || user_avatar_CK || user_full_name_CK }">
+          <NuxtLink to="/find">Find Now
+          </NuxtLink>
+        </div>
         <!-- Middle lines -->
         <div class="min-h-[30px] w-[3px] bg-black" :class="{ 'bg-white': pageScroll, 'bg-black': !pageScroll }"></div>
         <!-- In Middle Line Items -->
@@ -60,6 +64,11 @@
       </div>
       <div :class="{ 'hidden': !user_email_CK || !user_avatar_CK || !user_full_name_CK }">
         <NuxtLink @click.prevent="logoutBTN">Logout</NuxtLink>
+      </div>
+      <div>
+        <NuxtLink @click.prevent="hamberBTN" :class="{ 'hidden': user_email_CK || user_avatar_CK || user_full_name_CK }"
+          to="/find">
+          Find Now</NuxtLink>
       </div>
     </div>
   </div>

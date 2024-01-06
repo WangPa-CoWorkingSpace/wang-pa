@@ -6,7 +6,6 @@
         <i class="fas fa-location-arrow text-white text-[15px] p-2"></i>
     </button>
     </div>
-    <!-- <div class="bg-blue-400 h-[250px] w-full rounded-[20px]"></div> -->
 </template>
 
 <script>
