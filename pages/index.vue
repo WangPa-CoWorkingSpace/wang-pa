@@ -3,10 +3,10 @@
 
   <div class="min-h-screen main-gardient">
     <!--Part1 Content -->
-    <div class="ml-[40px] lg:mx-[200px]">
+    <div class="mx-[40px] lg:mx-[100px] 2xl:mx-[200px]">
       <div class="h-max text-black font-normal pt-[100px]">
-        <h1 class="text-[40px] lg:text-[60px]">ว่างปะ ?</h1>
-        <h2 class="text-[25px] lg:text-[37px]">อยากได้ที่ว่างๆทำงานอยู่เหรอ?</h2>
+        <h1 class="text-[40px] xl:text-[60px]">ว่างปะ ?</h1>
+        <h2 class="text-[25px] xl:text-[37px]">อยากได้ที่ว่างๆทำงานอยู่เหรอ?</h2>
       </div>
       <div>
         <button class="w-[190px] h-max px-3 py-[2px] rounded-[20px] text-black/50 border-black/50 border-[1px] mt-3">
@@ -22,31 +22,32 @@
         </button>
       </div>
     </div>
-    <div class="flex justify-end mr-[10px] lg:translate-y-[-150px] lg:mr-[70px]">
+    <div
+      class="flex justify-end mr-[20px] translate-y-[-75px] sm:translate-y-[-115px] sm:mr-[50px] lg:translate-y-[-150px] lg:mr-[70px] 2xl:translate-y-[-220px] 2xl:mr-[200px]">
       <div class="absolute z-0">
-        <NuxtImg class="object-contain h-[170px] w-[130px] lg:h-[450px] lg:w-[500px]" src="/img/co-work.png" />
+        <NuxtImg class="object-contain w-[200px] sm:w-[231px] lg:w-[320px] 2xl:w-[400px]" src="/img/co-work.png" />
       </div>
     </div>
     <div class="flex justify-between mt-[30px]">
-      <div class="ml-[20px] lg:mx-[100px]">
-        <NuxtImg class="w-[200px] lg:w-[350px]" src="/img/Review.png" />
+      <div class="mx-[20px] sm:mx-[45px] lg:mx-[100px] 2xl:mx-[200px]">
+        <NuxtImg class="w-[200px] sm:w-[200px] lg:w-[310px]" src="/img/Review.png" />
       </div>
     </div>
 
     <!-- Part2 Content -->
-    <div class="flex justify-between items-center mt-[100px] lg:mx-[150px] px-[20px] lg:mt-[150px] lg:px-[40px]">
+    <div class="flex justify-between items-center mt-[100px] px-[20px] xl:mt-[150px] xl:px-[40px] 2xl:px-[150px]">
       <div>
-        <h4 class="font-medium text-[18px] lg:text-[24px]"><i
-            class="fas fa-map-marker-alt text-[#F24E1E] text-[20px] pr-2 lg:text-[26px]"></i>ใกล้เคียงคุณ</h4>
+        <h4 class="font-medium text-[18px] xl:text-[24px]"><i
+            class="fas fa-map-marker-alt text-[#F24E1E] text-[20px] pr-2 xl:text-[26px]"></i>ใกล้เคียงคุณ</h4>
       </div>
       <div
-        class="h-[25px] w-max px-4 border-[2px] border-black rounded-[20px] text-[13px] flex justify-center items-center lg:text-[17px]">
+        class="h-[25px] w-max px-4 border-[2px] border-black rounded-[20px] text-[13px] flex justify-center items-center xl:text-[17px]">
         <h4>ดูทั้งหมด</h4>
       </div>
     </div>
 
     <!-- Carousel Slider Content Mobile-->
-    <Carousel class="lg:hidden select-none" :itemsToShow="1" :wrapAround="true" :transition="500">
+    <Carousel class="xl:hidden select-none" :itemsToShow="1" :wrapAround="true" :transition="500">
       <Slide v-for="(slide, index) in slides_data_near_me" :key="index">
         <div class="carousel__item py-8 w-[270px]">
           <div class="bg-white rounded-[10px] shadow-[0_0_20px_0_rgba(0,0,0,0.25)]">
@@ -74,35 +75,37 @@
       </Slide>
     </Carousel>
     <!-- Carousel Slider Content Desktop-->
-    <Carousel class="hidden lg:block select-none lg:mx-[150px]" ref="near_me_slideLG" :itemsToShow="5" :wrapAround="true"
-      :transition="500">
-      <Slide v-for="(slide, index) in slides_data_near_me" :key="index">
-        <div class="carousel__item py-8 w-[270px]">
-          <div class="bg-white rounded-[10px] shadow-[0_0_20px_0_rgba(0,0,0,0.25)]">
-            <NuxtImg class="rounded-t-[10px]" :src="slide.image" :alt="slide.alt" width="300px" height="256px"
-              objectFit='contain' loading="lazy" />
-            <div class="p-4">
-              <h1 class="text-black font-medium text-[20px] text-left w-full h-[30px] overflow-hidden">{{ slide.title }}
-              </h1>
-              <h4 class="text-[18px] text-left text-[#1cb7d9]">{{ slide.price }}</h4>
-              <div class="h-[10px] w-full flex text-black/50 space-x-2 mb-5">
-                <i v-for="feature in slide.features" :class="`fas fa-${feature}`" :key="feature"></i>
-              </div>
-              <h4 class="text-[15px] text-left text-black/50">{{ slide.openingHours }}</h4>
-              <div class="flex justify-between items-center mt-[30px]">
-                <div class="text-yellow-400">
-                  <i v-for="star in slide.stars" :key="star" :class="`${star} fa-star`"></i>
+    <div class="2xl:mx-[200px]">
+      <Carousel class="hidden xl:block select-none" ref="near_me_slideLG" :itemsToShow="3" :wrapAround="true"
+        :transition="500">
+        <Slide v-for="(slide, index) in slides_data_near_me" :key="index">
+          <div class="carousel__item py-8 w-[270px]">
+            <div class="bg-white rounded-[10px] shadow-[0_0_20px_0_rgba(0,0,0,0.25)]">
+              <NuxtImg class="rounded-t-[10px]" :src="slide.image" :alt="slide.alt" width="300px" height="256px"
+                objectFit='contain' loading="lazy" />
+              <div class="p-4">
+                <h1 class="text-black font-medium text-[20px] text-left w-full h-[30px] overflow-hidden">{{ slide.title }}
+                </h1>
+                <h4 class="text-[18px] text-left text-[#1cb7d9]">{{ slide.price }}</h4>
+                <div class="h-[10px] w-full flex text-black/50 space-x-2 mb-5">
+                  <i v-for="feature in slide.features" :class="`fas fa-${feature}`" :key="feature"></i>
                 </div>
-                <div class="h-max w-max bg-[#20DE33] text-white text-[12px] py-[3px] px-[10px] rounded-[20px]">
-                  <h4>{{ slide.capacity }}</h4>
+                <h4 class="text-[15px] text-left text-black/50">{{ slide.openingHours }}</h4>
+                <div class="flex justify-between items-center mt-[30px]">
+                  <div class="text-yellow-400">
+                    <i v-for="star in slide.stars" :key="star" :class="`${star} fa-star`"></i>
+                  </div>
+                  <div class="h-max w-max bg-[#20DE33] text-white text-[12px] py-[3px] px-[10px] rounded-[20px]">
+                    <h4>{{ slide.capacity }}</h4>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </Slide>
-    </Carousel>
-    <div class="justify-center items-center space-x-[100px] hidden lg:flex">
+        </Slide>
+      </Carousel>
+    </div>
+    <div class="justify-center items-center space-x-[100px] hidden xl:flex">
       <button class="fad fa-arrow-circle-left text-[35px] hover:scale-[120%] transition-all duration-300"
         @click.prevent="NearMeSlideBTN('prev')"
         style="--fa-primary-color: #ffffff; --fa-secondary-color: #1cb7d9; --fa-secondary-opacity: 1;"></button>
@@ -112,18 +115,19 @@
     </div>
 
     <!-- Part3 Content -->
-    <div class="flex justify-between items-center mt-[100px lg:mx-[150px] px-[20px] lg:px-[40px]">
+    <div class="flex justify-between items-center mt-[100px] px-[20px] xl:px-[40px] 2xl:px-[150px]">
       <div>
-        <h4 class="font-medium text-[18px] lg:text-[24px]"><i class="fas fa-trophy text-yellow-400 text-[20px] pr-2 lg:text-[26px]"></i>Top 10</h4>
+        <h4 class="font-medium text-[18px] xl:text-[24px]"><i
+            class="fas fa-trophy text-yellow-400 text-[20px] pr-2 xl:text-[26px]"></i>Top 10</h4>
       </div>
       <div
-        class="h-[25px] w-max px-4 border-[2px] border-black rounded-[20px] text-[13px] flex justify-center items-center lg:text-[17px]">
+        class="h-[25px] w-max px-4 border-[2px] border-black rounded-[20px] text-[13px] flex justify-center items-center xl:text-[17px]">
         <h4>ดูทั้งหมด</h4>
       </div>
     </div>
 
     <!-- Carousel Slider Content Mobile-->
-    <Carousel class="lg:hidden select-none" :itemsToShow="1" :wrapAround="true" :transition="500">
+    <Carousel class="xl:hidden select-none" :itemsToShow="1" :wrapAround="true" :transition="500">
       <Slide v-for="(slide, index) in slides_data_top10" :key="index">
         <div class="carousel__item py-8 w-[270px]">
           <div class="bg-white rounded-[10px] shadow-[0_0_20px_0_rgba(0,0,0,0.25)]">
@@ -151,35 +155,37 @@
       </Slide>
     </Carousel>
     <!-- Carousel Slider Content Desktop-->
-    <Carousel class="hidden lg:block select-none lg:mx-[150px]" ref="top10_slideLG" :itemsToShow="5" :wrapAround="true"
-      :transition="500">
-      <Slide v-for="(slide, index) in slides_data_top10" :key="index">
-        <div class="carousel__item py-8 w-[270px]">
-          <div class="bg-white rounded-[10px] shadow-[0_0_20px_0_rgba(0,0,0,0.25)]">
-            <NuxtImg class="rounded-t-[10px]" :src="slide.image" :alt="slide.alt" width="300px" height="256px"
-              objectFit='contain' loading="lazy" />
-            <div class="p-4">
-              <h1 class="text-black font-medium text-[20px] text-left w-full h-[30px] overflow-hidden">{{ slide.title }}
-              </h1>
-              <h4 class="text-[18px] text-left text-[#1cb7d9]">{{ slide.price }}</h4>
-              <div class="h-[10px] w-full flex text-black/50 space-x-2 mb-5">
-                <i v-for="feature in slide.features" :class="`fas fa-${feature}`" :key="feature"></i>
-              </div>
-              <h4 class="text-[15px] text-left text-black/50">{{ slide.openingHours }}</h4>
-              <div class="flex justify-between items-center mt-[30px]">
-                <div class="text-yellow-400">
-                  <i v-for="star in slide.stars" :key="star" :class="`${star} fa-star`"></i>
+    <div class="2xl:mx-[200px]">
+      <Carousel class="hidden xl:block select-none" ref="top10_slideLG" :itemsToShow="3" :wrapAround="true"
+        :transition="500">
+        <Slide v-for="(slide, index) in slides_data_top10" :key="index">
+          <div class="carousel__item py-8 w-[270px]">
+            <div class="bg-white rounded-[10px] shadow-[0_0_20px_0_rgba(0,0,0,0.25)]">
+              <NuxtImg class="rounded-t-[10px]" :src="slide.image" :alt="slide.alt" width="300px" height="256px"
+                objectFit='contain' loading="lazy" />
+              <div class="p-4">
+                <h1 class="text-black font-medium text-[20px] text-left w-full h-[30px] overflow-hidden">{{ slide.title }}
+                </h1>
+                <h4 class="text-[18px] text-left text-[#1cb7d9]">{{ slide.price }}</h4>
+                <div class="h-[10px] w-full flex text-black/50 space-x-2 mb-5">
+                  <i v-for="feature in slide.features" :class="`fas fa-${feature}`" :key="feature"></i>
                 </div>
-                <div class="h-max w-max bg-[#20DE33] text-white text-[12px] py-[3px] px-[10px] rounded-[20px]">
-                  <h4>{{ slide.capacity }}</h4>
+                <h4 class="text-[15px] text-left text-black/50">{{ slide.openingHours }}</h4>
+                <div class="flex justify-between items-center mt-[30px]">
+                  <div class="text-yellow-400">
+                    <i v-for="star in slide.stars" :key="star" :class="`${star} fa-star`"></i>
+                  </div>
+                  <div class="h-max w-max bg-[#20DE33] text-white text-[12px] py-[3px] px-[10px] rounded-[20px]">
+                    <h4>{{ slide.capacity }}</h4>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </Slide>
-    </Carousel>
-    <div class="justify-center items-center space-x-[100px] hidden lg:flex">
+        </Slide>
+      </Carousel>
+    </div>
+    <div class="justify-center items-center space-x-[100px] hidden xl:flex">
       <button class="fad fa-arrow-circle-left text-[35px] hover:scale-[120%] transition-all duration-300"
         @click.prevent="Top10SlideBTN('prev')"
         style="--fa-primary-color: #ffffff; --fa-secondary-color: #1cb7d9; --fa-secondary-opacity: 1;"></button>
@@ -189,19 +195,19 @@
     </div>
 
     <!-- Part4 Content -->
-    <div class="px-[20px] lg:px-[40px] mt-[50px] lg:mx-[150px]">
-      <h1 class="text-[24px] text-black lg:text-[37px]">มีที่ดีๆอยากแชร์เหรอ?</h1>
-      <h4 class="text-black/50 w-[300px] lg:text-[22px] lg:w-[500px]">ข้อมูลของคุณสำคัญกับเรามาก
+    <div class="px-[20px] mt-[50px] 2xl:px-[200px]">
+      <h1 class="text-[24px] text-black xl:text-[37px]">มีที่ดีๆอยากแชร์เหรอ?</h1>
+      <h4 class="text-black/50 w-[300px] xl:text-[22px] xl:w-[500px]">ข้อมูลของคุณสำคัญกับเรามาก
         เราอยากให้เว็บของเราเป็นอีกหนึ่งสังคมที่รวมผู้คนที่ชอบทำงานด้านนอกบ้าน หรือ ออฟฟิศ ได้แชร์ที่นั่งทำงานดีๆให้กัน
       </h4>
     </div>
 
-    <div id="layout" class="px-[20px] mt-[50px] lg:mx-[150px] lg:px-[40px]">
+    <div id="layout" class="px-[20px] mt-[50px] xl:px-[40px] 2xl:px-[200px]">
       <Map />
     </div>
 
     <div
-      class="flex justify-between items-center px-[20px] mt-[30px] lg:mx-[150px] space-x-2 overflow-x-hidden lg:px-[40px] lg:justify-start lg:overflow-visible">
+      class="flex justify-between items-center px-[20px] mt-[30px] space-x-2 overflow-x-hidden xl:px-[40px] xl:justify-start xl:overflow-visible 2xl:px-[200px]">
       <button class="border-[2px] border-black/50 rounded-full" @click.prevent="openImageDialog">
         <i class="fas text-black/50 w-[32px] h-[32px] p-2"
           :class="{ 'fa-images': !isImgUp, 'fa-file-check': isImgUp }"></i>
@@ -211,14 +217,14 @@
 
 
       <input
-        class="border-[2px] border-black/50 rounded-[20px] px-2 py-1 w-[55%] placeholder:text-black/50 placeholder:text-[16px] focus:outline-none lg:max-w-[300px]"
+        class="border-[2px] border-black/50 rounded-[20px] px-2 py-1 w-[55%] placeholder:text-black/50 placeholder:text-[16px] focus:outline-none xl:max-w-[300px]"
         placeholder="ชื่อ" v-model="cws_name_form" @input="Form_Update('name')">
       <input
-        class="border-[2px] border-black/50 rounded-[20px] px-2 py-1 w-[30%] placeholder:text-black/50 placeholder:text-[16px] focus:outline-none lg:max-w-[100px]"
+        class="border-[2px] border-black/50 rounded-[20px] px-2 py-1 w-[30%] placeholder:text-black/50 placeholder:text-[16px] focus:outline-none xl:max-w-[100px]"
         placeholder="ราคา" v-model="cws_price_form" @input="Form_Update('price')">
 
 
-      <div class="hidden lg:block w-[460px] translate-y-[25px] lg:px-[40px]">
+      <div class="hidden xl:block w-[460px] translate-y-[25px] xl:px-[40px]">
         <h4 class="px-[20px] mt-[20px] text-black/50 text-[16px]">สิ่งอำนวยความสะดวก</h4>
         <div class="flex justify-between items-center w-[300px] px-[20px] mt-[10px]">
           <!-- Utensils -->
@@ -269,14 +275,14 @@
         </div>
       </div>
     </div>
-    <div class="px-[20px] mt-[20px] lg:mx-[150px] lg:px-[40px] lg:mt-0 lg:translate-y-[-20px]">
+    <div class="px-[20px] mt-[20px] xl:px-[40px] xl:mt-0 xl:translate-y-[-20px] 2xl:px-[200px]">
       <input
-        class="border-[2px] border-black/50 rounded-[20px] px-2 pb-[100px] py-1 min-h-[150px] w-full placeholder:text-black/50 placeholder:text-[16px] focus:outline-none lg:w-[460px]"
+        class="border-[2px] border-black/50 rounded-[20px] px-2 pb-[100px] py-1 min-h-[150px] w-full placeholder:text-black/50 placeholder:text-[16px] focus:outline-none xl:w-[460px]"
         placeholder="เขียนรีวิวและบรรยายบรรยากาศ" v-model="cws_review_form" @input="Form_Update('review')">
     </div>
 
     <!-- Facilities Form -->
-    <div class="lg:hidden lg:mx-[150px]">
+    <div class="xl:hidden">
       <h4 class="px-[20px] mt-[20px] text-black/50 text-[16px]">สิ่งอำนวยความสะดวก</h4>
       <div class="flex justify-between items-center w-[70vw] px-[20px] mt-[10px]">
         <!-- Utensils -->
@@ -328,21 +334,21 @@
     </div>
 
     <!-- Time Form -->
-    <h4 class="px-[20px] mt-[20px] lg:mx-[150px] text-black/50 text-[16px] lg:px-[40px]">เวลาทำการ</h4>
+    <h4 class="px-[20px] mt-[20px] text-black/50 text-[16px] xl:px-[40px] 2xl:px-[200px]">เวลาทำการ</h4>
     <!-- Open Time -->
-    <div class="px-[20px] lg:px-[40px] lg:mx-[150px]">
+    <div class="px-[20px] xl:px-[40px] 2xl:px-[200px]">
       <div class="flex items-center mt-[10px] space-x-[20px]">
         <div class="w-[10px]">
-          <h4 class="text-black/50 text-[16px] lg:hidden">อา.</h4>
-          <h4 class="text-black/50 text-[16px] hidden lg:block">อาทิตย์</h4>
+          <h4 class="text-black/50 text-[16px] xl:hidden">อา.</h4>
+          <h4 class="text-black/50 text-[16px] hidden xl:block">อาทิตย์</h4>
         </div>
-        <button class="fas text-[25px] lg:pl-[50px]" @click.prevent="dayToggle_BTN('sunday', openDateTime[0].sunday.open)"
+        <button class="fas text-[25px] xl:pl-[50px]" @click.prevent="dayToggle_BTN('sunday', openDateTime[0].sunday.open)"
           :class="{ 'fa-toggle-on text-[#1cb7d9]': openDateTime[0].sunday.open, 'fa-toggle-off text-black/50': !openDateTime[0].sunday.open }"></button>
-        <div class="hidden lg:block w-[30px]">
+        <div class="hidden xl:block w-[30px]">
           <h4 class="text-[16px] text-[#1cb7d9]" :class="{ 'hidden': !openDateTime[0].sunday.open }">เปิด</h4>
           <h4 class="text-[16px] text-black/50" :class="{ 'hidden': openDateTime[0].sunday.open }">ปิด</h4>
         </div>
-        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation lg:max-w-[150px]" v-model="time" time-picker
+        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation xl:max-w-[150px]" v-model="time" time-picker
           @update:model-value="TimeUpdate('sunday', 'open', time)">
           <template #trigger>
             <div
@@ -351,7 +357,7 @@
           </template>
         </VueDatePicker>
         <h4>-</h4>
-        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation lg:max-w-[150px]" v-model="time" time-picker
+        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation xl:max-w-[150px]" v-model="time" time-picker
           @update:model-value="TimeUpdate('sunday', 'close', time)">
           <template #trigger>
             <div
@@ -362,16 +368,16 @@
       </div>
       <div class="flex items-center mt-[10px] space-x-[20px]">
         <div class="w-[10px]">
-          <h4 class="text-black/50 text-[16px] lg:hidden">จ.</h4>
-          <h4 class="text-black/50 text-[16px] hidden lg:block">จันทร์</h4>
+          <h4 class="text-black/50 text-[16px] xl:hidden">จ.</h4>
+          <h4 class="text-black/50 text-[16px] hidden xl:block">จันทร์</h4>
         </div>
-        <button class="fas text-[25px] lg:pl-[50px]" @click.prevent="dayToggle_BTN('monday', openDateTime[0].monday.open)"
+        <button class="fas text-[25px] xl:pl-[50px]" @click.prevent="dayToggle_BTN('monday', openDateTime[0].monday.open)"
           :class="{ 'fa-toggle-on text-[#1cb7d9]': openDateTime[0].monday.open, 'fa-toggle-off text-black/50': !openDateTime[0].monday.open }"></button>
-        <div class="hidden lg:block w-[30px]">
+        <div class="hidden xl:block w-[30px]">
           <h4 class="text-[16px] text-[#1cb7d9]" :class="{ 'hidden': !openDateTime[0].monday.open }">เปิด</h4>
           <h4 class="text-[16px] text-black/50" :class="{ 'hidden': openDateTime[0].monday.open }">ปิด</h4>
         </div>
-        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation lg:max-w-[150px]" v-model="time" time-picker
+        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation xl:max-w-[150px]" v-model="time" time-picker
           @update:model-value="TimeUpdate('monday', 'open', time)">
           <template #trigger>
             <div
@@ -380,7 +386,7 @@
           </template>
         </VueDatePicker>
         <h4>-</h4>
-        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation lg:max-w-[150px]" v-model="time" time-picker
+        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation xl:max-w-[150px]" v-model="time" time-picker
           @update:model-value="TimeUpdate('monday', 'close', time)">
           <template #trigger>
             <div
@@ -391,17 +397,17 @@
       </div>
       <div class="flex items-center mt-[10px] space-x-[20px]">
         <div class="w-[10px]">
-          <h4 class="text-black/50 text-[16px] lg:hidden">อ.</h4>
-          <h4 class="text-black/50 text-[16px] hidden lg:block">อังคาร</h4>
+          <h4 class="text-black/50 text-[16px] xl:hidden">อ.</h4>
+          <h4 class="text-black/50 text-[16px] hidden xl:block">อังคาร</h4>
         </div>
-        <button class="fas text-[25px] lg:pl-[50px]"
+        <button class="fas text-[25px] xl:pl-[50px]"
           @click.prevent="dayToggle_BTN('tuesday', openDateTime[0].tuesday.open)"
           :class="{ 'fa-toggle-on text-[#1cb7d9]': openDateTime[0].tuesday.open, 'fa-toggle-off text-black/50': !openDateTime[0].tuesday.open }"></button>
-        <div class="hidden lg:block w-[30px]">
+        <div class="hidden xl:block w-[30px]">
           <h4 class="text-[16px] text-[#1cb7d9]" :class="{ 'hidden': !openDateTime[0].tuesday.open }">เปิด</h4>
           <h4 class="text-[16px] text-black/50" :class="{ 'hidden': openDateTime[0].tuesday.open }">ปิด</h4>
         </div>
-        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation lg:max-w-[150px]" v-model="time" time-picker
+        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation xl:max-w-[150px]" v-model="time" time-picker
           @update:model-value="TimeUpdate('tuesday', 'open', time)">
           <template #trigger>
             <div
@@ -410,7 +416,7 @@
           </template>
         </VueDatePicker>
         <h4>-</h4>
-        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation lg:max-w-[150px]" v-model="time" time-picker
+        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation xl:max-w-[150px]" v-model="time" time-picker
           @update:model-value="TimeUpdate('tuesday', 'close', time)">
           <template #trigger>
             <div
@@ -421,17 +427,17 @@
       </div>
       <div class="flex items-center mt-[10px] space-x-[20px]">
         <div class="w-[10px]">
-          <h4 class="text-black/50 text-[16px] lg:hidden">พ.</h4>
-          <h4 class="text-black/50 text-[16px] hidden lg:block">พุธ</h4>
+          <h4 class="text-black/50 text-[16px] xl:hidden">พ.</h4>
+          <h4 class="text-black/50 text-[16px] hidden xl:block">พุธ</h4>
         </div>
-        <button class="fas text-[25px] lg:pl-[50px]"
+        <button class="fas text-[25px] xl:pl-[50px]"
           @click.prevent="dayToggle_BTN('wednesday', openDateTime[0].wednesday.open)"
           :class="{ 'fa-toggle-on text-[#1cb7d9]': openDateTime[0].wednesday.open, 'fa-toggle-off text-black/50': !openDateTime[0].wednesday.open }"></button>
-        <div class="hidden lg:block w-[30px]">
+        <div class="hidden xl:block w-[30px]">
           <h4 class="text-[16px] text-[#1cb7d9]" :class="{ 'hidden': !openDateTime[0].wednesday.open }">เปิด</h4>
           <h4 class="text-[16px] text-black/50" :class="{ 'hidden': openDateTime[0].wednesday.open }">ปิด</h4>
         </div>
-        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation lg:max-w-[150px]" v-model="time" time-picker
+        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation xl:max-w-[150px]" v-model="time" time-picker
           @update:model-value="TimeUpdate('wednesday', 'open', time)">
           <template #trigger>
             <div
@@ -440,7 +446,7 @@
           </template>
         </VueDatePicker>
         <h4>-</h4>
-        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation lg:max-w-[150px]" v-model="time" time-picker
+        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation xl:max-w-[150px]" v-model="time" time-picker
           @update:model-value="TimeUpdate('wednesday', 'close', time)">
           <template #trigger>
             <div
@@ -451,17 +457,17 @@
       </div>
       <div class="flex items-center mt-[10px] space-x-[20px]">
         <div class="w-[10px]">
-          <h4 class="text-black/50 text-[16px] lg:hidden">พฤ.</h4>
-          <h4 class="text-black/50 text-[16px] hidden lg:block">พฤหัสบดี</h4>
+          <h4 class="text-black/50 text-[16px] xl:hidden">พฤ.</h4>
+          <h4 class="text-black/50 text-[16px] hidden xl:block">พฤหัสบดี</h4>
         </div>
-        <button class="fas text-[25px] lg:pl-[50px]"
+        <button class="fas text-[25px] xl:pl-[50px]"
           @click.prevent="dayToggle_BTN('thursday', openDateTime[0].thursday.open)"
           :class="{ 'fa-toggle-on text-[#1cb7d9]': openDateTime[0].thursday.open, 'fa-toggle-off text-black/50': !openDateTime[0].thursday.open }"></button>
-        <div class="hidden lg:block w-[30px]">
+        <div class="hidden xl:block w-[30px]">
           <h4 class="text-[16px] text-[#1cb7d9]" :class="{ 'hidden': !openDateTime[0].thursday.open }">เปิด</h4>
           <h4 class="text-[16px] text-black/50" :class="{ 'hidden': openDateTime[0].thursday.open }">ปิด</h4>
         </div>
-        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation lg:max-w-[150px]" v-model="time" time-picker
+        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation xl:max-w-[150px]" v-model="time" time-picker
           @update:model-value="TimeUpdate('thursday', 'open', time)">
           <template #trigger>
             <div
@@ -470,7 +476,7 @@
           </template>
         </VueDatePicker>
         <h4>-</h4>
-        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation lg:max-w-[150px]" v-model="time" time-picker
+        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation xl:max-w-[150px]" v-model="time" time-picker
           @update:model-value="TimeUpdate('thursday', 'close', time)">
           <template #trigger>
             <div
@@ -481,16 +487,16 @@
       </div>
       <div class="flex items-center mt-[10px] space-x-[20px]">
         <div class="w-[10px]">
-          <h4 class="text-black/50 text-[16px] lg:hidden">ศ.</h4>
-          <h4 class="text-black/50 text-[16px] hidden lg:block">ศุกร์</h4>
+          <h4 class="text-black/50 text-[16px] xl:hidden">ศ.</h4>
+          <h4 class="text-black/50 text-[16px] hidden xl:block">ศุกร์</h4>
         </div>
-        <button class="fas text-[25px] lg:pl-[50px]" @click.prevent="dayToggle_BTN('friday', openDateTime[0].friday.open)"
+        <button class="fas text-[25px] xl:pl-[50px]" @click.prevent="dayToggle_BTN('friday', openDateTime[0].friday.open)"
           :class="{ 'fa-toggle-on text-[#1cb7d9]': openDateTime[0].friday.open, 'fa-toggle-off text-black/50': !openDateTime[0].friday.open }"></button>
-        <div class="hidden lg:block w-[30px]">
+        <div class="hidden xl:block w-[30px]">
           <h4 class="text-[16px] text-[#1cb7d9]" :class="{ 'hidden': !openDateTime[0].friday.open }">เปิด</h4>
           <h4 class="text-[16px] text-black/50" :class="{ 'hidden': openDateTime[0].friday.open }">ปิด</h4>
         </div>
-        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation lg:max-w-[150px]" v-model="time" time-picker
+        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation xl:max-w-[150px]" v-model="time" time-picker
           @update:model-value="TimeUpdate('friday', 'open', time)">
           <template #trigger>
             <div
@@ -499,7 +505,7 @@
           </template>
         </VueDatePicker>
         <h4>-</h4>
-        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation lg:max-w-[150px]" v-model="time" time-picker
+        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation xl:max-w-[150px]" v-model="time" time-picker
           @update:model-value="TimeUpdate('friday', 'close', time)">
           <template #trigger>
             <div
@@ -510,17 +516,17 @@
       </div>
       <div class="flex items-center mt-[10px] space-x-[20px]">
         <div class="w-[10px]">
-          <h4 class="text-black/50 text-[16px] lg:hidden">ส.</h4>
-          <h4 class="text-black/50 text-[16px] hidden lg:block">เสาร์</h4>
+          <h4 class="text-black/50 text-[16px] xl:hidden">ส.</h4>
+          <h4 class="text-black/50 text-[16px] hidden xl:block">เสาร์</h4>
         </div>
-        <button class="fas text-[25px] lg:pl-[50px]"
+        <button class="fas text-[25px] xl:pl-[50px]"
           @click.prevent="dayToggle_BTN('saturday', openDateTime[0].saturday.open)"
           :class="{ 'fa-toggle-on text-[#1cb7d9]': openDateTime[0].saturday.open, 'fa-toggle-off text-black/50': !openDateTime[0].saturday.open }"></button>
-        <div class="hidden lg:block w-[30px]">
+        <div class="hidden xl:block w-[30px]">
           <h4 class="text-[16px] text-[#1cb7d9]" :class="{ 'hidden': !openDateTime[0].saturday.open }">เปิด</h4>
           <h4 class="text-[16px] text-black/50" :class="{ 'hidden': openDateTime[0].saturday.open }">ปิด</h4>
         </div>
-        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation lg:max-w-[150px]" v-model="time" time-picker
+        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation xl:max-w-[150px]" v-model="time" time-picker
           @update:model-value="TimeUpdate('saturday', 'open', time)">
           <template #trigger>
             <div
@@ -529,7 +535,7 @@
           </template>
         </VueDatePicker>
         <h4>-</h4>
-        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation lg:max-w-[150px]" v-model="time" time-picker
+        <VueDatePicker class="max-w-[30vw] select-none touch-manipulation xl:max-w-[150px]" v-model="time" time-picker
           @update:model-value="TimeUpdate('saturday', 'close', time)">
           <template #trigger>
             <div
@@ -540,7 +546,7 @@
       </div>
     </div>
     <button
-      class="flex justify-center items-center text-white text-[20px] rounded-[20px] bg-[#1cb7d9] mx-[20px] px-5 py-1 mt-[20px] lg:mx-[1px] transition-all duration-300"
+      class="flex justify-center items-center text-white text-[20px] rounded-[20px] bg-[#1cb7d9] mx-[20px] px-5 py-1 mt-[20px] transition-all duration-300 2xl:mx-[200px]"
       @click.prevent="UploadFormToDB" :class="{ 'disabled: bg-[#8888]': isUploaded === 'loading' }">
       <div class="flex justify-center items-center mr-2">
         <i class="fas fa-map-marker-alt" :class="{ 'fa-spin': isUploaded === 'loading' }"></i>
@@ -550,63 +556,87 @@
 
 
     <!-- Part 5 Content -->
-    <div class="flex justify-start items-center text-[24px] mt-[50px] lg:mx-[150px] px-[20px] font-medium lg:px-[40px] lg:text-[24px]">
+    <div
+      class="flex justify-start items-center text-[24px] mt-[50px] px-[20px] font-medium xl:px-[40px] xl:text-[30px] 2xl:px-[200px]">
       <i class="far fa-code text-[#4ECB71] pr-2"></i>
       <h1>นักพัฒนา</h1>
     </div>
-    <div class="flex justify-evenly items-center px-[20px] mt-[50px] lg:mx-[150px] space-x-3 lg:px-[40px] lg:space-x-[-250px] lg:justfly-center">
+    <div
+      class="flex justify-evenly items-center px-[20px] mt-[50px] space-x-3 xl:px-[40px] xl:space-x-[-250px] xl:justfly-center">
       <!-- Niji -->
       <div class="hover:translate-y-[-30px] transition-all duration-500">
         <NuxtImg
-          class="object-fit absolute ml-[3.5px] lg:ml-[7px] mt-[20px] lg:mt-[40px] rounded-full w-[25vw] lg:w-[50vw] max-w-[100px] lg:max-w-[200px] h-[25vw] lg:h-[50vw] max-h-[100px] lg:max-h-[200px]"
+          class="object-fit absolute ml-[3.5px] 2xl:ml-[7px] mt-[20px] 2xl:mt-[40px] rounded-full w-[25vw] 2xl:w-[50vw] max-w-[100px] 2xl:max-w-[200px] h-[25vw] 2xl:h-[50vw] max-h-[100px] 2xl:max-h-[200px]"
           src="/img/niji.png" loading="lazy"></NuxtImg>
-        <h1 class="absolute ml-[5px] lg:ml-[10px] mt-[120px] lg:mt-[250px] font-medium text-[15px] lg:text-[24px] text-black">Niji</h1>
-        <h4 class="absolute ml-[5px] lg:ml-[10px] mt-[140px] lg:mt-[280px] text-[8px] lg:text-[15px] text-black/50">Suphawinee</h4>
-        <h4 class="absolute ml-[5px] lg:ml-[10px] mt-[150px] lg:mt-[295px] text-[8px] lg:text-[15px] text-black/50">Chatasawapreeda</h4>
-        <div class="absolute ml-[5px] lg:ml-[10px] mt-[165px] lg:mt-[320px] h-[1px] w-[44px] bg-black"></div>
-        <h4 class="absolute ml-[5px] lg:ml-[10px] mt-[170px] lg:mt-[330px] text-[8px] lg:text-[15px] text-black">Backend Dev</h4>
-        <div class="absolute ml-[5px] lg:ml-[10px] mt-[180px] lg:mt-[350px] w-[70px] lg:w-[80px] space-x-1 text-black/50 text-[15px] lg:text-[24px]">
+        <h1
+          class="absolute ml-[5px] 2xl:ml-[10px] mt-[120px] 2xl:mt-[250px] font-medium text-[15px] 2xl:text-[24px] text-black">
+          Niji</h1>
+        <h4 class="absolute ml-[5px] 2xl:ml-[10px] mt-[140px] 2xl:mt-[280px] text-[8px] 2xl:text-[15px] text-black/50">
+          Suphawinee</h4>
+        <h4 class="absolute ml-[5px] 2xl:ml-[10px] mt-[150px] 2xl:mt-[295px] text-[8px] 2xl:text-[15px] text-black/50">
+          Chatasawapreeda</h4>
+        <div class="absolute ml-[5px] 2xl:ml-[10px] mt-[165px] 2xl:mt-[320px] h-[1px] w-[44px] 2xl:w-[50px] bg-black">
+        </div>
+        <h4 class="absolute ml-[5px] 2xl:ml-[10px] mt-[170px] 2xl:mt-[330px] text-[8px] 2xl:text-[15px] text-black">
+          Backend Dev</h4>
+        <div
+          class="absolute ml-[5px] 2xl:ml-[10px] mt-[180px] 2xl:mt-[350px] w-[70px] space-x-1 text-black/50 text-[15px] 2xl:text-[15px]">
           <NuxtLink class="fab fa-facebook-square" to="https://www.facebook.com/nijiducky" target="_blank"></NuxtLink>
           <NuxtLink class="fab fa-instagram" to="https://www.instagram.com/_ducky_way_/" target="_blank"></NuxtLink>
           <NuxtLink class="fab fa-discord" to="https://discord.com/users/321924157677895680" target="_blank"></NuxtLink>
         </div>
-        <NuxtImg class="shadow-[0_0_5px_2px_rgba(0,0,0,0.25)] rounded-[10px] w-[107px] h-[205px] lg:w-[214px] lg:h-[410px]" preload
-          src="/img/dev_card_bg.png"></NuxtImg>
+        <NuxtImg
+          class="shadow-[0_0_5px_2px_rgba(0,0,0,0.25)] rounded-[10px] w-[107px] h-[205px] 2xl:w-[214px] 2xl:h-[410px]"
+          preload src="/img/dev_card_bg.png"></NuxtImg>
       </div>
       <!-- Kan -->
       <div class="hover:translate-y-[-30px] transition-all duration-500">
         <NuxtImg
-          class="object-fit absolute ml-[3.5px] lg:ml-[7px] mt-[20px] lg:mt-[40px] rounded-full w-[25vw] lg:w-[50vw] max-w-[100px] lg:max-w-[200px] h-[25vw] lg:h-[50vw] max-h-[100px] lg:max-h-[200px]"
-          src="/img/kan.png" loading="lazy"></NuxtImg>
-        <h1 class="absolute ml-[5px] lg:ml-[10px] mt-[120px] lg:mt-[250px] font-medium text-[15px] lg:text-[24px] text-black">Kan</h1>
-        <h4 class="absolute ml-[5px] lg:ml-[10px] mt-[150px] lg:mt-[295px] text-[8px] lg:text-[15px] text-black/50">Kankawee Aramrak</h4>
-        <div class="absolute ml-[5px] lg:ml-[10px] mt-[165px] lg:mt-[320px] h-[1px] w-[44px] bg-black"></div>
-        <h4 class="absolute ml-[5px] lg:ml-[10px] mt-[170px] lg:mt-[330px] text-[8px] lg:text-[15px] text-black">Full Stack Dev</h4>
-        <div class="absolute ml-[5px] lg:ml-[10px] mt-[180px] lg:mt-[350px] w-[70px] lg:w-[80px] space-x-1 text-black/50 text-[15px] lg:text-[24px]">
+          class="object-fit absolute ml-[3.5px] 2xl:ml-[7px] mt-[20px] 2xl:mt-[40px] rounded-full w-[25vw] 2xl:w-[50vw] max-w-[100px] 2xl:max-w-[200px] h-[25vw] 2xl:h-[50vw] max-h-[100px] 2xl:max-h-[200px]"
+          preload src="/img/kan.png" height="100px" width="100px" loading="lazy"></NuxtImg>
+        <h1
+          class="absolute ml-[5px] 2xl:ml-[10px] mt-[120px] 2xl:mt-[250px] font-medium text-[15px] 2xl:text-[24px] text-black">
+          Kan</h1>
+        <h4 class="absolute ml-[5px] 2xl:ml-[10px] mt-[140px] 2xl:mt-[280px] text-[8px] 2xl:text-[15px] text-black/50">
+          Kankawee Aramrak</h4>
+        <div class="absolute ml-[5px] 2xl:ml-[10px] mt-[165px] 2xl:mt-[320px] h-[1px] w-[44px] 2xl:w-[50px] bg-black">
+        </div>
+        <h4 class="absolute ml-[5px] 2xl:ml-[10px] mt-[170px] 2xl:mt-[330px] text-[8px] 2xl:text-[15px] text-black">Full
+          Stack Dev</h4>
+        <div
+          class="absolute ml-[5px] 2xl:ml-[10px] mt-[180px] 2xl:mt-[350px] w-[70px] space-x-1 text-black/50 text-[15px] 2xl:text-[15px]">
           <NuxtLink class="fab fa-facebook-square" to="https://www.facebook.com/KankaweeG49/" target="_blank"></NuxtLink>
           <NuxtLink class="fab fa-instagram" to="https://www.instagram.com/kan_g49/" target="_blank"></NuxtLink>
           <NuxtLink class="fab fa-discord" to="https://discord.com/users/605305608085831681" target="_blank"></NuxtLink>
         </div>
-        <NuxtImg class="shadow-[0_0_5px_2px_rgba(0,0,0,0.25)] rounded-[10px] w-[107px] h-[205px] lg:w-[214px] lg:h-[410px]" preload
-          src="/img/dev_card_bg.png"></NuxtImg>
+        <NuxtImg
+          class="shadow-[0_0_5px_2px_rgba(0,0,0,0.25)] rounded-[10px] w-[107px] h-[205px] 2xl:w-[214px] 2xl:h-[410px]"
+          preload src="/img/dev_card_bg.png"></NuxtImg>
       </div>
       <!-- Prite -->
       <div class="hover:translate-y-[-30px] transition-all duration-500">
         <NuxtImg
-          class="object-fit absolute ml-[3.5px] lg:ml-[7px] mt-[20px] lg:mt-[40px] rounded-full w-[25vw] lg:w-[50vw] max-w-[100px] lg:max-w-[200px] h-[25vw] lg:h-[50vw] max-h-[100px] lg:max-h-[200px]"
-          src="/img/prite.png" loading="lazy"></NuxtImg>
-        <h1 class="absolute ml-[5px] lg:ml-[10px] mt-[120px] lg:mt-[250px] font-medium text-[15px] lg:text-[24px] text-black">Prite</h1>
-        <h4 class="absolute ml-[5px] lg:ml-[10px] mt-[150px] lg:mt-[295px] text-[8px] lg:text-[15px] text-black/50">Pannawat Aungern</h4>
-        <div class="absolute ml-[5px] lg:ml-[10px] mt-[165px] lg:mt-[320px] h-[1px] w-[44px] bg-black"></div>
-        <h4 class="absolute ml-[5px] lg:ml-[10px] mt-[170px] lg:mt-[330px] text-[8px] lg:text-[15px] text-black">Designer & Writer</h4>
-        <div class="absolute ml-[5px] lg:ml-[10px] mt-[180px] lg:mt-[350px] w-[70px] lg:w-[80px] space-x-1 text-black/50 text-[15px] lg:text-[24px]">
+          class="object-fit absolute ml-[3.5px] 2xl:ml-[7px] mt-[20px] 2xl:mt-[40px] rounded-full w-[25vw] 2xl:w-[50vw] max-w-[100px] 2xl:max-w-[200px] h-[25vw] 2xl:h-[50vw] max-h-[100px] 2xl:max-h-[200px]"
+          preload src="/img/prite.png" height="100px" width="100px" loading="lazy"></NuxtImg>
+        <h1
+          class="absolute ml-[5px] 2xl:ml-[10px] mt-[120px] 2xl:mt-[250px] font-medium text-[15px] 2xl:text-[24px] text-black">
+          Prite</h1>
+        <h4 class="absolute ml-[5px] 2xl:ml-[10px] mt-[140px] 2xl:mt-[280px] text-[8px] 2xl:text-[15px] text-black/50">
+          Pannawat Aungern</h4>
+        <div class="absolute ml-[5px] 2xl:ml-[10px] mt-[165px] 2xl:mt-[320px] h-[1px] w-[44px] 2xl:w-[50px] bg-black">
+        </div>
+        <h4 class="absolute ml-[5px] 2xl:ml-[10px] mt-[170px] 2xl:mt-[330px] text-[8px] 2xl:text-[15px] text-black">
+          Designer & Writer</h4>
+        <div
+          class="absolute ml-[5px] 2xl:ml-[10px] mt-[180px] 2xl:mt-[350px] w-[70px] space-x-1 text-black/50 text-[15px] 2xl:text-[15px]">
           <NuxtLink class="fab fa-facebook-square" to="https://www.facebook.com/profile.php?id=100037783080563"
             target="_blank"></NuxtLink>
           <NuxtLink class="fab fa-instagram" to="https://www.instagram.com/pxnwat_t/" target="_blank"></NuxtLink>
           <NuxtLink class="fab fa-discord" to="https://discord.com/users/560017469666754560" target="_blank"></NuxtLink>
         </div>
-        <NuxtImg class="shadow-[0_0_5px_2px_rgba(0,0,0,0.25)] rounded-[10px] w-[107px] h-[205px] lg:w-[214px] lg:h-[410px]" preload
-          src="/img/dev_card_bg.png"></NuxtImg>
+        <NuxtImg
+          class="shadow-[0_0_5px_2px_rgba(0,0,0,0.25)] rounded-[10px] w-[107px] h-[205px] 2xl:w-[214px] 2xl:h-[410px]"
+          preload src="/img/dev_card_bg.png"></NuxtImg>
       </div>
     </div>
 
