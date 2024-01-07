@@ -58,3 +58,12 @@ button {
     opacity: 1;
     transform: rotateY(0) scale(1.1);
   }
+
+/* MapBox Design */
+
+.findPage_MapBox .mapboxgl-popup-content {
+  width: 320px;
+  height: 500px;
+  border-radius: 20px;
+  background-color: #F2FBFF;
+}
