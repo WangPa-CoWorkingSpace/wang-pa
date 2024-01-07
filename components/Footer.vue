@@ -1,12 +1,12 @@
 <template>
     <div class="max-w-screen rounded-t-[40px] bg-gradient-to-r from-[#59C8F7] to-white to-[120%] lg:to-[140%]">
-        <div class="mx-[40px] pt-[50px] lg:flex lg:space-x-96">
+        <div class="mx-[40px] pt-[50px] lg:flex lg:justify-between">
             <!-- Logo Container -->
             <div class="flex items-center h-[100px] lg:ml-4 lg:mt-4">
                 <NuxtImg class="w-[250px] lg:w-[400px]" src="/img/wanpa_logo.png"></NuxtImg>
             </div>
             <!-- Detail -->
-            <div class="mt-[20px] lg:mt-[-20px]">
+            <div class="mt-[20px] lg:mt-[-20px] xl:mr-[150px]">
                 <h4 class="text-white text-[20px] lg:text-[32px]">ติดต่อเรา</h4>
                 <div class="mt-2 space-y-1 text-white font-medium lg:mt-0">
                     <div class="flex items-center">
