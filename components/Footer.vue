@@ -1,5 +1,5 @@
 <template>
-    <div class="w-screen rounded-t-[40px] bg-gradient-to-r from-[#59C8F7] to-white to-[120%]">
+    <div class="max-w-screen rounded-t-[40px] bg-gradient-to-r from-[#59C8F7] to-white to-[120%] lg:to-[140%]">
         <div class="mx-[40px] pt-[50px] lg:flex lg:space-x-[360px]">
             <!-- Logo Container -->
             <div class="flex items-center h-[100px] lg:ml-4 lg:mt-4">
