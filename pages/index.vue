@@ -540,7 +540,7 @@
       </div>
     </div>
     <button
-      class="flex justify-center items-center text-white text-[20px] rounded-[20px] bg-[#1cb7d9] mx-[20px] px-5 py-1 mt-[20px] lg:mx-[150px] transition-all duration-300"
+      class="flex justify-center items-center text-white text-[20px] rounded-[20px] bg-[#1cb7d9] mx-[20px] px-5 py-1 mt-[20px] lg:mx-[185px] transition-all duration-300"
       @click.prevent="UploadFormToDB" :class="{ 'disabled: bg-[#8888]': isUploaded === 'loading' }">
       <div class="flex justify-center items-center mr-2">
         <i class="fas fa-map-marker-alt" :class="{ 'fa-spin': isUploaded === 'loading' }"></i>
@@ -558,14 +558,14 @@
       <!-- Niji -->
       <div class="hover:translate-y-[-30px] transition-all duration-500">
         <NuxtImg
-          class="object-fit absolute ml-[3.5px] lg:ml-[5px] mt-[20px] lg:mt-[40px] rounded-full w-[25vw] lg:w-[50vw] max-w-[100px] lg:max-w-[200px] h-[25vw] lg:h-[50vw] max-h-[100px] lg:max-h-[200px]"
+          class="object-fit absolute ml-[3.5px] lg:ml-[7px] mt-[20px] lg:mt-[40px] rounded-full w-[25vw] lg:w-[50vw] max-w-[100px] lg:max-w-[200px] h-[25vw] lg:h-[50vw] max-h-[100px] lg:max-h-[200px]"
           src="/img/niji.png" loading="lazy"></NuxtImg>
-        <h1 class="absolute ml-[5px] mt-[120px] font-medium text-[15px] text-black">Niji</h1>
-        <h4 class="absolute ml-[5px] mt-[140px] text-[8px] text-black/50">Suphawinee</h4>
-        <h4 class="absolute ml-[5px] mt-[150px] text-[8px] text-black/50">Chatasawapreeda</h4>
-        <div class="absolute ml-[5px] mt-[165px] h-[1px] w-[44px] bg-black"></div>
-        <h4 class="absolute ml-[5px] mt-[170px] text-[8px] text-black">Backend Dev</h4>
-        <div class="absolute ml-[5px] mt-[180px] w-[70px] space-x-1 text-black/50 text-[15px]">
+        <h1 class="absolute ml-[5px] lg:ml-[10px] mt-[120px] lg:mt-[250px] font-medium text-[15px] lg:text-[24px] text-black">Niji</h1>
+        <h4 class="absolute ml-[5px] lg:ml-[10px] mt-[140px] lg:mt-[280px] text-[8px] lg:text-[15px] text-black/50">Suphawinee</h4>
+        <h4 class="absolute ml-[5px] lg:ml-[10px] mt-[150px] lg:mt-[295px] text-[8px] lg:text-[15px] text-black/50">Chatasawapreeda</h4>
+        <div class="absolute ml-[5px] lg:ml-[10px] mt-[165px] lg:mt-[320px] h-[1px] w-[44px] bg-black"></div>
+        <h4 class="absolute ml-[5px] lg:ml-[10px] mt-[170px] lg:mt-[330px] text-[8px] lg:text-[15px] text-black">Backend Dev</h4>
+        <div class="absolute ml-[5px] lg:ml-[10px] mt-[180px] lg:mt-[350px] w-[70px] lg:w-[80px] space-x-1 text-black/50 text-[15px] lg:text-[24px]">
           <NuxtLink class="fab fa-facebook-square" to="https://www.facebook.com/nijiducky" target="_blank"></NuxtLink>
           <NuxtLink class="fab fa-instagram" to="https://www.instagram.com/_ducky_way_/" target="_blank"></NuxtLink>
           <NuxtLink class="fab fa-discord" to="https://discord.com/users/321924157677895680" target="_blank"></NuxtLink>
@@ -576,36 +576,36 @@
       <!-- Kan -->
       <div class="hover:translate-y-[-30px] transition-all duration-500">
         <NuxtImg
-          class="object-fit absolute ml-[3.5px] mt-[20px] rounded-full w-[25vw] max-w-[100px] h-[25vw] max-h-[100px]"
-          preload src="/img/kan.png" height="100px" width="100px" loading="lazy"></NuxtImg>
-        <h1 class="absolute ml-[5px] mt-[120px] font-medium text-[15px] text-black">Kan</h1>
-        <h4 class="absolute ml-[5px] mt-[140px] text-[8px] text-black/50">Kankawee Aramrak</h4>
-        <div class="absolute ml-[5px] mt-[155px] h-[1px] w-[44px] bg-black"></div>
-        <h4 class="absolute ml-[5px] mt-[160px] text-[8px] text-black">Full Stack Dev</h4>
-        <div class="absolute ml-[5px] mt-[180px] w-[70px] space-x-1 text-black/50 text-[15px]">
+          class="object-fit absolute ml-[3.5px] lg:ml-[7px] mt-[20px] lg:mt-[40px] rounded-full w-[25vw] lg:w-[50vw] max-w-[100px] lg:max-w-[200px] h-[25vw] lg:h-[50vw] max-h-[100px] lg:max-h-[200px]"
+          src="/img/kan.png" loading="lazy"></NuxtImg>
+        <h1 class="absolute ml-[5px] lg:ml-[10px] mt-[120px] lg:mt-[250px] font-medium text-[15px] lg:text-[24px] text-black">Kan</h1>
+        <h4 class="absolute ml-[5px] lg:ml-[10px] mt-[150px] lg:mt-[295px] text-[8px] lg:text-[15px] text-black/50">Kankawee Aramrak</h4>
+        <div class="absolute ml-[5px] lg:ml-[10px] mt-[165px] lg:mt-[320px] h-[1px] w-[44px] bg-black"></div>
+        <h4 class="absolute ml-[5px] lg:ml-[10px] mt-[170px] lg:mt-[330px] text-[8px] lg:text-[15px] text-black">Full Stack Dev</h4>
+        <div class="absolute ml-[5px] lg:ml-[10px] mt-[180px] lg:mt-[350px] w-[70px] lg:w-[80px] space-x-1 text-black/50 text-[15px] lg:text-[24px]">
           <NuxtLink class="fab fa-facebook-square" to="https://www.facebook.com/KankaweeG49/" target="_blank"></NuxtLink>
           <NuxtLink class="fab fa-instagram" to="https://www.instagram.com/kan_g49/" target="_blank"></NuxtLink>
           <NuxtLink class="fab fa-discord" to="https://discord.com/users/605305608085831681" target="_blank"></NuxtLink>
         </div>
-        <NuxtImg class="shadow-[0_0_5px_2px_rgba(0,0,0,0.25)] rounded-[10px] w-[107px] h-[205px]" preload
+        <NuxtImg class="shadow-[0_0_5px_2px_rgba(0,0,0,0.25)] rounded-[10px] w-[107px] h-[205px] lg:w-[214px] lg:h-[410px]" preload
           src="/img/dev_card_bg.png"></NuxtImg>
       </div>
       <!-- Prite -->
       <div class="hover:translate-y-[-30px] transition-all duration-500">
         <NuxtImg
-          class="object-fit absolute ml-[3.5px] mt-[20px] rounded-full w-[25vw] max-w-[100px] h-[25vw] max-h-[100px]"
-          preload src="/img/prite.png" height="100px" width="100px" loading="lazy"></NuxtImg>
-        <h1 class="absolute ml-[5px] mt-[120px] font-medium text-[15px] text-black">Prite</h1>
-        <h4 class="absolute ml-[5px] mt-[140px] text-[8px] text-black/50">Pannawat Aungern</h4>
-        <div class="absolute ml-[5px] mt-[155px] h-[1px] w-[44px] bg-black"></div>
-        <h4 class="absolute ml-[5px] mt-[160px] text-[8px] text-black">Designer & Writer</h4>
-        <div class="absolute ml-[5px] mt-[180px] w-[70px] space-x-1 text-black/50 text-[15px]">
+          class="object-fit absolute ml-[3.5px] lg:ml-[7px] mt-[20px] lg:mt-[40px] rounded-full w-[25vw] lg:w-[50vw] max-w-[100px] lg:max-w-[200px] h-[25vw] lg:h-[50vw] max-h-[100px] lg:max-h-[200px]"
+          src="/img/prite.png" loading="lazy"></NuxtImg>
+        <h1 class="absolute ml-[5px] lg:ml-[10px] mt-[120px] lg:mt-[250px] font-medium text-[15px] lg:text-[24px] text-black">Prite</h1>
+        <h4 class="absolute ml-[5px] lg:ml-[10px] mt-[150px] lg:mt-[295px] text-[8px] lg:text-[15px] text-black/50">Pannawat Aungern</h4>
+        <div class="absolute ml-[5px] lg:ml-[10px] mt-[165px] lg:mt-[320px] h-[1px] w-[44px] bg-black"></div>
+        <h4 class="absolute ml-[5px] lg:ml-[10px] mt-[170px] lg:mt-[330px] text-[8px] lg:text-[15px] text-black">Designer & Writer</h4>
+        <div class="absolute ml-[5px] lg:ml-[10px] mt-[180px] lg:mt-[350px] w-[70px] lg:w-[80px] space-x-1 text-black/50 text-[15px] lg:text-[24px]">
           <NuxtLink class="fab fa-facebook-square" to="https://www.facebook.com/profile.php?id=100037783080563"
             target="_blank"></NuxtLink>
           <NuxtLink class="fab fa-instagram" to="https://www.instagram.com/pxnwat_t/" target="_blank"></NuxtLink>
           <NuxtLink class="fab fa-discord" to="https://discord.com/users/560017469666754560" target="_blank"></NuxtLink>
         </div>
-        <NuxtImg class="shadow-[0_0_5px_2px_rgba(0,0,0,0.25)] rounded-[10px] w-[107px] h-[205px]" preload
+        <NuxtImg class="shadow-[0_0_5px_2px_rgba(0,0,0,0.25)] rounded-[10px] w-[107px] h-[205px] lg:w-[214px] lg:h-[410px]" preload
           src="/img/dev_card_bg.png"></NuxtImg>
       </div>
     </div>
