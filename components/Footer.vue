@@ -1,6 +1,6 @@
 <template>
     <div class="max-w-screen rounded-t-[40px] bg-gradient-to-r from-[#59C8F7] to-white to-[120%] lg:to-[140%]">
-        <div class="mx-[40px] pt-[50px] lg:flex lg:space-x-[360px]">
+        <div class="mx-[40px] pt-[50px] lg:flex lg:space-x-96">
             <!-- Logo Container -->
             <div class="flex items-center h-[100px] lg:ml-4 lg:mt-4">
                 <NuxtImg class="w-[250px] lg:w-[400px]" src="/img/wanpa_logo.png"></NuxtImg>
@@ -15,7 +15,7 @@
                     </div>
                     <div class="flex items-center">
                         <i class="fas fa-envelope mr-2"></i>
-                        <h4 class="max-w-[200px]">thisisemail@gmail.com</h4>
+                        <h4 class="max-w-[200px]">email.dummy@gmail.com</h4>
                     </div>
                     <div class="flex">
                         <i class="fas fa-map-marker-alt mr-2 mt-1"></i>

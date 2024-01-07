@@ -540,7 +540,7 @@
       </div>
     </div>
     <button
-      class="flex justify-center items-center text-white text-[20px] rounded-[20px] bg-[#1cb7d9] mx-[20px] px-5 py-1 mt-[20px] lg:mx-[185px] transition-all duration-300"
+      class="flex justify-center items-center text-white text-[20px] rounded-[20px] bg-[#1cb7d9] mx-[20px] px-5 py-1 mt-[20px] lg:mx-[1px] transition-all duration-300"
       @click.prevent="UploadFormToDB" :class="{ 'disabled: bg-[#8888]': isUploaded === 'loading' }">
       <div class="flex justify-center items-center mr-2">
         <i class="fas fa-map-marker-alt" :class="{ 'fa-spin': isUploaded === 'loading' }"></i>
