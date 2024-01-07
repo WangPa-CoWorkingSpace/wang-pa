@@ -24,7 +24,7 @@
                 </div>
             </div>
 
-            <div class="mt-[20px] lg:mt-[-20px]">
+            <div class="mt-[20px] lg:mt-[-20px] lg:mr-4">
                 <h4 class="text-white text-[20px]">ติดตามเรา</h4>
                 <div class="flex items-center mt-2 text-white space-x-[20px]">
                     <NuxtLink class="fab fa-facebook-square text-[35px]" to="" target="_blank"></NuxtLink>
