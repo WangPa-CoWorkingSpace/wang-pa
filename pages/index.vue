@@ -3,7 +3,7 @@
 
   <div class="min-h-screen main-gardient">
     <!--Part1 Content -->
-    <div class="ml-[40px] lg:mx-[100px]">
+    <div class="ml-[40px] lg:mx-[200px]">
       <div class="h-max text-black font-normal pt-[100px]">
         <h1 class="text-[40px] lg:text-[60px]">ว่างปะ ?</h1>
         <h2 class="text-[25px] lg:text-[37px]">อยากได้ที่ว่างๆทำงานอยู่เหรอ?</h2>
@@ -24,7 +24,7 @@
     </div>
     <div class="flex justify-end mr-[10px] lg:translate-y-[-150px] lg:mr-[70px]">
       <div class="absolute z-0">
-        <NuxtImg class="object-contain h-[170px] w-[130px] lg:h-[450px] lg:w-[344px]" src="/img/co-work.png" />
+        <NuxtImg class="object-contain h-[170px] w-[130px] lg:h-[450px] lg:w-[500px]" src="/img/co-work.png" />
       </div>
     </div>
     <div class="flex justify-between mt-[30px]">
@@ -34,7 +34,7 @@
     </div>
 
     <!-- Part2 Content -->
-    <div class="flex justify-between items-center mt-[100px] px-[20px] lg:mt-[150px] lg:px-[40px]">
+    <div class="flex justify-between items-center mt-[100px] lg:mx-[150px] px-[20px] lg:mt-[150px] lg:px-[40px]">
       <div>
         <h4 class="font-medium text-[18px] lg:text-[24px]"><i
             class="fas fa-map-marker-alt text-[#F24E1E] text-[20px] pr-2 lg:text-[26px]"></i>ใกล้เคียงคุณ</h4>
@@ -74,7 +74,7 @@
       </Slide>
     </Carousel>
     <!-- Carousel Slider Content Desktop-->
-    <Carousel class="hidden lg:block select-none" ref="near_me_slideLG" :itemsToShow="3" :wrapAround="true"
+    <Carousel class="hidden lg:block select-none lg:mx-[150px]" ref="near_me_slideLG" :itemsToShow="5" :wrapAround="true"
       :transition="500">
       <Slide v-for="(slide, index) in slides_data_near_me" :key="index">
         <div class="carousel__item py-8 w-[270px]">
@@ -112,7 +112,7 @@
     </div>
 
     <!-- Part3 Content -->
-    <div class="flex justify-between items-center mt-[100px] px-[20px] lg:px-[40px]">
+    <div class="flex justify-between items-center mt-[100px lg:mx-[150px] px-[20px] lg:px-[40px]">
       <div>
         <h4 class="font-medium text-[18px] lg:text-[24px]"><i class="fas fa-trophy text-yellow-400 text-[20px] pr-2 lg:text-[26px]"></i>Top 10</h4>
       </div>
@@ -151,7 +151,7 @@
       </Slide>
     </Carousel>
     <!-- Carousel Slider Content Desktop-->
-    <Carousel class="hidden lg:block select-none" ref="top10_slideLG" :itemsToShow="3" :wrapAround="true"
+    <Carousel class="hidden lg:block select-none lg:mx-[150px]" ref="top10_slideLG" :itemsToShow="5" :wrapAround="true"
       :transition="500">
       <Slide v-for="(slide, index) in slides_data_top10" :key="index">
         <div class="carousel__item py-8 w-[270px]">
@@ -189,19 +189,19 @@
     </div>
 
     <!-- Part4 Content -->
-    <div class="px-[20px] mt-[50px] lg:px-[40px]">
+    <div class="px-[20px] lg:px-[40px] mt-[50px] lg:mx-[150px]">
       <h1 class="text-[24px] text-black lg:text-[37px]">มีที่ดีๆอยากแชร์เหรอ?</h1>
       <h4 class="text-black/50 w-[300px] lg:text-[22px] lg:w-[500px]">ข้อมูลของคุณสำคัญกับเรามาก
         เราอยากให้เว็บของเราเป็นอีกหนึ่งสังคมที่รวมผู้คนที่ชอบทำงานด้านนอกบ้าน หรือ ออฟฟิศ ได้แชร์ที่นั่งทำงานดีๆให้กัน
       </h4>
     </div>
 
-    <div id="layout" class="px-[20px] mt-[50px] lg:px-[40px]">
+    <div id="layout" class="px-[20px] mt-[50px] lg:mx-[150px] lg:px-[40px]">
       <Map />
     </div>
 
     <div
-      class="flex justify-between items-center px-[20px] mt-[30px] space-x-2 overflow-x-hidden lg:px-[40px] lg:justify-start lg:overflow-visible">
+      class="flex justify-between items-center px-[20px] mt-[30px] lg:mx-[150px] space-x-2 overflow-x-hidden lg:px-[40px] lg:justify-start lg:overflow-visible">
       <button class="border-[2px] border-black/50 rounded-full" @click.prevent="openImageDialog">
         <i class="fas text-black/50 w-[32px] h-[32px] p-2"
           :class="{ 'fa-images': !isImgUp, 'fa-file-check': isImgUp }"></i>
@@ -269,14 +269,14 @@
         </div>
       </div>
     </div>
-    <div class="px-[20px] mt-[20px] lg:px-[40px] lg:mt-0 lg:translate-y-[-20px]">
+    <div class="px-[20px] mt-[20px] lg:mx-[150px] lg:px-[40px] lg:mt-0 lg:translate-y-[-20px]">
       <input
         class="border-[2px] border-black/50 rounded-[20px] px-2 pb-[100px] py-1 min-h-[150px] w-full placeholder:text-black/50 placeholder:text-[16px] focus:outline-none lg:w-[460px]"
         placeholder="เขียนรีวิวและบรรยายบรรยากาศ" v-model="cws_review_form" @input="Form_Update('review')">
     </div>
 
     <!-- Facilities Form -->
-    <div class="lg:hidden">
+    <div class="lg:hidden lg:mx-[150px]">
       <h4 class="px-[20px] mt-[20px] text-black/50 text-[16px]">สิ่งอำนวยความสะดวก</h4>
       <div class="flex justify-between items-center w-[70vw] px-[20px] mt-[10px]">
         <!-- Utensils -->
@@ -328,9 +328,9 @@
     </div>
 
     <!-- Time Form -->
-    <h4 class="px-[20px] mt-[20px] text-black/50 text-[16px] lg:px-[40px]">เวลาทำการ</h4>
+    <h4 class="px-[20px] mt-[20px] lg:mx-[150px] text-black/50 text-[16px] lg:px-[40px]">เวลาทำการ</h4>
     <!-- Open Time -->
-    <div class="px-[20px] lg:px-[40px]">
+    <div class="px-[20px] lg:px-[40px] lg:mx-[150px]">
       <div class="flex items-center mt-[10px] space-x-[20px]">
         <div class="w-[10px]">
           <h4 class="text-black/50 text-[16px] lg:hidden">อา.</h4>
@@ -540,7 +540,7 @@
       </div>
     </div>
     <button
-      class="flex justify-center items-center text-white text-[20px] rounded-[20px] bg-[#1cb7d9] mx-[20px] px-5 py-1 mt-[20px] transition-all duration-300"
+      class="flex justify-center items-center text-white text-[20px] rounded-[20px] bg-[#1cb7d9] mx-[20px] px-5 py-1 mt-[20px] lg:mx-[150px] transition-all duration-300"
       @click.prevent="UploadFormToDB" :class="{ 'disabled: bg-[#8888]': isUploaded === 'loading' }">
       <div class="flex justify-center items-center mr-2">
         <i class="fas fa-map-marker-alt" :class="{ 'fa-spin': isUploaded === 'loading' }"></i>
@@ -550,15 +550,15 @@
 
 
     <!-- Part 5 Content -->
-    <div class="flex justify-start items-center text-[24px] mt-[50px] px-[20px] font-medium lg:px-[40px] lg:text-[24px]">
+    <div class="flex justify-start items-center text-[24px] mt-[50px] lg:mx-[150px] px-[20px] font-medium lg:px-[40px] lg:text-[24px]">
       <i class="far fa-code text-[#4ECB71] pr-2"></i>
       <h1>นักพัฒนา</h1>
     </div>
-    <div class="flex justify-evenly items-center px-[20px] mt-[50px] space-x-3 lg:px-[40px] lg:space-x-[-250px] lg:justfly-center">
+    <div class="flex justify-evenly items-center px-[20px] mt-[50px] lg:mx-[150px] space-x-3 lg:px-[40px] lg:space-x-[-250px] lg:justfly-center">
       <!-- Niji -->
       <div class="hover:translate-y-[-30px] transition-all duration-500">
         <NuxtImg
-          class="object-fit absolute ml-[3.5px] mt-[20px] rounded-full w-[25vw] max-w-[100px] h-[25vw] max-h-[100px]"
+          class="object-fit absolute ml-[3.5px] lg:ml-[5px] mt-[20px] lg:mt-[40px] rounded-full w-[25vw] lg:w-[50vw] max-w-[100px] lg:max-w-[200px] h-[25vw] lg:h-[50vw] max-h-[100px] lg:max-h-[200px]"
           src="/img/niji.png" loading="lazy"></NuxtImg>
         <h1 class="absolute ml-[5px] mt-[120px] font-medium text-[15px] text-black">Niji</h1>
         <h4 class="absolute ml-[5px] mt-[140px] text-[8px] text-black/50">Suphawinee</h4>
@@ -570,7 +570,7 @@
           <NuxtLink class="fab fa-instagram" to="https://www.instagram.com/_ducky_way_/" target="_blank"></NuxtLink>
           <NuxtLink class="fab fa-discord" to="https://discord.com/users/321924157677895680" target="_blank"></NuxtLink>
         </div>
-        <NuxtImg class="shadow-[0_0_5px_2px_rgba(0,0,0,0.25)] rounded-[10px] w-[107px] h-[205px]" preload
+        <NuxtImg class="shadow-[0_0_5px_2px_rgba(0,0,0,0.25)] rounded-[10px] w-[107px] h-[205px] lg:w-[214px] lg:h-[410px]" preload
           src="/img/dev_card_bg.png"></NuxtImg>
       </div>
       <!-- Kan -->

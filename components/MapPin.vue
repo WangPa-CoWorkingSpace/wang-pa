@@ -1,5 +1,5 @@
 <template>
-    <div id="mapContainer" ref="mapContainer" class="map-container h-[250px] w-full rounded-[20px] z-0">
+    <div id="mapContainer" ref="mapContainer" class="map-container h-[250px] lg:h-[500px] w-full rounded-[20px] z-0">
 
         <!-- Current Location BTN -->
         <button @click.prevent="goToCurrentLocation" class="current-location-btn bg-[#000000] rounded-full right-0 bottom-0 mb-[40px] mr-[7px] absolute z-10">
