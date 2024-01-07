@@ -195,7 +195,7 @@
     </div>
 
     <!-- Part4 Content -->
-    <div class="px-[20px] mt-[50px] 2xl:px-[200px]">
+    <div class="px-[20px] mt-[50px] xl:px-[40px] 2xl:px-[200px]">
       <h1 class="text-[24px] text-black xl:text-[37px]">มีที่ดีๆอยากแชร์เหรอ?</h1>
       <h4 class="text-black/50 w-[300px] xl:text-[22px] xl:w-[500px]">ข้อมูลของคุณสำคัญกับเรามาก
         เราอยากให้เว็บของเราเป็นอีกหนึ่งสังคมที่รวมผู้คนที่ชอบทำงานด้านนอกบ้าน หรือ ออฟฟิศ ได้แชร์ที่นั่งทำงานดีๆให้กัน
@@ -546,7 +546,7 @@
       </div>
     </div>
     <button
-      class="flex justify-center items-center text-white text-[20px] rounded-[20px] bg-[#1cb7d9] mx-[20px] px-5 py-1 mt-[20px] transition-all duration-300 2xl:mx-[200px]"
+      class="flex justify-center items-center text-white text-[20px] rounded-[20px] bg-[#1cb7d9] mx-[20px] px-5 py-1 mt-[20px] xl:mx-[40px] transition-all duration-300 2xl:mx-[200px]"
       @click.prevent="UploadFormToDB" :class="{ 'disabled: bg-[#8888]': isUploaded === 'loading' }">
       <div class="flex justify-center items-center mr-2">
         <i class="fas fa-map-marker-alt" :class="{ 'fa-spin': isUploaded === 'loading' }"></i>
