@@ -275,7 +275,7 @@
         </div>
       </div>
     </div>
-    <div class="px-[20px] mt-[20px] xl:px-[40px] xl:mt-0 xl:translate-y-[-20px] 2xl:px-[200px]">
+    <div class="px-[20px] mt-[20px] xl:w-[460px] xl:px-[40px] xl:mt-0 xl:translate-y-[-20px] 2xl:px-[200px]">
       <input
         class="border-[2px] border-black/50 rounded-[20px] px-2 pb-[100px] py-1 min-h-[150px] w-full placeholder:text-black/50 placeholder:text-[16px] focus:outline-none xl:w-[460px]"
         placeholder="เขียนรีวิวและบรรยายบรรยากาศ" v-model="cws_review_form" @input="Form_Update('review')">
