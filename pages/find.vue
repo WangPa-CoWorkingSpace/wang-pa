@@ -36,7 +36,7 @@ export default defineComponent({
             cws_openToday: string;
             cws_facilities: string[];
             cws_latitude: string;
-            cws_longtitude: string;
+            cws_longitude: string;
         }
 
         const mapContainer = ref(null);
@@ -154,7 +154,7 @@ export default defineComponent({
 
                         if (map.value) {
                             const marker = new mapboxgl.Marker(el)
-                                .setLngLat([parseFloat(dataItem.cws_longtitude), parseFloat(dataItem.cws_latitude)])
+                                .setLngLat([parseFloat(dataItem.cws_longitude), parseFloat(dataItem.cws_latitude)])
                                 .setPopup(popup)
                                 .addTo(map.value);
 
