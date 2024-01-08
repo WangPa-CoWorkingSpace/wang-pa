@@ -23,9 +23,9 @@
       </div>
     </div>
     <div
-      class="flex justify-end mr-[20px] translate-y-[-75px] sm:translate-y-[-115px] sm:mr-[50px] lg:translate-y-[-150px] lg:mr-[70px] 2xl:translate-y-[-220px] 2xl:mr-[200px]">
+      class="flex justify-end mr-[10px] translate-y-[-40px] sm:translate-y-[-115px] sm:mr-[50px] lg:translate-y-[-150px] lg:mr-[70px] 2xl:translate-y-[-220px] 2xl:mr-[200px]">
       <div class="absolute z-0">
-        <NuxtImg class="object-contain w-[200px] sm:w-[231px] lg:w-[320px] 2xl:w-[400px]" src="/img/co-work.png" />
+        <NuxtImg class="object-contain w-[170px] sm:w-[231px] lg:w-[320px] 2xl:w-[400px]" src="/img/co-work.png" />
       </div>
     </div>
     <div class="flex justify-between mt-[30px]">
