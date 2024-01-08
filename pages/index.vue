@@ -51,7 +51,7 @@
       <Slide v-for="(slide, index) in slides_data_near_me" :key="index">
         <div class="carousel__item py-8 w-[270px]">
           <div class="bg-white rounded-[10px] shadow-[0_0_20px_0_rgba(0,0,0,0.25)]">
-            <NuxtImg class="rounded-t-[10px]" :src="slide.image" :alt="slide.alt" width="300px" height="256px"
+            <NuxtImg class="rounded-t-[10px]" :src="slide.image" :alt="slide.title" width="300px" height="256px"
               objectFit='contain' loading="lazy" />
             <div class="p-4">
               <h1 class="text-black font-medium text-[20px] text-left w-full h-[30px] overflow-hidden">{{ slide.title }}
@@ -81,7 +81,7 @@
         <Slide v-for="(slide, index) in slides_data_near_me" :key="index">
           <div class="carousel__item py-8 w-[270px]">
             <div class="bg-white rounded-[10px] shadow-[0_0_20px_0_rgba(0,0,0,0.25)]">
-              <NuxtImg class="rounded-t-[10px]" :src="slide.image" :alt="slide.alt" width="300px" height="256px"
+              <NuxtImg class="rounded-t-[10px]" :src="slide.image" :alt="slide.title" width="300px" height="256px"
                 objectFit='contain' loading="lazy" />
               <div class="p-4">
                 <h1 class="text-black font-medium text-[20px] text-left w-full h-[30px] overflow-hidden">{{ slide.title }}
@@ -131,7 +131,7 @@
       <Slide v-for="(slide, index) in slides_data_top10" :key="index">
         <div class="carousel__item py-8 w-[270px]">
           <div class="bg-white rounded-[10px] shadow-[0_0_20px_0_rgba(0,0,0,0.25)]">
-            <NuxtImg class="rounded-t-[10px]" :src="slide.image" :alt="slide.alt" width="300px" height="256px"
+            <NuxtImg class="rounded-t-[10px]" :src="slide.image" :alt="slide.title" width="300px" height="256px"
               objectFit='contain' loading="lazy" />
             <div class="p-4">
               <h1 class="text-black font-medium text-[20px] text-left w-full h-[30px] overflow-hidden">{{ slide.title }}
@@ -161,7 +161,7 @@
         <Slide v-for="(slide, index) in slides_data_top10" :key="index">
           <div class="carousel__item py-8 w-[270px]">
             <div class="bg-white rounded-[10px] shadow-[0_0_20px_0_rgba(0,0,0,0.25)]">
-              <NuxtImg class="rounded-t-[10px]" :src="slide.image" :alt="slide.alt" width="300px" height="256px"
+              <NuxtImg class="rounded-t-[10px]" :src="slide.image" :alt="slide.title" width="300px" height="256px"
                 objectFit='contain' loading="lazy" />
               <div class="p-4">
                 <h1 class="text-black font-medium text-[20px] text-left w-full h-[30px] overflow-hidden">{{ slide.title }}
@@ -671,441 +671,431 @@ export default defineComponent({
       //Data Out
     };
   },
-  setup() {
+  async setup() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(position => {
+        Cookies.set('user_current_lat', position.coords.latitude.toString())
+        Cookies.set('user_current_long', position.coords.longitude.toString())
+      });
+    }
     //Near me
-    const slides_data_near_me = ref([
-      {
-        image: '/img/mspace.png',
-        alt: 'Co-working space',
-        title: 'M-Space Major ...',
-        price: 'ฟรี',
-        features: ['wifi', 'utensils', 'toilet', 'shopping-bag'],
-        openingHours: 'เปิดทุกวัน 11:00 - 23:00',
-        stars: ['fas', 'fas', 'fas', 'fas', 'far'],
-        capacity: 'คาดว่าน้อย'
-        // Add other properties as needed for your slide
-      },
-      {
-        image: '/img/co-work.png',
-        alt: 'co working space',
-        title: 'WTF Space',
-        price: '9ล้าน/ชม.',
-        features: ['wifi', 'utensils', 'toilet', 'plug'],
-        openingHours: 'Opening Hours',
-        stars: ['fas', 'fas', 'fas', 'far', 'far'],
-        capacity: 'Capacity Status'
-        // Add other properties as needed for your slide
-      },
-      // Add more slide objects as needed
-    ]);
+    const slides_fetch = await fetch('https://wangpa.tensormik.com/wangpa-api/nearbyLocations', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          user_lat: Cookies.get('user_current_lat'),
+          user_long: Cookies.get('user_current_long')
+        })
+      })
+      const slides_data_near_me = await slides_fetch.json();
 
-    //Top10
-    const slides_data_top10 = ref([
-      {
-        image: '/img/mspace.png',
-        alt: 'Co-working space',
-        title: 'M-Space Major ...',
-        price: 'ฟรี',
-        features: ['wifi', 'utensils', 'toilet', 'shopping-bag'],
-        openingHours: 'เปิดทุกวัน 11:00 - 23:00',
-        stars: ['fas', 'fas', 'fas', 'fas', 'far'],
-        capacity: 'คาดว่าน้อย'
-        // Add other properties as needed for your slide
-      },
-      {
-        image: '/img/co-work.png',
-        alt: 'co working space',
-        title: 'WTF Space',
-        price: '9ล้าน/ชม.',
-        features: ['wifi', 'utensils', 'toilet', 'plug'],
-        openingHours: 'Opening Hours',
-        stars: ['fas', 'fas', 'fas', 'fas', 'far'],
-        capacity: 'Capacity Status'
-        // Add other properties as needed for your slide
-      },
-      // Add more slide objects as needed
-    ]);
+      //Top10
+      const slides_data_top10 = ref([
+        {
+          image: '/img/mspace.png',
+          title: 'M-Space Major ...',
+          price: 'ฟรี',
+          features: ['wifi', 'utensils', 'toilet', 'shopping-bag'],
+          openingHours: 'เปิดทุกวัน 11:00 - 23:00',
+          stars: ['fas', 'fas', 'fas', 'fas', 'far'],
+          capacity: 'คาดว่าน้อย'
+          // Add other properties as needed for your slide
+        },
+        {
+          image: '/img/co-work.png',
+          title: 'WTF Space',
+          price: '9ล้าน/ชม.',
+          features: ['wifi', 'utensils', 'toilet', 'plug'],
+          openingHours: 'Opening Hours',
+          stars: ['fas', 'fas', 'fas', 'fas', 'far'],
+          capacity: 'Capacity Status'
+          // Add other properties as needed for your slide
+        },
+        // Add more slide objects as needed
+      ]);
 
-    //Slide button
-    const top10_slideLG = ref(null)
-    const near_me_slideLG = ref(null)
-    function Top10SlideBTN(command: string) {
-      if (top10_slideLG.value) {
-        if (command === 'next') {
-          //@ts-ignore
-          top10_slideLG.value.next();
-        } else if (command === 'prev') {
-          //@ts-ignore
-          top10_slideLG.value.prev();
+      //Slide button
+      const top10_slideLG = ref(null)
+      const near_me_slideLG = ref(null)
+      function Top10SlideBTN(command: string) {
+        if (top10_slideLG.value) {
+          if (command === 'next') {
+            //@ts-ignore
+            top10_slideLG.value.next();
+          } else if (command === 'prev') {
+            //@ts-ignore
+            top10_slideLG.value.prev();
+          }
         }
       }
-    }
-    function NearMeSlideBTN(command: string) {
-      if (near_me_slideLG.value) {
-        if (command === 'next') {
-          //@ts-ignore
-          near_me_slideLG.value.next();
-        } else if (command === 'prev') {
-          //@ts-ignore
-          near_me_slideLG.value.prev();
+      function NearMeSlideBTN(command: string) {
+        if (near_me_slideLG.value) {
+          if (command === 'next') {
+            //@ts-ignore
+            near_me_slideLG.value.next();
+          } else if (command === 'prev') {
+            //@ts-ignore
+            near_me_slideLG.value.prev();
+          }
         }
       }
-    }
 
-    //Image selector for upload
-    const imageInput = ref<HTMLInputElement | null>(null);
+      //Image selector for upload
+      const imageInput = ref<HTMLInputElement | null>(null);
 
-    const openImageDialog = () => {
-      imageInput.value?.click();
-    };
+      const openImageDialog = () => {
+        imageInput.value?.click();
+      };
 
-    var isImgUp = ref(false)
-    var image_compressList: any[] = []
-    const handleImageChange = async (event: Event) => {
-      image_compressList = [];
-      let files = (event.target as HTMLInputElement).files;
-      isImgUp.value = true
-      if (!files || files.length === 0) {
-        // console.log('No file selected.');
-        return;
-      }
-
-      // สร้าง FormData
-      const formData = new FormData();
-
-      for (let i = 0; i < files.length; i++) {
-        if (files[i].size > 15728640) { // 15MB
-          alert("Too large file. Limit 15MB");
+      var isImgUp = ref(false)
+      var image_compressList: any[] = []
+      const handleImageChange = async (event: Event) => {
+        image_compressList = [];
+        let files = (event.target as HTMLInputElement).files;
+        isImgUp.value = true
+        if (!files || files.length === 0) {
+          // console.log('No file selected.');
           return;
         }
 
-        new Compressor(files[i], {
-          quality: 0.5,
-          convertSize: 524288,
-          convertTypes: ['image/png'],
+        // สร้าง FormData
+        const formData = new FormData();
 
-          success(result) {
-            // เพิ่มไฟล์ที่บีบอัดแล้วลงใน formData
-            formData.append('images', result);
-
-            const reader = new FileReader();
-            reader.readAsDataURL(result);
-            reader.onloadend = function () {
-              const base64data = reader.result;
-              image_compressList.push(base64data);
-            };
-          },
-          error(err) {
-            console.error(err.message);
-          },
-        });
-      }
-      files = null
-    };
-    let isUploaded = ref('nan');
-    const uploadImages = async (formData: any, cws_id_link: number) => {
-      try {
-        const response_imageUrl = await fetch('https://wangpa.tensormik.com/wangpa-api/upload', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            images: formData,
-            cws_id_link: cws_id_link
-          })
-        });
-        setTimeout(() => {
-          //Reset form after pin success
-          let day_List: any = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-          for (let i = 0; i < day_List.length; i++) {
-            ResetOpenDateTime(day_List[i])
+        for (let i = 0; i < files.length; i++) {
+          if (files[i].size > 15728640) { // 15MB
+            alert("Too large file. Limit 15MB");
+            return;
           }
-          ResetFacilities_Check(utensils_check, restroom_check, shopping_check, wifi_check, outlet_check, air_check);
-          ResetSimpleForm(cws_name_form, cws_price_form, cws_review_form)
-          ResetImageInputData()
-        }, 5000);
-      } catch (error) {
-        console.error('Error during image upload:', error);
-      }
-    };
 
-    const cws_name_form = ref('')
-    const cws_price_form = ref('')
-    const cws_review_form = ref('')
-    //Form Update
-    function Form_Update(input_name: string) {
-      switch (input_name) {
-        case 'name':
-          Cookies.set('cws_name_form_Cookie', encodeURIComponent(cws_name_form.value));
-          break
-        case 'price':
-          Cookies.set('cws_price_form_Cookie', encodeURIComponent(cws_price_form.value));
-          break
-        case 'review':
-          Cookies.set('cws_name_review_Cookie', encodeURIComponent(cws_review_form.value));
-          break
-      }
-    }
+          new Compressor(files[i], {
+            quality: 0.5,
+            convertSize: 524288,
+            convertTypes: ['image/png'],
 
-    //Facilities Form Check
-    const utensils_check = ref(false);
-    const restroom_check = ref(false);
-    const shopping_check = ref(false);
-    const wifi_check = ref(false);
-    const outlet_check = ref(false);
-    const air_check = ref(false);
+            success(result) {
+              // เพิ่มไฟล์ที่บีบอัดแล้วลงใน formData
+              formData.append('images', result);
 
-    function Facilities_Check(facilitie: string) {
-      const facilityMapping: { [key: string]: Ref<boolean> } = {
-        utensils: utensils_check,
-        restroom: restroom_check,
-        shopping: shopping_check,
-        wifi: wifi_check,
-        outlet: outlet_check,
-        air: air_check
+              const reader = new FileReader();
+              reader.readAsDataURL(result);
+              reader.onloadend = function () {
+                const base64data = reader.result;
+                image_compressList.push(base64data);
+              };
+            },
+            error(err) {
+              console.error(err.message);
+            },
+          });
+        }
+        files = null
+      };
+      let isUploaded = ref('nan');
+      const uploadImages = async (formData: any, cws_id_link: number) => {
+        try {
+          const response_imageUrl = await fetch('https://wangpa.tensormik.com/wangpa-api/upload', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              images: formData,
+              cws_id_link: cws_id_link
+            })
+          });
+          setTimeout(() => {
+            //Reset form after pin success
+            let day_List: any = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+            for (let i = 0; i < day_List.length; i++) {
+              ResetOpenDateTime(day_List[i])
+            }
+            ResetFacilities_Check(utensils_check, restroom_check, shopping_check, wifi_check, outlet_check, air_check);
+            ResetSimpleForm(cws_name_form, cws_price_form, cws_review_form)
+            ResetImageInputData()
+          }, 5000);
+        } catch (error) {
+          console.error('Error during image upload:', error);
+        }
       };
 
-      const facilityRef = facilityMapping[facilitie as keyof typeof facilityMapping];
-      if (facilityRef) {
-        facilityRef.value = !facilityRef.value;
-      } else {
-        console.warn("Unknown facility:", facilitie);
-      }
-    }
-
-    //Time Picker
-    const time = ref<Time>({
-      hours: new Date().getHours(),
-      minutes: new Date().getMinutes()
-    });
-    //Set type for time
-    type Time = {
-      hours: number;
-      minutes: number;
-    };
-    //Office Time Data
-    const openDateTime = ref([
-      {
-        sunday: {
-          open: false,
-          openTime: 'ปิดให้บริการ',
-          closeTime: 'ปิดให้บริการ'
-        },
-        monday: {
-          open: false,
-          openTime: 'ปิดให้บริการ',
-          closeTime: 'ปิดให้บริการ'
-        },
-        tuesday: {
-          open: false,
-          openTime: 'ปิดให้บริการ',
-          closeTime: 'ปิดให้บริการ'
-        },
-        wednesday: {
-          open: false,
-          openTime: 'ปิดให้บริการ',
-          closeTime: 'ปิดให้บริการ'
-        },
-        thursday: {
-          open: false,
-          openTime: 'ปิดให้บริการ',
-          closeTime: 'ปิดให้บริการ'
-        },
-        friday: {
-          open: false,
-          openTime: 'ปิดให้บริการ',
-          closeTime: 'ปิดให้บริการ'
-        },
-        saturday: {
-          open: false,
-          openTime: 'ปิดให้บริการ',
-          closeTime: 'ปิดให้บริการ'
+      const cws_name_form = ref('')
+      const cws_price_form = ref('')
+      const cws_review_form = ref('')
+      //Form Update
+      function Form_Update(input_name: string) {
+        switch (input_name) {
+          case 'name':
+            Cookies.set('cws_name_form_Cookie', encodeURIComponent(cws_name_form.value));
+            break
+          case 'price':
+            Cookies.set('cws_price_form_Cookie', encodeURIComponent(cws_price_form.value));
+            break
+          case 'review':
+            Cookies.set('cws_name_review_Cookie', encodeURIComponent(cws_review_form.value));
+            break
         }
       }
-    ]);
-    function dayToggle_BTN(day: keyof typeof openDateTime.value[0], current_state: boolean) {
-      if (day in openDateTime.value[0]) {
-        openDateTime.value[0][day].open = !current_state;
-        if (openDateTime.value[0][day].open === true) {
-          openDateTime.value[0][day].openTime = '00:00'
-          openDateTime.value[0][day].closeTime = '23:59'
+
+      //Facilities Form Check
+      const utensils_check = ref(false);
+      const restroom_check = ref(false);
+      const shopping_check = ref(false);
+      const wifi_check = ref(false);
+      const outlet_check = ref(false);
+      const air_check = ref(false);
+
+      function Facilities_Check(facilitie: string) {
+        const facilityMapping: { [key: string]: Ref<boolean> } = {
+          utensils: utensils_check,
+          restroom: restroom_check,
+          shopping: shopping_check,
+          wifi: wifi_check,
+          outlet: outlet_check,
+          air: air_check
+        };
+
+        const facilityRef = facilityMapping[facilitie as keyof typeof facilityMapping];
+        if (facilityRef) {
+          facilityRef.value = !facilityRef.value;
+        } else {
+          console.warn("Unknown facility:", facilitie);
         }
-        else {
-          openDateTime.value[0][day].openTime = 'ปิดให้บริการ'
-          openDateTime.value[0][day].closeTime = 'ปิดให้บริการ'
-        }
-      } else {
-        console.error(`Invalid day: ${day}`);
       }
-    }
 
-    function isValidTimeRange(openTime: string, closeTime: string): boolean {
-      //First input
-      if (closeTime === 'ปิดให้บริการ') return false;
+      //Time Picker
+      const time = ref<Time>({
+        hours: new Date().getHours(),
+        minutes: new Date().getMinutes()
+      });
+      //Set type for time
+      type Time = {
+        hours: number;
+        minutes: number;
+      };
+      //Office Time Data
+      const openDateTime = ref([
+        {
+          sunday: {
+            open: false,
+            openTime: 'ปิดให้บริการ',
+            closeTime: 'ปิดให้บริการ'
+          },
+          monday: {
+            open: false,
+            openTime: 'ปิดให้บริการ',
+            closeTime: 'ปิดให้บริการ'
+          },
+          tuesday: {
+            open: false,
+            openTime: 'ปิดให้บริการ',
+            closeTime: 'ปิดให้บริการ'
+          },
+          wednesday: {
+            open: false,
+            openTime: 'ปิดให้บริการ',
+            closeTime: 'ปิดให้บริการ'
+          },
+          thursday: {
+            open: false,
+            openTime: 'ปิดให้บริการ',
+            closeTime: 'ปิดให้บริการ'
+          },
+          friday: {
+            open: false,
+            openTime: 'ปิดให้บริการ',
+            closeTime: 'ปิดให้บริการ'
+          },
+          saturday: {
+            open: false,
+            openTime: 'ปิดให้บริการ',
+            closeTime: 'ปิดให้บริการ'
+          }
+        }
+      ]);
+      function dayToggle_BTN(day: keyof typeof openDateTime.value[0], current_state: boolean) {
+        if (day in openDateTime.value[0]) {
+          openDateTime.value[0][day].open = !current_state;
+          if (openDateTime.value[0][day].open === true) {
+            openDateTime.value[0][day].openTime = '00:00'
+            openDateTime.value[0][day].closeTime = '23:59'
+          }
+          else {
+            openDateTime.value[0][day].openTime = 'ปิดให้บริการ'
+            openDateTime.value[0][day].closeTime = 'ปิดให้บริการ'
+          }
+        } else {
+          console.error(`Invalid day: ${day}`);
+        }
+      }
 
-      const [openHours, openMinutes] = openTime.split(':').map(Number);
-      const [closeHours, closeMinutes] = closeTime.split(':').map(Number);
+      function isValidTimeRange(openTime: string, closeTime: string): boolean {
+        //First input
+        if (closeTime === 'ปิดให้บริการ') return false;
 
-      const openTimeInMinutes = openHours * 60 + openMinutes;
-      const closeTimeInMinutes = closeHours * 60 + closeMinutes;
-      return closeTimeInMinutes >= openTimeInMinutes;
-    }
+        const [openHours, openMinutes] = openTime.split(':').map(Number);
+        const [closeHours, closeMinutes] = closeTime.split(':').map(Number);
 
-    function TimeUpdate(day: string, type: string, value: Time) {
-      const dayIndex = 0;
-      const timeString = `${value.hours}:${value.minutes}`;
-      const dayKey = day.toLowerCase() as keyof typeof openDateTime.value[0];
+        const openTimeInMinutes = openHours * 60 + openMinutes;
+        const closeTimeInMinutes = closeHours * 60 + closeMinutes;
+        return closeTimeInMinutes >= openTimeInMinutes;
+      }
 
-      if (['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'].includes(dayKey)) {
-        const selectedDay = openDateTime.value[dayIndex][dayKey];
+      function TimeUpdate(day: string, type: string, value: Time) {
+        const dayIndex = 0;
+        const timeString = `${value.hours}:${value.minutes}`;
+        const dayKey = day.toLowerCase() as keyof typeof openDateTime.value[0];
 
-        const timeTypeKey = `${type}Time` as keyof typeof selectedDay;
-        if (timeTypeKey === 'openTime' || timeTypeKey === 'closeTime') {
-          selectedDay[timeTypeKey] = timeString;
+        if (['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'].includes(dayKey)) {
+          const selectedDay = openDateTime.value[dayIndex][dayKey];
 
-          if (selectedDay.openTime && selectedDay.closeTime) {
-            selectedDay.open = isValidTimeRange(selectedDay.openTime, selectedDay.closeTime);
+          const timeTypeKey = `${type}Time` as keyof typeof selectedDay;
+          if (timeTypeKey === 'openTime' || timeTypeKey === 'closeTime') {
+            selectedDay[timeTypeKey] = timeString;
 
-            if (!selectedDay.open && selectedDay.openTime !== 'ปิดให้บริการ' && selectedDay.closeTime !== 'ปิดให้บริการ') {
-              alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด');
+            if (selectedDay.openTime && selectedDay.closeTime) {
+              selectedDay.open = isValidTimeRange(selectedDay.openTime, selectedDay.closeTime);
+
+              if (!selectedDay.open && selectedDay.openTime !== 'ปิดให้บริการ' && selectedDay.closeTime !== 'ปิดให้บริการ') {
+                alert('เวลาปิดต้องไม่น้อยกว่าเวลาเปิด');
+              }
             }
           }
         }
       }
-    }
 
 
-    //UpForm
-    var upform_response: any;
-    async function UploadFormToDB() {
-      isUploaded.value = 'loading'
-      try {
-        upform_response = await fetch('https://wangpa.tensormik.com/wangpa-api/upform', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            //cws
-            name: cws_name_form.value,
-            lat: Cookies.get('inform-lat'),
-            long: Cookies.get('inform-long'),
-            review: cws_review_form.value,
-            price: cws_price_form.value,
-            //cws_facilities
-            food: utensils_check.value,
-            toilet: restroom_check.value,
-            shopping: shopping_check.value,
-            wifi: wifi_check.value,
-            charger: outlet_check.value,
-            air_con: air_check.value,
-            // cws_time
-            sunday_open: openDateTime.value[0].sunday.open,
-            sunday_openTime: openDateTime.value[0].sunday.openTime,
-            sunday_closeTime: openDateTime.value[0].sunday.closeTime,
-            monday_open: openDateTime.value[0].monday.open,
-            monday_openTime: openDateTime.value[0].monday.openTime,
-            monday_closeTime: openDateTime.value[0].monday.closeTime,
-            tuesday_open: openDateTime.value[0].tuesday.open,
-            tuesday_openTime: openDateTime.value[0].tuesday.openTime,
-            tuesday_closeTime: openDateTime.value[0].tuesday.closeTime,
-            wednesday_open: openDateTime.value[0].wednesday.open,
-            wednesday_openTime: openDateTime.value[0].wednesday.openTime,
-            wednesday_closeTime: openDateTime.value[0].wednesday.closeTime,
-            thursday_open: openDateTime.value[0].thursday.open,
-            thursday_openTime: openDateTime.value[0].thursday.openTime,
-            thursday_closeTime: openDateTime.value[0].thursday.closeTime,
-            friday_open: openDateTime.value[0].friday.open,
-            friday_openTime: openDateTime.value[0].friday.openTime,
-            friday_closeTime: openDateTime.value[0].friday.closeTime,
-            saturday_open: openDateTime.value[0].saturday.open,
-            saturday_openTime: openDateTime.value[0].saturday.openTime,
-            saturday_closeTime: openDateTime.value[0].saturday.closeTime
-          })
-        });
-        const upform_responseData = await upform_response.json(); // Await the JSON response
-        const cws_id_res = await upform_responseData.cws_id
-        uploadImages(image_compressList, cws_id_res)
-      } catch (e) {
-        console.error(e)
-      }
-    }
-
-    //Reset form
-    function ResetImageInputData() {
-      image_compressList = [];
-      isUploaded.value = 'success';
-      isImgUp.value = false
-    }
-    function ResetSimpleForm(cws_name_form: any, cws_price_form: any, cws_review_form: any) {
-      cws_name_form.value = '';
-      cws_price_form.value = '';
-      cws_review_form.value = '';
-    }
-    function ResetFacilities_Check(
-      utensils_check: any,
-      restroom_check: any,
-      shopping_check: any,
-      wifi_check: any,
-      outlet_check: any,
-      air_check: any
-    ) {
-      utensils_check.value = false;
-      restroom_check.value = false;
-      shopping_check.value = false;
-      wifi_check.value = false;
-      outlet_check.value = false;
-      air_check.value = false;
-    }
-    function ResetOpenDateTime(day: keyof typeof openDateTime.value[0]) {
-      for (let i = 0; i < 7; i++) {
-        if (day in openDateTime.value[0]) {
-          openDateTime.value[0][day].open = false;
-          openDateTime.value[0][day].openTime = 'ปิดให้บริการ';
-          openDateTime.value[0][day].closeTime = 'ปิดให้บริการ';
+      //UpForm
+      var upform_response: any;
+      async function UploadFormToDB() {
+        isUploaded.value = 'loading'
+        try {
+          upform_response = await fetch('https://wangpa.tensormik.com/wangpa-api/upform', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              //cws
+              name: cws_name_form.value,
+              lat: Cookies.get('inform-lat'),
+              long: Cookies.get('inform-long'),
+              review: cws_review_form.value,
+              price: cws_price_form.value,
+              //cws_facilities
+              food: utensils_check.value,
+              toilet: restroom_check.value,
+              shopping: shopping_check.value,
+              wifi: wifi_check.value,
+              charger: outlet_check.value,
+              air_con: air_check.value,
+              // cws_time
+              sunday_open: openDateTime.value[0].sunday.open,
+              sunday_openTime: openDateTime.value[0].sunday.openTime,
+              sunday_closeTime: openDateTime.value[0].sunday.closeTime,
+              monday_open: openDateTime.value[0].monday.open,
+              monday_openTime: openDateTime.value[0].monday.openTime,
+              monday_closeTime: openDateTime.value[0].monday.closeTime,
+              tuesday_open: openDateTime.value[0].tuesday.open,
+              tuesday_openTime: openDateTime.value[0].tuesday.openTime,
+              tuesday_closeTime: openDateTime.value[0].tuesday.closeTime,
+              wednesday_open: openDateTime.value[0].wednesday.open,
+              wednesday_openTime: openDateTime.value[0].wednesday.openTime,
+              wednesday_closeTime: openDateTime.value[0].wednesday.closeTime,
+              thursday_open: openDateTime.value[0].thursday.open,
+              thursday_openTime: openDateTime.value[0].thursday.openTime,
+              thursday_closeTime: openDateTime.value[0].thursday.closeTime,
+              friday_open: openDateTime.value[0].friday.open,
+              friday_openTime: openDateTime.value[0].friday.openTime,
+              friday_closeTime: openDateTime.value[0].friday.closeTime,
+              saturday_open: openDateTime.value[0].saturday.open,
+              saturday_openTime: openDateTime.value[0].saturday.openTime,
+              saturday_closeTime: openDateTime.value[0].saturday.closeTime
+            })
+          });
+          const upform_responseData = await upform_response.json(); // Await the JSON response
+          const cws_id_res = await upform_responseData.cws_id
+          uploadImages(image_compressList, cws_id_res)
+        } catch (e) {
+          console.error(e)
         }
       }
-    }
 
-    return {
-      slides_data_near_me,
-      slides_data_top10,
-      Top10SlideBTN,
-      NearMeSlideBTN,
-      near_me_slideLG,
-      top10_slideLG,
+      //Reset form
+      function ResetImageInputData() {
+        image_compressList = [];
+        isUploaded.value = 'success';
+        isImgUp.value = false
+      }
+      function ResetSimpleForm(cws_name_form: any, cws_price_form: any, cws_review_form: any) {
+        cws_name_form.value = '';
+        cws_price_form.value = '';
+        cws_review_form.value = '';
+      }
+      function ResetFacilities_Check(
+        utensils_check: any,
+        restroom_check: any,
+        shopping_check: any,
+        wifi_check: any,
+        outlet_check: any,
+        air_check: any
+      ) {
+        utensils_check.value = false;
+        restroom_check.value = false;
+        shopping_check.value = false;
+        wifi_check.value = false;
+        outlet_check.value = false;
+        air_check.value = false;
+      }
+      function ResetOpenDateTime(day: keyof typeof openDateTime.value[0]) {
+        for (let i = 0; i < 7; i++) {
+          if (day in openDateTime.value[0]) {
+            openDateTime.value[0][day].open = false;
+            openDateTime.value[0][day].openTime = 'ปิดให้บริการ';
+            openDateTime.value[0][day].closeTime = 'ปิดให้บริการ';
+          }
+        }
+      }
 
-      imageInput,
-      openImageDialog,
-      handleImageChange,
-      isImgUp,
+      return {
+        slides_data_near_me,
+        slides_data_top10,
+        Top10SlideBTN,
+        NearMeSlideBTN,
+        near_me_slideLG,
+        top10_slideLG,
 
-      //form imageUrlRes
-      UploadFormToDB,
-      Form_Update,
-      cws_name_form,
-      cws_price_form,
-      cws_review_form,
+        imageInput,
+        openImageDialog,
+        handleImageChange,
+        isImgUp,
 
-      // Facilities Check Function and Reactive References
-      Facilities_Check,
-      utensils_check,
-      restroom_check,
-      shopping_check,
-      wifi_check,
-      outlet_check,
-      air_check,
+        //form imageUrlRes
+        UploadFormToDB,
+        Form_Update,
+        cws_name_form,
+        cws_price_form,
+        cws_review_form,
 
-      //Time Picker
-      TimeUpdate,
-      time,
-      openDateTime,
-      dayToggle_BTN,
+        // Facilities Check Function and Reactive References
+        Facilities_Check,
+        utensils_check,
+        restroom_check,
+        shopping_check,
+        wifi_check,
+        outlet_check,
+        air_check,
 
-      //Pin BTN
-      isUploaded
-    };
-  },
-});
+        //Time Picker
+        TimeUpdate,
+        time,
+        openDateTime,
+        dayToggle_BTN,
+
+        //Pin BTN
+        isUploaded
+      };
+    },
+  });
 </script>
