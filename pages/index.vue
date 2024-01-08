@@ -679,42 +679,27 @@ export default defineComponent({
       });
     }
     //Near me
-    const slides_fetch = await fetch('https://wangpa.tensormik.com/wangpa-api/nearbyLocations', {
+    const slides_nearme_fetch = await fetch('https://wangpa.tensormik.com/wangpa-api/nearbyLocations', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          user_lat: Cookies.get('user_current_lat'),
-          user_long: Cookies.get('user_current_long')
+          user_lat: Cookies.get('user_current_lat') ?? '13.7451',
+          user_long: Cookies.get('user_current_long') ?? '100.4999',
         })
       })
-      const slides_data_near_me = await slides_fetch.json();
+      const slides_data_near_me = await slides_nearme_fetch.json();
 
       //Top10
-      const slides_data_top10 = ref([
-        {
-          image: '/img/mspace.png',
-          title: 'M-Space Major ...',
-          price: 'ฟรี',
-          features: ['wifi', 'utensils', 'toilet', 'shopping-bag'],
-          openingHours: 'เปิดทุกวัน 11:00 - 23:00',
-          stars: ['fas', 'fas', 'fas', 'fas', 'far'],
-          capacity: 'คาดว่าน้อย'
-          // Add other properties as needed for your slide
+      const slides_top10_fetch = await fetch('https://wangpa.tensormik.com/wangpa-api/top10star', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
         },
-        {
-          image: '/img/co-work.png',
-          title: 'WTF Space',
-          price: '9ล้าน/ชม.',
-          features: ['wifi', 'utensils', 'toilet', 'plug'],
-          openingHours: 'Opening Hours',
-          stars: ['fas', 'fas', 'fas', 'fas', 'far'],
-          capacity: 'Capacity Status'
-          // Add other properties as needed for your slide
-        },
-        // Add more slide objects as needed
-      ]);
+      });
+
+      const slides_data_top10 = await slides_top10_fetch.json();
 
       //Slide button
       const top10_slideLG = ref(null)
