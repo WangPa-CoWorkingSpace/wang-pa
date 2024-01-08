@@ -106,8 +106,8 @@ export default defineComponent({
 
                             return `
                                 <div class="col-review">
-                                    <div class="border-[1px] w-[200px] h-[80px] border-black/50 rounded-[10px] p-2">
-                                        <div class="flex items-center justify-between">
+                                    <div class="border-[1px] w-max h-[80px] border-black/50 rounded-[10px] p-2">
+                                        <div class="flex items-center justify-between space-x-2">
                                             <div class="text-yellow-400">${stars}</div>
                                             <h4 class="text-[13px] text-black">${review.user_name}</h4>
                                         </div>
@@ -189,6 +189,10 @@ export default defineComponent({
                     const lngLat = { lng: position.coords.longitude, lat: position.coords.latitude };
                     if (map.value) {
                         map.value.flyTo({ center: lngLat, essential: true, zoom: 15 });
+                        new mapboxgl.Marker()
+                            .setLngLat(lngLat)
+                            .addTo(map.value);
+
                     }
                 }, () => {
                     console.error('Unable to access your location');
