@@ -687,6 +687,7 @@ export default defineComponent({
         body: JSON.stringify({
           user_lat: Cookies.get('user_current_lat') ?? '13.7451',
           user_long: Cookies.get('user_current_long') ?? '100.4999',
+          from: 'landingPage'
         })
       })
       const slides_data_near_me = await slides_nearme_fetch.json();
