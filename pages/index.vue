@@ -51,7 +51,7 @@
       <Slide v-for="(slide, index) in slides_data_near_me" :key="index">
         <div class="carousel__item py-8 w-[270px]">
           <div class="bg-white rounded-[10px] shadow-[0_0_20px_0_rgba(0,0,0,0.25)]">
-            <NuxtImg class="rounded-t-[10px]" :src="slide.image" :alt="slide.title" width="300px" height="256px"
+            <NuxtImg class="rounded-t-[10px] w-[300px] h-[256px] object-cover" :src="slide.image" :alt="slide.title"
               objectFit='contain' loading="lazy" />
             <div class="p-4">
               <h1 class="text-black font-medium text-[20px] text-left w-full h-[30px] overflow-hidden">{{ slide.title }}
@@ -81,7 +81,7 @@
         <Slide v-for="(slide, index) in slides_data_near_me" :key="index">
           <div class="carousel__item py-8 w-[270px]">
             <div class="bg-white rounded-[10px] shadow-[0_0_20px_0_rgba(0,0,0,0.25)]">
-              <NuxtImg class="rounded-t-[10px]" :src="slide.image" :alt="slide.title" width="300px" height="256px"
+              <NuxtImg class="rounded-t-[10px] w-[300px] h-[256px] object-cover" :src="slide.image" :alt="slide.title"
                 objectFit='contain' loading="lazy" />
               <div class="p-4">
                 <h1 class="text-black font-medium text-[20px] text-left w-full h-[30px] overflow-hidden">{{ slide.title }}
@@ -131,7 +131,7 @@
       <Slide v-for="(slide, index) in slides_data_top10" :key="index">
         <div class="carousel__item py-8 w-[270px]">
           <div class="bg-white rounded-[10px] shadow-[0_0_20px_0_rgba(0,0,0,0.25)]">
-            <NuxtImg class="rounded-t-[10px]" :src="slide.image" :alt="slide.title" width="300px" height="256px"
+            <NuxtImg class="rounded-t-[10px] w-[300px] h-[256px] object-cover" :src="slide.image" :alt="slide.title"
               objectFit='contain' loading="lazy" />
             <div class="p-4">
               <h1 class="text-black font-medium text-[20px] text-left w-full h-[30px] overflow-hidden">{{ slide.title }}
@@ -161,7 +161,7 @@
         <Slide v-for="(slide, index) in slides_data_top10" :key="index">
           <div class="carousel__item py-8 w-[270px]">
             <div class="bg-white rounded-[10px] shadow-[0_0_20px_0_rgba(0,0,0,0.25)]">
-              <NuxtImg class="rounded-t-[10px]" :src="slide.image" :alt="slide.title" width="300px" height="256px"
+              <NuxtImg class="rounded-t-[10px] w-[300px] h-[256px] object-cover" :src="slide.image" :alt="slide.title"
                 objectFit='contain' loading="lazy" />
               <div class="p-4">
                 <h1 class="text-black font-medium text-[20px] text-left w-full h-[30px] overflow-hidden">{{ slide.title }}
@@ -687,6 +687,7 @@ export default defineComponent({
         body: JSON.stringify({
           user_lat: Cookies.get('user_current_lat') ?? '13.7451',
           user_long: Cookies.get('user_current_long') ?? '100.4999',
+          from: 'landingPage'
         })
       })
       const slides_data_near_me = await slides_nearme_fetch.json();

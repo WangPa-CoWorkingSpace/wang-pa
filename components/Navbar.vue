@@ -18,7 +18,7 @@
           <NuxtLink to="/login">Login
           </NuxtLink>
         </div>
-        <div :class="{ 'hidden': user_email_CK || user_avatar_CK || user_full_name_CK }">
+        <div>
           <NuxtLink to="/find">Find Now
           </NuxtLink>
         </div>
@@ -52,7 +52,7 @@
     </div>
     <!-- Mobile Menu -->
     <div class="lg:hidden justify-center space-y-2 text-center transition-all duration-200 overflow-hidden"
-      :class="{ 'text-white': pageScroll, 'text-black': !pageScroll, 'h-0': !istoggle, 'h-[100px]': istoggle }">
+      :class="{ 'text-white': pageScroll, 'text-black': !pageScroll, 'h-0': !istoggle, 'h-[120px]': istoggle }">
       <div>
         <NuxtLink @click.prevent="hamberBTN" to="/">
           Home</NuxtLink>
@@ -66,7 +66,7 @@
         <NuxtLink @click.prevent="logoutBTN">Logout</NuxtLink>
       </div>
       <div>
-        <NuxtLink @click.prevent="hamberBTN" :class="{ 'hidden': user_email_CK || user_avatar_CK || user_full_name_CK }"
+        <NuxtLink @click.prevent="hamberBTN"
           to="/find">
           Find Now</NuxtLink>
       </div>
