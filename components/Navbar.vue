@@ -22,6 +22,10 @@
           <NuxtLink to="/find">Find Now
           </NuxtLink>
         </div>
+        <div :class="{ 'hidden': !user_email_CK || !user_avatar_CK || !user_full_name_CK }">
+          <NuxtLink to="/favorite">Favorite
+          </NuxtLink>
+        </div>
         <!-- Middle lines -->
         <div class="min-h-[30px] w-[3px] bg-black" :class="{ 'bg-white': pageScroll, 'bg-black': !pageScroll }"></div>
         <!-- In Middle Line Items -->
@@ -52,7 +56,7 @@
     </div>
     <!-- Mobile Menu -->
     <div class="lg:hidden justify-center space-y-2 text-center transition-all duration-200 overflow-hidden"
-      :class="{ 'text-white': pageScroll, 'text-black': !pageScroll, 'h-0': !istoggle, 'h-[120px]': istoggle }">
+      :class="{ 'text-white': pageScroll, 'text-black': !pageScroll, 'h-0': !istoggle, 'h-[140px]': istoggle }">
       <div>
         <NuxtLink @click.prevent="hamberBTN" to="/">
           Home</NuxtLink>
@@ -69,6 +73,11 @@
         <NuxtLink @click.prevent="hamberBTN"
           to="/find">
           Find Now</NuxtLink>
+      </div>
+      <div>
+        <NuxtLink @click.prevent="hamberBTN" :class="{ 'hidden': !user_email_CK || !user_avatar_CK || !user_full_name_CK }"
+          to="/favorite">
+          Favorite</NuxtLink>
       </div>
     </div>
   </div>
