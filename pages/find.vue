@@ -21,7 +21,7 @@
                 <div class="col-span-2"><h4>ความคิดเห็นของคุณ</h4></div>
                 <div class="col-span-4"><input
                     class="border-[2px] border-black/50 rounded-[20px] px-2 pb-[100px] py-1 min-h-[100px] w-full placeholder:text-black/50 placeholder:text-[16px] focus:outline-none xl:w-[460px]"
-                    placeholder="เขียนรีวิวของคุณ" v-model="cws_review_form" @input="Form_Update('review')">
+                    placeholder="เขียนรีวิวของคุณ">
                 </div>
                 <div class="bg-blue-400 rounded-[25px] px-3 pb-[50px] py-1 w-full"><button>ส่งความคิดเห็นของคุณ</button></div>
             </div>
