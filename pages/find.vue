@@ -9,6 +9,30 @@
             <i class="fas fa-location-arrow text-white text-[15px] p-2"></i>
         </button>
     </div>
+    <div class="grid grid-cols-5 container mx-16 mt-4 pb-16">
+        <div class="col-span-2">
+            <h1>แสดงความคิดเห็นและให้คะแนน</h1>
+            <div class="h-32 grid grid-rows-3 grid-cols-6">
+                <div class="col-span-2"><h4>ระดับคะแนน</h4></div>
+                <div class="col-span-4">
+                    <div class="text-yellow-400"><i class="fa-star"></i></div>
+                    
+                </div>
+                <div class="col-span-2"><h4>ความคิดเห็นของคุณ</h4></div>
+                <div class="col-span-4"><input
+                    class="border-[2px] border-black/50 rounded-[20px] px-2 pb-[100px] py-1 min-h-[100px] w-full placeholder:text-black/50 placeholder:text-[16px] focus:outline-none xl:w-[460px]"
+                    placeholder="เขียนรีวิวของคุณ">
+                </div>
+                <div class="bg-blue-400 rounded-[25px] px-3 pb-[50px] py-1 w-full"><button>ส่งความคิดเห็นของคุณ</button></div>
+            </div>
+        </div>
+        <div class="col-span-3">
+            <div>
+                <h4>corousel div</h4>
+            </div>
+        </div>
+    </div>
+    <Footer />
 </template>
 
 <script lang="ts">
@@ -139,7 +163,7 @@ export default defineComponent({
                                 <div class="flex justify-between">
                                     <div class="flex items-center text-yellow-400 text-[20px]">
                                         ${[...Array(5)].map((_, i) => `<i class="${i < dataItem.cws_star ? 'fas' : 'far'} fa-star"></i>`).join('')}
-                                        <h4 class="text-black/50 text-[15px] mt-[10px] ml-[10px]">${dataItem.cws_star}ดาว</h4>
+                                        <h4 class="text-black/50 text-[15px] mt-[10px] ml-[10px]">${dataItem.cws_star} ดาว</h4>
                                     </div>
                                     <div flex items-center>
                                         <h4 class="text-black/50 mt-[10px]">ความคิดเห็น ${dataItem.cws_review.length} รายการ</h4>    
@@ -147,7 +171,10 @@ export default defineComponent({
                                 </div>
                                 <div class="flex space-x-2 w-full h-[100px] mt-[10px] overflow-x-scroll">${cws_reviewBox_element}</div>
                             </div>
-                        `;
+                            <div class="flex justify-center">
+                                <button class="rounded-full py-2 px-6 bg-blue-400 my-6  ...">แสดงความคิดเห็น</button>
+                            </div>                            
+                            `;
 
                         const popup = new mapboxgl.Popup({ offset: 50, className: 'findPage_MapBox', closeButton: false })
                             .setHTML(popupContent);
