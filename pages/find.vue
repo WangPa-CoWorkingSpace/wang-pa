@@ -9,8 +9,8 @@
             <i class="fas fa-location-arrow text-white text-[15px] p-2"></i>
         </button>
     </div>
-    <div class="xl:grid container xl:grid-cols-5 xl:mx-16 xl:mt-4 xl:pb-16">
-        <div class="px-4 xl:col-span-2">
+    <div class="xl:flex justify-center xl:space-x-[100px]">
+        <div class="px-[20px] xl:col-span-2">
             <div class="flex justify-center mt-[30px]">
                 <h1 class="text-[24px]">รีวิว</h1>
             </div>
@@ -21,19 +21,55 @@
                         @click="rate(index + 1)"></i>
                 </div>
                 <div><input class="border-[2px] border-black/50 rounded-[20px] px-2 pb-[100px] py-1 min-h-[100px] w-[300px] placeholder:text-black/50 placeholder:text-[16px] focus:outline-none
-                        xl:w-full
+                        xl:w-[400px]
                         " placeholder="เขียนรีวิวของคุณ">
                 </div>
             </div>
             <!-- Default -->
-            <div class="bg-[#1cb7d9] rounded-[25px] w-max py-[5px] px-[10px] mt-[50px] flex justify-center items-center relative
-            xl:mt-36
-                    "><button class="text-white"><i class="far fa-paper-plane mr-2"></i>ส่งความคิดเห็น</button>
+            <div
+                class="bg-[#1cb7d9] rounded-[20px] w-max py-[5px] px-[10px] mt-[50px] flex justify-center items-center relative">
+                <button class="text-white">
+                    <h4><i class="far fa-paper-plane mr-2"></i>ส่งความคิดเห็น</h4>
+                </button>
             </div>
         </div>
 
-        <div class="flex justify-center mt-[50px]">
+        <div class="flex justify-center mt-[50px] xl:block xl:justify-start xl:w-[700px] xl:mt-[30px]">
             <h1 class="text-[24px]">สถานที่ใกล้เคียง</h1>
+            <div>
+                <Carousel class="hidden xl:block select-none" ref="near_me_slideLG" :itemsToShow="3" :wrapAround="true"
+                    :transition="500">
+                    <Slide v-for="(slide, index) in slides_data_near_me" :key="index">
+                        <div class="carousel__item py-8 w-[200px]">
+                            <div class="bg-white rounded-[10px] shadow-[0_0_20px_0_rgba(0,0,0,0.25)]">
+                                <NuxtImg class="rounded-t-[10px] w-[200px] h-[175px] object-cover" :src="slide.image"
+                                    :alt="slide.title" objectFit='contain' loading="lazy" />
+                                <div class="p-4">
+                                    <h1
+                                        class="text-black font-medium text-[20px] text-left w-full h-[30px] overflow-hidden">
+                                        {{ slide.title }}
+                                    </h1>
+                                    <h4 class="text-[18px] text-left text-[#1cb7d9]">{{ slide.price }}</h4>
+                                    <div class="h-[10px] w-full flex text-black/50 space-x-2 mb-5">
+                                        <i v-for="feature in slide.features" :class="`fas fa-${feature}`"
+                                            :key="feature"></i>
+                                    </div>
+                                    <h4 class="text-[15px] text-left text-black/50">{{ slide.openingHours }}</h4>
+                                    <div class="flex justify-between items-center mt-[30px]">
+                                        <div class="text-yellow-400">
+                                            <i v-for="star in slide.stars" :key="star" :class="`${star} fa-star`"></i>
+                                        </div>
+                                        <div
+                                            class="h-max w-max bg-[#20DE33] text-white text-[12px] py-[3px] px-[10px] rounded-[20px]">
+                                            <h4>{{ slide.capacity }}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </Slide>
+                </Carousel>
+            </div>
         </div>
         <!-- Mobile -->
 
@@ -66,7 +102,9 @@
             </Slide>
         </Carousel>
     </div>
-    <Footer />
+    <div class="mt-[50px]">
+        <Footer />
+    </div>
 </template>
 
 <script lang="ts">
