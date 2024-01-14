@@ -29,7 +29,7 @@
                 <div class="my-2"><h4>ความคิดเห็นของคุณ</h4></div>
                 <div class="mt-1"><input
                     class="border-[2px] border-black/50 rounded-[20px] px-2 pb-[100px] py-1 min-h-[100px] w-[460px] placeholder:text-black/50 placeholder:text-[16px] focus:outline-none
-                        xl:w-full 
+                        xl:w-full
                         " placeholder="เขียนรีวิวของคุณ">
                 </div>
             </div>
@@ -319,6 +319,21 @@ export default defineComponent({
                 console.error('Geolocation is not supported by this browser.');
             }
         };
+
+        //Form Update
+        function formReviewUpdate(input_name: string) {
+        switch (input_name) {
+            case 'name':
+            Cookies.set('cws_name_form_Cookie', encodeURIComponent(cws_name_form.value));
+            break
+            case 'price':
+            Cookies.set('cws_price_form_Cookie', encodeURIComponent(cws_price_form.value));
+            break
+            case 'review':
+            Cookies.set('cws_name_review_Cookie', encodeURIComponent(cws_review_form.value));
+            break
+        }
+        }
 
         const stars = ref(['empty', 'empty', 'empty', 'empty', 'empty']);
         const selectedRating = ref(0);
