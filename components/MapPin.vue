@@ -53,8 +53,8 @@ export default defineComponent({
             console.log(`Latitude: ${lngLat.lat}, Longitude: ${lngLat.lng}`);
 
             // Save lat-long in cookies
-            Cookies.set('inform-lat', lngLat.lat);
-            Cookies.set('inform-long', lngLat.lng);
+            Cookies.set('inform-lat', lngLat.lat, { expires: 1 });
+            Cookies.set('inform-long', lngLat.lng, { expires: 1 });
         },
 
         goToCurrentLocation() {

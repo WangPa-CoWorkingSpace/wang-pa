@@ -957,6 +957,9 @@ export default defineComponent({
     //UpForm
     var upform_response: any;
     async function UploadFormToDB() {
+      //Check if data not complete
+      if (!Cookies.get('inform-lat') && (!cws_name_form.value) && (!cws_price_form.value) && (!cws_review_form.value)) return alert('โปรดกรอกข้อมูลให้ครบถ้วน')
+
       isUploaded.value = 'loading'
       try {
         upform_response = await fetch('https://wangpa.tensormik.com/wangpa-api/upform', {
