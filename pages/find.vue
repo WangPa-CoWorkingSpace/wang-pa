@@ -20,7 +20,7 @@
                         :class="{ 'fas fa-star': star === 'full', 'far fa-star': star === 'empty' }"
                         @click="rate(index + 1)"></i>
                 </div>
-                <div><input class="border-[2px] border-black/50 rounded-[20px] px-2 pb-[100px] py-1 min-h-[100px] w-[300px] placeholder:text-black/50 placeholder:text-[16px] focus:outline-none
+                <div><input @input="ReviewUpdate('reviewText')" v-model="reviewText_form" class="border-[2px] border-black/50 rounded-[20px] px-2 pb-[100px] py-1 min-h-[100px] w-[300px] placeholder:text-black/50 placeholder:text-[16px] focus:outline-none
                         xl:w-[400px]
                         " placeholder="เขียนรีวิวของคุณ">
                 </div>
@@ -28,7 +28,7 @@
             <!-- Default -->
             <div
                 class="bg-[#1cb7d9] rounded-[20px] w-max py-[5px] px-[10px] mt-[50px] flex justify-center items-center relative">
-                <button class="text-white">
+                <button @click.prevent="ReviewPost" class="text-white">
                     <h4><i class="far fa-paper-plane mr-2"></i>ส่งความคิดเห็น</h4>
                 </button>
             </div>
@@ -123,6 +123,7 @@ mapboxgl.accessToken = config.public.MAB_BOX_TOKEN;
 interface CwsDataItem {
     cws_name: string;
     cws_image: string[];
+    cws_id: number;
     cws_price: string;
     cws_review: {
         user_name: string;
@@ -163,7 +164,6 @@ export default defineComponent({
 
             if (response.ok) {
                 const data: CwsDataItem[] = await response.json();
-                console.log(data)
                 cws_data.value = data;
             } else {
                 console.error('Failed to fetch data');
@@ -194,7 +194,6 @@ export default defineComponent({
                 });
                 goToCurrentLocation()
 
-                console.log('tesss')
                 if (cws_data.value.length > 0 && mapContainer.value) {
 
                     cws_data.value.forEach(dataItem => {
@@ -265,9 +264,6 @@ export default defineComponent({
                                 </div>
                                 <div class="flex space-x-2 w-full h-[100px] mt-[10px] overflow-x-scroll">${cws_reviewBox_element}</div>
                             </div>
-                            <div class="flex justify-center">
-                                <button class="rounded-full py-2 px-6 bg-blue-400 my-6  ...">แสดงความคิดเห็น</button>
-                            </div>                            
                             `;
 
                         const popup = new mapboxgl.Popup({ offset: 50, className: 'findPage_MapBox', closeButton: false })
@@ -297,6 +293,7 @@ export default defineComponent({
                                         zoom: 15
                                     });
                                 }
+                                getPopupClickData(dataItem.cws_name, dataItem.cws_id);
                             });
                         }
                     });
@@ -323,6 +320,11 @@ export default defineComponent({
             }
         };
 
+        const getPopupClickData = (cwsName: any, cwsId: any) => {
+            Cookies.set('currentClickCWS_Name', cwsName, {expires: 1});
+            Cookies.set('currentClickCWS_Id', cwsId, {expires: 1});
+        };
+
         const stars = ref(['empty', 'empty', 'empty', 'empty', 'empty']);
         const selectedRating = ref(0);
 
@@ -333,6 +335,41 @@ export default defineComponent({
             );
         };
 
+        const reviewText_form = ref('');
+        //Form Update
+        function ReviewUpdate(input_name: string) {
+            switch (input_name) {
+                case 'reviewText':
+                    Cookies.set('reviewText_form_Cookie', encodeURIComponent(reviewText_form.value));
+                    break
+            }
+        }
+        async function ReviewPost() {
+            const reviewPostRes = await fetch('https://wangpa.tensormik.com/wangpa-api/reviewPost', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    user_email: Cookies.get('user_email') ?? undefined,
+                    cws_name: Cookies.get('currentClickCWS_Name'),
+                    cws_id: Cookies.get('currentClickCWS_Id'),
+                    review: decodeURIComponent(Cookies.get('reviewText_form_Cookie') || ''),
+                    star: selectedRating.value
+                })
+            });
+            const reviewPostResData = await reviewPostRes.json();
+            if (reviewPostResData.status === 200) {
+                //Reset Form after push
+                stars.value = Array(5).fill('empty');
+                selectedRating.value = 0;
+                reviewText_form.value = '';
+                Cookies.remove('currentClickCWS_Name');
+                Cookies.remove('currentClickCWS_Id');
+                Cookies.remove('reviewText_form_Cookie');
+            }
+        }
+
         return {
             mapContainer,
             goToCurrentLocation,
@@ -340,6 +377,10 @@ export default defineComponent({
             stars,
             selectedRating,
             rate,
+            ReviewPost,
+            ReviewUpdate,
+
+            reviewText_form
         };
     }
 });
