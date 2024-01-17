@@ -132,13 +132,9 @@ export default defineComponent({
 
   setup() {
     //Load Login Session from cookie
-    let user_full_name_CK: string = '';
-    let user_email_CK: string = '';
-    let user_avatar_CK: string = '';
-
-    user_full_name_CK = Cookies.get('user_full_name') as string;
-    user_email_CK = Cookies.get('user_email') as string;
-    user_avatar_CK = Cookies.get('user_avatar') as string;
+    let user_full_name_CK = Cookies.get('user_full_name') as string ?? '';
+    let user_email_CK = Cookies.get('user_email') as string ?? '';
+    let user_avatar_CK = Cookies.get('user_avatar') as string ?? '';
 
     return {
       user_full_name_CK,

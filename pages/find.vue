@@ -1,7 +1,7 @@
 <template>
     <Navbar />
 
-    <div id="mapContainer" ref="mapContainer" class="map-container h-[80vh] xl:h-[70vh] w-full z-0">
+    <div id="mapContainer" ref="mapContainer" class="map-container h-[80vh] w-full z-0">
 
         <!-- Current Location BTN -->
         <button @click.prevent="goToCurrentLocation"
@@ -15,14 +15,19 @@
                 <h1 class="text-[24px]">รีวิว</h1>
             </div>
             <div class="space-y-[20px]">
-                <div class="text-yellow-400 text-[20px] cursor-pointer">
-                    <i v-for="(star, index) in stars" :key="index"
-                        :class="{ 'fas fa-star': star === 'full', 'far fa-star': star === 'empty' }"
-                        @click="rate(index + 1)"></i>
-                </div>
-                <div><input @input="ReviewUpdate('reviewText')" v-model="reviewText_form" class="border-[2px] border-black/50 rounded-[20px] px-2 pb-[100px] py-1 min-h-[100px] w-[300px] placeholder:text-black/50 placeholder:text-[16px] focus:outline-none
+                <div class="w-[300px] xl:w-[400px]">
+                    <div class="flex justify-between">
+                        <div class="text-yellow-400 text-[20px] cursor-pointer">
+                            <i v-for="(star, index) in stars" :key="index"
+                                :class="{ 'fas fa-star': star === 'full', 'far fa-star': star === 'empty' }"
+                                @click="rate(index + 1)"></i>
+                        </div>
+                        <button class="far fa-heart text-[25px] text-[#FF7575]" :class="{ 'hidden': !user_email_CK || !user_avatar_CK || !user_full_name_CK }"></button>
+                    </div>
+                    <div><input @input="ReviewUpdate('reviewText')" v-model="reviewText_form" class="border-[2px] border-black/50 rounded-[20px] px-2 pb-[100px] py-1 min-h-[100px] w-[300px] placeholder:text-black/50 placeholder:text-[16px] focus:outline-none
                         xl:w-[400px]
                         " placeholder="เขียนรีวิวของคุณ">
+                    </div>
                 </div>
             </div>
             <!-- Default -->
@@ -135,6 +140,7 @@ interface CwsDataItem {
     cws_facilities: string[];
     cws_latitude: string;
     cws_longitude: string;
+    isUser_fav: number;
 }
 
 export default defineComponent({
@@ -158,6 +164,7 @@ export default defineComponent({
                 body: JSON.stringify({
                     user_lat: Cookies.get('user_current_lat') ?? '13.7451',
                     user_long: Cookies.get('user_current_long') ?? '100.4999',
+                    user_email: user_email_CK,
                     from: 'findPage'
                 })
             });
@@ -165,6 +172,7 @@ export default defineComponent({
             if (response.ok) {
                 const data: CwsDataItem[] = await response.json();
                 cws_data.value = data;
+                console.log(data)
             } else {
                 console.error('Failed to fetch data');
             }
@@ -321,8 +329,8 @@ export default defineComponent({
         };
 
         const getPopupClickData = (cwsName: any, cwsId: any) => {
-            Cookies.set('currentClickCWS_Name', cwsName, {expires: 1});
-            Cookies.set('currentClickCWS_Id', cwsId, {expires: 1});
+            Cookies.set('currentClickCWS_Name', cwsName, { expires: 1 });
+            Cookies.set('currentClickCWS_Id', cwsId, { expires: 1 });
         };
 
         const stars = ref(['empty', 'empty', 'empty', 'empty', 'empty']);
@@ -370,6 +378,15 @@ export default defineComponent({
             }
         }
 
+        //Load Login Session from cookie
+        let user_full_name_CK = Cookies.get('user_full_name') as string ?? '';
+        let user_email_CK = Cookies.get('user_email') as string ?? '';
+        let user_avatar_CK = Cookies.get('user_avatar') as string ?? '';
+
+        function FavoriteBTN() {
+            
+        }
+
         return {
             mapContainer,
             goToCurrentLocation,
@@ -380,7 +397,10 @@ export default defineComponent({
             ReviewPost,
             ReviewUpdate,
 
-            reviewText_form
+            reviewText_form,
+            user_full_name_CK,
+            user_email_CK,
+            user_avatar_CK,
         };
     }
 });
