@@ -58,7 +58,7 @@
             <div class="p-4">
               <h1 class="text-black font-medium text-[20px] text-left w-full h-[30px] overflow-hidden">{{ slide.title }}
               </h1>
-              <h4 class="text-[18px] text-left text-[#1cb7d9]">{{ slide.price }}</h4>
+              <h4 class="text-[18px] text-left text-[#1cb7d9]">{{ slide.price }} บาท</h4>
               <div class="h-[10px] w-full flex text-black/50 space-x-2 mb-5">
                 <i v-for="feature in slide.features" :class="`fas fa-${feature}`" :key="feature"></i>
               </div>
@@ -88,7 +88,7 @@
               <div class="p-4">
                 <h1 class="text-black font-medium text-[20px] text-left w-full h-[30px] overflow-hidden">{{ slide.title }}
                 </h1>
-                <h4 class="text-[18px] text-left text-[#1cb7d9]">{{ slide.price }}</h4>
+                <h4 class="text-[18px] text-left text-[#1cb7d9]">{{ slide.price }} บาท</h4>
                 <div class="h-[10px] w-full flex text-black/50 space-x-2 mb-5">
                   <i v-for="feature in slide.features" :class="`fas fa-${feature}`" :key="feature"></i>
                 </div>
@@ -138,7 +138,7 @@
             <div class="p-4">
               <h1 class="text-black font-medium text-[20px] text-left w-full h-[30px] overflow-hidden">{{ slide.title }}
               </h1>
-              <h4 class="text-[18px] text-left text-[#1cb7d9]">{{ slide.price }}</h4>
+              <h4 class="text-[18px] text-left text-[#1cb7d9]">{{ slide.price }} บาท</h4>
               <div class="h-[10px] w-full flex text-black/50 space-x-2 mb-5">
                 <i v-for="feature in slide.features" :class="`fas fa-${feature}`" :key="feature"></i>
               </div>
@@ -168,7 +168,7 @@
               <div class="p-4">
                 <h1 class="text-black font-medium text-[20px] text-left w-full h-[30px] overflow-hidden">{{ slide.title }}
                 </h1>
-                <h4 class="text-[18px] text-left text-[#1cb7d9]">{{ slide.price }}</h4>
+                <h4 class="text-[18px] text-left text-[#1cb7d9]">{{ slide.price }} บาท</h4>
                 <div class="h-[10px] w-full flex text-black/50 space-x-2 mb-5">
                   <i v-for="feature in slide.features" :class="`fas fa-${feature}`" :key="feature"></i>
                 </div>

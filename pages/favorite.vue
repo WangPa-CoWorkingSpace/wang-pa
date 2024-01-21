@@ -23,7 +23,7 @@
                             <h1 class="text-black font-medium text-[15px] text-left w-full h-[25px] overflow-hidden">{{
                                 slide.title }}
                             </h1>
-                            <h4 class="text-[13px] text-left text-[#1cb7d9]">{{ slide.price }}</h4>
+                            <h4 class="text-[13px] text-left text-[#1cb7d9]">{{ slide.price }} บาท</h4>
                             <div class="h-[10px] w-full flex text-black/50 text-[11px] space-x-2 mb-4">
                                 <i v-for="feature in slide.features" :class="`fas fa-${feature}`" :key="feature"></i>
                             </div>
