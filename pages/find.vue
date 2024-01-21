@@ -10,7 +10,7 @@
         </button>
     </div>
     <div class="xl:flex justify-center xl:space-x-[100px]">
-        <div class="px-[20px] xl:col-span-2">
+        <div v-show="isReviewBoxShow" class="px-[20px] xl:col-span-2">
             <div class="flex justify-center mt-[30px]">
                 <h1 class="text-[24px]">รีวิว</h1>
             </div>
@@ -22,7 +22,7 @@
                                 :class="{ 'fas fa-star': star === 'full', 'far fa-star': star === 'empty' }"
                                 @click="rate(index + 1)"></i>
                         </div>
-                        <button class="far fa-heart text-[25px] text-[#FF7575]" :class="{ 'hidden': !user_email_CK || !user_avatar_CK || !user_full_name_CK }"></button>
+                        <button @click.prevent="FavoriteBTN" class="fa-heart text-[25px] text-[#FF7575]" :class="{ 'hidden': !user_email_CK || !user_avatar_CK || !user_full_name_CK, 'fas': isUser_favCurrent === 'true', 'far': isUser_favCurrent === 'false'}"></button>
                     </div>
                     <div><input @input="ReviewUpdate('reviewText')" v-model="reviewText_form" class="border-[2px] border-black/50 rounded-[20px] px-2 pb-[100px] py-1 min-h-[100px] w-[300px] placeholder:text-black/50 placeholder:text-[16px] focus:outline-none
                         xl:w-[400px]
@@ -140,7 +140,7 @@ interface CwsDataItem {
     cws_facilities: string[];
     cws_latitude: string;
     cws_longitude: string;
-    isUser_fav: number;
+    isUser_fav: boolean;
 }
 
 export default defineComponent({
@@ -154,6 +154,8 @@ export default defineComponent({
         const map = ref<Map | null>(null);
         const markers = ref<Marker[]>([]);
         const cws_data = ref<CwsDataItem[]>([]);
+        let isReviewBoxShow = ref(false);
+        let isUser_favCurrent = ref('')
 
         async function fetchData() {
             const response = await fetch('https://wangpa.tensormik.com/wangpa-api/nearbyLocations', {
@@ -172,7 +174,6 @@ export default defineComponent({
             if (response.ok) {
                 const data: CwsDataItem[] = await response.json();
                 cws_data.value = data;
-                console.log(data)
             } else {
                 console.error('Failed to fetch data');
             }
@@ -301,8 +302,15 @@ export default defineComponent({
                                         zoom: 15
                                     });
                                 }
-                                getPopupClickData(dataItem.cws_name, dataItem.cws_id);
+                                getPopupClickData(dataItem.cws_name, dataItem.cws_id, dataItem.isUser_fav);
+                                isReviewBoxShow.value = true;
                             });
+                            popup.on('close', () => {
+                                isReviewBoxShow.value = false;
+                                Cookies.remove('currentClickCWS_Name');
+                                Cookies.remove('currentClickCWS_Id');
+                                Cookies.remove('currentClickIsUser_fav');
+                            })
                         }
                     });
                 }
@@ -328,9 +336,11 @@ export default defineComponent({
             }
         };
 
-        const getPopupClickData = (cwsName: any, cwsId: any) => {
+        const getPopupClickData = (cwsName: string, cwsId: number, isUser_fav: boolean) => {
             Cookies.set('currentClickCWS_Name', cwsName, { expires: 1 });
-            Cookies.set('currentClickCWS_Id', cwsId, { expires: 1 });
+            Cookies.set('currentClickCWS_Id', cwsId.toString(), { expires: 1 });
+            Cookies.set('currentClickIsUser_fav', `${isUser_fav}`, { expires: 1 });
+            UpdateFavBTN()
         };
 
         const stars = ref(['empty', 'empty', 'empty', 'empty', 'empty']);
@@ -372,8 +382,6 @@ export default defineComponent({
                 stars.value = Array(5).fill('empty');
                 selectedRating.value = 0;
                 reviewText_form.value = '';
-                Cookies.remove('currentClickCWS_Name');
-                Cookies.remove('currentClickCWS_Id');
                 Cookies.remove('reviewText_form_Cookie');
             }
         }
@@ -383,8 +391,35 @@ export default defineComponent({
         let user_email_CK = Cookies.get('user_email') as string ?? '';
         let user_avatar_CK = Cookies.get('user_avatar') as string ?? '';
 
-        function FavoriteBTN() {
-            
+        isUser_favCurrent.value = Cookies.get('currentClickIsUser_fav') ?? 'false';
+        function UpdateFavBTN() {
+            isUser_favCurrent.value = Cookies.get('currentClickIsUser_fav') ?? 'false';
+        }
+        async function FavoriteBTN() {
+            let favCValue = false;
+
+            if (isUser_favCurrent.value === 'true') {
+                favCValue = false;
+                isUser_favCurrent.value = 'false'
+            } else if (isUser_favCurrent.value === 'false') {
+                favCValue = true;
+                isUser_favCurrent.value = 'true'
+            }
+
+            try {
+                await fetch('https://wangpa.tensormik.com/wangpa-api/favUpdate', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        user_email: user_email_CK,
+                        cws_id: parseInt(Cookies.get('currentClickCWS_Id') ?? '0'),
+                        cws_name: Cookies.get('currentClickCWS_Name'),
+                        favC: favCValue
+                    })
+                });
+            } catch {}
         }
 
         return {
@@ -397,10 +432,14 @@ export default defineComponent({
             ReviewPost,
             ReviewUpdate,
 
+            isReviewBoxShow,
             reviewText_form,
             user_full_name_CK,
             user_email_CK,
             user_avatar_CK,
+
+            isUser_favCurrent,
+            FavoriteBTN
         };
     }
 });
