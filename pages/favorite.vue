@@ -6,8 +6,11 @@
             <i class="fas fa-heart text-[#FF7575] text-[47px]"></i>
             <div>
                 <h1 class="text-black text-[25px]">รายการโปรด</h1>
-                <h4 class="text-black/50 text-[16px]">4 รายการ</h4>
+                <h4 class="text-black/50 text-[16px]">{{ userfavCount }} รายการ</h4>
             </div>
+        </div>
+        <div v-show="userfavCount === 0" class="flex justify-center items-center mt-[300px]">
+            <h4 class="text-black/50 text-[25px]">ไม่มีรายการโปรด <i class="far fa-frown"></i></h4>
         </div>
         <div class="flex justify-center">
         <div class="grid grid-cols-2 gap-3 px-[10px] mt-[50px]">
@@ -44,36 +47,27 @@
 </template>
 
 <script lang="ts">
+import Cookies from 'js-cookie';
 import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
     async setup() {
         //Top10
-        const slides_top10_fetch = await fetch('https://wangpa.tensormik.com/wangpa-api/top10star', {
+        const cwsFav_fetch = await fetch('https://wangpa.tensormik.com/wangpa-api/user_cws_fav', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
+            body: JSON.stringify({
+                user_email: Cookies.get('user_email')
+            })
         });
 
-        const favorite_Data = await slides_top10_fetch.json();
-
-        //Slide button
-        const top10_slideLG = ref(null)
-        function Top10SlideBTN(command: string) {
-            if (top10_slideLG.value) {
-                if (command === 'next') {
-                    //@ts-ignore
-                    top10_slideLG.value.next();
-                } else if (command === 'prev') {
-                    //@ts-ignore
-                    top10_slideLG.value.prev();
-                }
-            }
-        }
+        const favorite_Data = await cwsFav_fetch.json();
+        const userfavCount: number = favorite_Data.length;
         return {
             favorite_Data,
-            top10_slideLG,
+            userfavCount
         }
     }
 });
