@@ -42,10 +42,10 @@
         <h4 class="font-medium text-[18px] xl:text-[24px]"><i
             class="fas fa-map-marker-alt text-[#F24E1E] text-[20px] pr-2 xl:text-[26px]"></i>ใกล้เคียงคุณ</h4>
       </div>
-      <div
+      <NuxtLink to="/find"
         class="h-[25px] w-max px-4 border-[2px] border-black rounded-[20px] text-[13px] flex justify-center items-center xl:text-[17px]">
         <h4>ดูทั้งหมด</h4>
-      </div>
+      </NuxtLink>
     </div>
 
     <!-- Carousel Slider Content Mobile-->
@@ -122,10 +122,10 @@
         <h4 class="font-medium text-[18px] xl:text-[24px]"><i
             class="fas fa-trophy text-yellow-400 text-[20px] pr-2 xl:text-[26px]"></i>Top 10</h4>
       </div>
-      <div
+      <NuxtLink to="/find"
         class="h-[25px] w-max px-4 border-[2px] border-black rounded-[20px] text-[13px] flex justify-center items-center xl:text-[17px]">
         <h4>ดูทั้งหมด</h4>
-      </div>
+      </NuxtLink>
     </div>
 
     <!-- Carousel Slider Content Mobile-->
