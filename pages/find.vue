@@ -201,7 +201,17 @@ export default defineComponent({
                     center: [100.4999, 13.7451],
                     zoom: 13
                 });
-                goToCurrentLocation()
+                const CWS_Nav_lat: number = parseFloat(Cookies.get('CWS_Nav_lat')?? '0');
+                const CWS_Nav_long: number = parseFloat(Cookies.get('CWS_Nav_long')?? '0');
+                if (Cookies.get('CWS_Nav_lat') && Cookies.get('CWS_Nav_long')) {
+                    if (map.value) {
+                        map.value.flyTo({ center: [CWS_Nav_long ,CWS_Nav_lat], essential: true, zoom: 17 });
+                    }
+                    Cookies.remove('CWS_Nav_lat');
+                    Cookies.remove('CWS_Nav_long');
+                } else {
+                    goToCurrentLocation();
+                }
 
                 if (cws_data.value.length > 0 && mapContainer.value) {
 
