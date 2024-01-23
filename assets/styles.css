@@ -67,3 +67,16 @@ button {
   border-radius: 20px;
   background-color: #F2FBFF;
 }
+
+/* Image Zoom */
+.image {
+  cursor: pointer;
+}
+
+.image:hover {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  scale: 600%;
+  /* visibility: hidden; */
+}

@@ -220,7 +220,7 @@ export default defineComponent({
 
                         const cws_image_element = dataItem.cws_image.map(imageSrc =>
                             `<div class="col-image">
-                                <img class="rounded-[5px] w-[95px] h-[60px] object-cover" src="${imageSrc}">
+                                <img class="rounded-[5px] w-[95px] h-[60px] object-cover image" src="${imageSrc}">
                             </div>`
                         ).join('');
 
