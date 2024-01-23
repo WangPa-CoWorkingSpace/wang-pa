@@ -652,7 +652,6 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import Map from '../components/MapPin.vue';
-import "../node_modules/mapbox-gl/dist/mapbox-gl.css"
 import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css'
 import Cookies from 'js-cookie';
