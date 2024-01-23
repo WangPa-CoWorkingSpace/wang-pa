@@ -49,9 +49,9 @@
     </div>
 
     <!-- Carousel Slider Content Mobile-->
-    <Carousel class="xl:hidden select-none" :itemsToShow="1" :wrapAround="true" :transition="500">
+    <Carousel class="xl:hidden select-none" ref="near_me_slideSM" :itemsToShow="1" :wrapAround="true" :transition="500">
       <Slide v-for="(slide, index) in slides_data_near_me" :key="index">
-        <div class="carousel__item py-8 w-[270px]">
+        <button @click.prevent="CarouselNav('near_me_slideSM')" class="carousel__item py-8 w-[270px]">
           <div class="bg-white rounded-[10px] shadow-[0_0_20px_0_rgba(0,0,0,0.25)]">
             <NuxtImg class="rounded-t-[10px] w-[300px] h-[256px] object-cover" :src="slide.image" :alt="slide.title"
               objectFit='contain' loading="lazy" />
@@ -73,7 +73,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </button>
       </Slide>
     </Carousel>
     <!-- Carousel Slider Content Desktop-->
@@ -81,7 +81,7 @@
       <Carousel class="hidden xl:block select-none" ref="near_me_slideLG" :itemsToShow="3" :wrapAround="true"
         :transition="500">
         <Slide v-for="(slide, index) in slides_data_near_me" :key="index">
-          <div class="carousel__item py-8 w-[270px]">
+          <button @click.prevent="CarouselNav('near_me_slideLG')" class="carousel__item py-8 w-[270px]">
             <div class="bg-white rounded-[10px] shadow-[0_0_20px_0_rgba(0,0,0,0.25)]">
               <NuxtImg class="rounded-t-[10px] w-[300px] h-[256px] object-cover" :src="slide.image" :alt="slide.title"
                 objectFit='contain' loading="lazy" />
@@ -103,7 +103,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </button>
         </Slide>
       </Carousel>
     </div>
@@ -129,9 +129,9 @@
     </div>
 
     <!-- Carousel Slider Content Mobile-->
-    <Carousel class="xl:hidden select-none" :itemsToShow="1" :wrapAround="true" :transition="500">
+    <Carousel class="xl:hidden select-none" ref="top10_slideSM" :itemsToShow="1" :wrapAround="true" :transition="500">
       <Slide v-for="(slide, index) in slides_data_top10" :key="index">
-        <div class="carousel__item py-8 w-[270px]">
+        <button @click.prevent="CarouselNav('top10_slideSM')" class="carousel__item py-8 w-[270px]">
           <div class="bg-white rounded-[10px] shadow-[0_0_20px_0_rgba(0,0,0,0.25)]">
             <NuxtImg class="rounded-t-[10px] w-[300px] h-[256px] object-cover" :src="slide.image" :alt="slide.title"
               objectFit='contain' loading="lazy" />
@@ -153,7 +153,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </button>
       </Slide>
     </Carousel>
     <!-- Carousel Slider Content Desktop-->
@@ -161,7 +161,7 @@
       <Carousel class="hidden xl:block select-none" ref="top10_slideLG" :itemsToShow="3" :wrapAround="true"
         :transition="500">
         <Slide v-for="(slide, index) in slides_data_top10" :key="index">
-          <div class="carousel__item py-8 w-[270px]">
+          <button @click.prevent="CarouselNav('top10_slideLG')" class="carousel__item py-8 w-[270px]">
             <div class="bg-white rounded-[10px] shadow-[0_0_20px_0_rgba(0,0,0,0.25)]">
               <NuxtImg class="rounded-t-[10px] w-[300px] h-[256px] object-cover" :src="slide.image" :alt="slide.title"
                 objectFit='contain' loading="lazy" />
@@ -183,7 +183,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </button>
         </Slide>
       </Carousel>
     </div>
@@ -659,6 +659,7 @@ import Cookies from 'js-cookie';
 import Compressor from 'compressorjs';
 import { Carousel, Pagination, Slide } from 'vue3-carousel';
 import 'vue3-carousel/dist/carousel.css';
+import { useRouter } from 'vue-router';
 
 export default defineComponent({
   components: {
@@ -674,6 +675,8 @@ export default defineComponent({
     };
   },
   async setup() {
+    const router = useRouter();
+
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
         Cookies.set('user_current_lat', position.coords.latitude.toString())
@@ -705,8 +708,11 @@ export default defineComponent({
     const slides_data_top10 = await slides_top10_fetch.json();
 
     //Slide button
-    const top10_slideLG = ref(null)
-    const near_me_slideLG = ref(null)
+    const top10_slideLG = ref(null);
+    const top10_slideSM = ref(null);
+    const near_me_slideLG = ref(null);
+    const near_me_slideSM = ref(null);
+
     function Top10SlideBTN(command: string) {
       if (top10_slideLG.value) {
         if (command === 'next') {
@@ -1049,13 +1055,45 @@ export default defineComponent({
       }
     }
 
+    function getCurrentSlideIndex(carouselRef: any) {
+      if (carouselRef.value) {
+        return (carouselRef.value as any).data.currentSlide.value as number;
+      }
+      return null;
+    }
+    type CarouselKey = 'near_me_slideLG' | 'near_me_slideSM' | 'top10_slideLG' | 'top10_slideSM';
+    function CarouselNav(crsRef: CarouselKey) {
+      const carousels = {
+        near_me_slideLG: near_me_slideLG,
+        near_me_slideSM: near_me_slideSM,
+        top10_slideLG: top10_slideLG,
+        top10_slideSM: top10_slideSM,
+      };
+      const slides_data = {
+        near_me_slideLG: slides_data_near_me,
+        near_me_slideSM: slides_data_near_me,
+        top10_slideLG: slides_data_top10,
+        top10_slideSM: slides_data_top10,
+      }
+      //find current index
+      const currentSlideIndex = getCurrentSlideIndex(carousels[crsRef]);
+      if (currentSlideIndex === null) return;
+      //Get this slide data
+      Cookies.set('CWS_Nav_lat', slides_data[crsRef][currentSlideIndex].lat, { expires: 1 });
+      Cookies.set('CWS_Nav_long', slides_data[crsRef][currentSlideIndex].long, { expires: 1 });
+      router.push('/find');
+    }
+
     return {
       slides_data_near_me,
       slides_data_top10,
       Top10SlideBTN,
       NearMeSlideBTN,
       near_me_slideLG,
+      near_me_slideSM,
       top10_slideLG,
+      top10_slideSM,
+      CarouselNav,
 
       imageInput,
       openImageDialog,
