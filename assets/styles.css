@@ -69,14 +69,25 @@ button {
 }
 
 /* Image Zoom */
-.image {
+.popupimage {
   cursor: pointer;
+  user-select: none;
 }
 
-.image:hover {
+.popupimage_desktop:active {
   position: absolute;
-  display: flex;
-  justify-content: center;
-  scale: 600%;
-  /* visibility: hidden; */
+  display: block; /* 'absolute' is not a valid value for display */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(5); /* Centering and scaling */
+  transition-duration: 500ms;
+}
+
+.popupimage_mobile:hover {
+  position: absolute;
+  display: block; /* 'absolute' is not a valid value for display */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(3); /* Centering and scaling */
+  transition-duration: 500ms;
 }
