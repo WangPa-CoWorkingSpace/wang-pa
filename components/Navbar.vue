@@ -11,31 +11,31 @@
       </div>
       <nav class="items-center gap-[30px] font-normal hidden lg:flex lg:gap-[20px] lg:mx-[30px]"
         :class="{ 'text-white': pageScroll, 'text-black': !pageScroll }">
-        <div>
+        <div class="hover:scale-[108%] transition-all duration-200">
           <NuxtLink to="/">Home</NuxtLink>
         </div>
-        <div :class="{ 'hidden': user_email_CK || user_avatar_CK || user_full_name_CK }">
+        <div class="hover:scale-[108%] transition-all duration-200" :class="{ 'hidden': user_email_CK || user_avatar_CK || user_full_name_CK }">
           <NuxtLink to="/login">Login
           </NuxtLink>
         </div>
-        <div>
+        <div class="hover:scale-[108%] transition-all duration-200">
           <NuxtLink to="/find">Find Now
           </NuxtLink>
         </div>
-        <div :class="{ 'hidden': !user_email_CK || !user_avatar_CK || !user_full_name_CK }">
+        <div class="hover:scale-[108%] transition-all duration-200" :class="{ 'hidden': !user_email_CK || !user_avatar_CK || !user_full_name_CK }">
           <NuxtLink to="/favorite">Favorite
           </NuxtLink>
         </div>
         <!-- Middle lines -->
         <div class="min-h-[30px] w-[3px] bg-black" :class="{ 'bg-white': pageScroll, 'bg-black': !pageScroll }"></div>
         <!-- In Middle Line Items -->
-        <NuxtLink class="fab fa-discord text-[30px] text-black" to=""
+        <NuxtLink class="fab fa-discord text-[30px] text-black hover:scale-[108%] transition-all duration-200" to=""
           target="_blank" :class="{ 'text-white': pageScroll, 'text-black': !pageScroll }"></NuxtLink>
-        <NuxtLink class="fab fa-github text-[30px] text-black" to="https://github.com/WangPa-CoWorkingSpace" target="_blank" :class="{ 'text-white': pageScroll, 'text-black': !pageScroll }"></NuxtLink>
+        <NuxtLink class="fab fa-github text-[30px] text-black hover:scale-[108%] transition-all duration-200" to="https://github.com/WangPa-CoWorkingSpace" target="_blank" :class="{ 'text-white': pageScroll, 'text-black': !pageScroll }"></NuxtLink>
         <div class="min-h-[30px] w-[3px] bg-black" :class="{ 'bg-white': pageScroll, 'bg-black': !pageScroll }"></div>
         <!-- User Profile -->
-        <div :class="{ 'hidden': !user_email_CK || !user_avatar_CK || !user_full_name_CK }">
-          <NuxtLink @click.prevent="logoutBTN">Logout</NuxtLink>
+        <div class="hover:scale-[108%] transition-all duration-200" :class="{ 'hidden': !user_email_CK || !user_avatar_CK || !user_full_name_CK }">
+          <button @click.prevent="logoutBTN">Logout</button>
         </div>
         <div class="hidden lg:flex lg:items-center">
           <button class="text-[30px]"
@@ -54,6 +54,7 @@
           class="w-6 h-1 bg-black rounded-[10px] transition-all duration-200"></span>
       </button>
     </div>
+
     <!-- Mobile Menu -->
     <div class="lg:hidden justify-center space-y-2 text-center transition-all duration-200 overflow-hidden"
       :class="{ 'text-white': pageScroll, 'text-black': !pageScroll, 'h-0': !istoggle, 'h-[140px]': istoggle }">
