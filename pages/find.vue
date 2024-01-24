@@ -276,7 +276,7 @@ export default defineComponent({
                                 <div class="flex justify-between">
                                     <div class="flex items-center text-yellow-400 text-[20px]">
                                         ${[...Array(5)].map((_, i) => `<i class="${i < dataItem.cws_star ? 'fas' : 'far'} fa-star"></i>`).join('')}
-                                        <h4 class="text-black/50 text-[15px] mt-[10px] ml-[10px]">${dataItem.cws_star} ดาว</h4>
+                                        <h4 class="text-black/50 text-[15px] mt-[10px] ml-[10px]">${dataItem.cws_star ?? 0} ดาว</h4>
                                     </div>
                                     <div flex items-center>
                                         <h4 class="text-black/50 mt-[10px]">ความคิดเห็น ${dataItem.cws_review.length} รายการ</h4>    
