@@ -5,7 +5,7 @@
       <div class="lg:hidden">
         <button @click.prevent="hamberBTN" class="text-[30px] mt-1 p-2"
           :class="{ 'text-white': pageScroll, 'fas fa-user-circle': !user_avatar_CK }">
-          <NuxtImg class="rounded-full w-[30px] border-[1px] border-white" :src="user_avatar_CK || '/'"
+          <NuxtImg format="webp" class="rounded-full w-[30px] border-[1px] border-white" :src="user_avatar_CK || '/'"
             :class="{ 'hidden': !user_avatar_CK }"></NuxtImg>
         </button>
       </div>
@@ -40,7 +40,7 @@
         <div class="hidden lg:flex lg:items-center">
           <button class="text-[30px]"
             :class="{ 'text-white': pageScroll, 'fas fa-user-circle': !user_avatar_CK }">
-            <NuxtImg class="rounded-full w-[30px] border-[1px] border-white" :src="user_avatar_CK || '/'"
+            <NuxtImg format="webp" class="rounded-full w-[30px] border-[1px] border-white" :src="user_avatar_CK || '/'"
               :class="{ 'hidden': !user_avatar_CK }"></NuxtImg>
           </button>
         </div>

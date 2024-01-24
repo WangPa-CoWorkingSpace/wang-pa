@@ -47,7 +47,7 @@
                     <Slide v-for="(slide, index) in slides_data_near_me" :key="index">
                         <div class="carousel__item py-8 w-[200px]">
                             <div class="bg-white rounded-[10px] shadow-[0_0_20px_0_rgba(0,0,0,0.25)]">
-                                <NuxtImg class="rounded-t-[10px] w-[200px] h-[175px] object-cover" :src="slide.image"
+                                <NuxtImg format="webp" class="rounded-t-[10px] w-[200px] h-[175px] object-cover" :src="slide.image"
                                     :alt="slide.title" objectFit='contain' loading="lazy" />
                                 <div class="p-4">
                                     <h1
@@ -82,7 +82,7 @@
             <Slide v-for="(slide, index) in slides_data_near_me" :key="index">
                 <div class="carousel__item py-8 w-[270px]">
                     <div class="bg-white rounded-[10px] shadow-[0_0_20px_0_rgba(0,0,0,0.25)]">
-                        <NuxtImg class="rounded-t-[10px] w-[300px] h-[256px] object-cover" :src="slide.image"
+                        <NuxtImg format="webp" class="rounded-t-[10px] w-[300px] h-[256px] object-cover" :src="slide.image"
                             :alt="slide.title" objectFit='contain' loading="lazy" />
                         <div class="p-4">
                             <h1 class="text-black font-medium text-[20px] text-left w-full h-[30px] overflow-hidden">{{
@@ -276,7 +276,7 @@ export default defineComponent({
                                 <div class="flex justify-between">
                                     <div class="flex items-center text-yellow-400 text-[20px]">
                                         ${[...Array(5)].map((_, i) => `<i class="${i < dataItem.cws_star ? 'fas' : 'far'} fa-star"></i>`).join('')}
-                                        <h4 class="text-black/50 text-[15px] mt-[10px] ml-[10px]">${dataItem.cws_star} ดาว</h4>
+                                        <h4 class="text-black/50 text-[15px] mt-[10px] ml-[10px]">${dataItem.cws_star ?? 0} ดาว</h4>
                                     </div>
                                     <div flex items-center>
                                         <h4 class="text-black/50 mt-[10px]">ความคิดเห็น ${dataItem.cws_review.length} รายการ</h4>    

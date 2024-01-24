@@ -4,7 +4,7 @@
             <div class="mx-[40px] pt-[50px] lg:flex lg:justify-between lg:space-x-[100px] xl:space-x-[190px] 2xl:space-x-[300px]">
                 <!-- Logo Container -->
                 <div class="flex items-center h-[100px] xl:ml-4 xl:mt-4">
-                    <NuxtImg class="w-[250px] xl:w-[300px] 2xl:w-[400px]" src="/img/wanpa_logo.png"></NuxtImg>
+                    <NuxtImg format="webp" class="w-[250px] xl:w-[300px] 2xl:w-[400px]" src="/img/wanpa_logo.png"></NuxtImg>
                 </div>
                 <!-- Detail -->
                 <div class="mt-[20px] xl:mt-[-20px] 2xl:pr-[120px]">

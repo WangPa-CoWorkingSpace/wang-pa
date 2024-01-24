@@ -29,12 +29,12 @@
     <div
       class="flex justify-end mr-[10px] translate-y-[-40px] sm:translate-y-[-115px] sm:mr-[50px] lg:translate-y-[-150px] lg:mr-[70px] 2xl:translate-y-[-220px] 2xl:mr-[200px]">
       <div class="absolute z-0">
-        <NuxtImg class="object-contain w-[170px] sm:w-[231px] lg:w-[320px] 2xl:w-[400px]" src="/img/co-work.png" />
+        <NuxtImg format="webp" class="object-contain w-[170px] sm:w-[231px] lg:w-[320px] 2xl:w-[400px]" src="/img/co-work.png" />
       </div>
     </div>
     <div class="flex justify-between mt-[30px]">
       <div class="mx-[20px] sm:mx-[45px] lg:mx-[100px] 2xl:mx-[200px]">
-        <NuxtImg class="w-[200px] sm:w-[200px] lg:w-[310px]" src="/img/Review.png" />
+        <NuxtImg format="webp" class="w-[200px] sm:w-[200px] lg:w-[310px]" src="/img/Review.png" />
       </div>
     </div>
 
@@ -55,7 +55,7 @@
       <Slide v-for="(slide, index) in slides_data_near_me" :key="index">
         <button @click.prevent="CarouselNav('near_me_slideSM')" class="carousel__item py-8 w-[270px]">
           <div class="bg-white rounded-[10px] shadow-[0_0_20px_0_rgba(0,0,0,0.25)]">
-            <NuxtImg class="rounded-t-[10px] w-[300px] h-[256px] object-cover" :src="slide.image" :alt="slide.title"
+            <NuxtImg format="webp" class="rounded-t-[10px] w-[300px] h-[256px] object-cover" :src="slide.image" :alt="slide.title"
               objectFit='contain' loading="lazy" />
             <div class="p-4">
               <h1 class="text-black font-medium text-[20px] text-left w-full h-[30px] overflow-hidden">{{ slide.title }}
@@ -85,7 +85,7 @@
         <Slide v-for="(slide, index) in slides_data_near_me" :key="index">
           <button @click.prevent="CarouselNav('near_me_slideLG')" class="carousel__item py-8 w-[270px]">
             <div class="bg-white rounded-[10px] shadow-[0_0_20px_0_rgba(0,0,0,0.25)]">
-              <NuxtImg class="rounded-t-[10px] w-[300px] h-[256px] object-cover" :src="slide.image" :alt="slide.title"
+              <NuxtImg format="webp" class="rounded-t-[10px] w-[300px] h-[256px] object-cover" :src="slide.image" :alt="slide.title"
                 objectFit='contain' loading="lazy" />
               <div class="p-4">
                 <h1 class="text-black font-medium text-[20px] text-left w-full h-[30px] overflow-hidden">{{ slide.title }}
@@ -135,7 +135,7 @@
       <Slide v-for="(slide, index) in slides_data_top10" :key="index">
         <button @click.prevent="CarouselNav('top10_slideSM')" class="carousel__item py-8 w-[270px]">
           <div class="bg-white rounded-[10px] shadow-[0_0_20px_0_rgba(0,0,0,0.25)]">
-            <NuxtImg class="rounded-t-[10px] w-[300px] h-[256px] object-cover" :src="slide.image" :alt="slide.title"
+            <NuxtImg format="webp" class="rounded-t-[10px] w-[300px] h-[256px] object-cover" :src="slide.image" :alt="slide.title"
               objectFit='contain' loading="lazy" />
             <div class="p-4">
               <h1 class="text-black font-medium text-[20px] text-left w-full h-[30px] overflow-hidden">{{ slide.title }}
@@ -165,7 +165,7 @@
         <Slide v-for="(slide, index) in slides_data_top10" :key="index">
           <button @click.prevent="CarouselNav('top10_slideLG')" class="carousel__item py-8 w-[270px]">
             <div class="bg-white rounded-[10px] shadow-[0_0_20px_0_rgba(0,0,0,0.25)]">
-              <NuxtImg class="rounded-t-[10px] w-[300px] h-[256px] object-cover" :src="slide.image" :alt="slide.title"
+              <NuxtImg format="webp" class="rounded-t-[10px] w-[300px] h-[256px] object-cover" :src="slide.image" :alt="slide.title"
                 objectFit='contain' loading="lazy" />
               <div class="p-4">
                 <h1 class="text-black font-medium text-[20px] text-left w-full h-[30px] overflow-hidden">{{ slide.title }}
@@ -569,7 +569,7 @@
       class="flex justify-evenly items-center px-[20px] mt-[50px] space-x-3 xl:px-[40px] xl:space-x-[-250px] xl:justfly-center">
       <!-- Niji -->
       <div class="hover:translate-y-[-30px] transition-all duration-500">
-        <NuxtImg
+        <NuxtImg format="webp"
           class="object-fit absolute ml-[3.5px] 2xl:ml-[7px] mt-[20px] 2xl:mt-[40px] rounded-full w-[25vw] 2xl:w-[50vw] max-w-[100px] 2xl:max-w-[200px] h-[25vw] 2xl:h-[50vw] max-h-[100px] 2xl:max-h-[200px]"
           src="/img/niji.png" loading="lazy"></NuxtImg>
         <h1
@@ -589,15 +589,15 @@
           <NuxtLink class="fab fa-instagram" to="https://www.instagram.com/_ducky_way_/" target="_blank"></NuxtLink>
           <NuxtLink class="fab fa-discord" to="https://discord.com/users/321924157677895680" target="_blank"></NuxtLink>
         </div>
-        <NuxtImg
+        <NuxtImg format="webp"
           class="shadow-[0_0_5px_2px_rgba(0,0,0,0.25)] rounded-[10px] w-[107px] h-[205px] 2xl:w-[214px] 2xl:h-[410px]"
           preload src="/img/dev_card_bg.png"></NuxtImg>
       </div>
       <!-- Kan -->
       <div class="hover:translate-y-[-30px] transition-all duration-500">
-        <NuxtImg
+        <NuxtImg format="webp"
           class="object-fit absolute ml-[3.5px] 2xl:ml-[7px] mt-[20px] 2xl:mt-[40px] rounded-full w-[25vw] 2xl:w-[50vw] max-w-[100px] 2xl:max-w-[200px] h-[25vw] 2xl:h-[50vw] max-h-[100px] 2xl:max-h-[200px]"
-          preload src="/img/kan.png" height="100px" width="100px" loading="lazy"></NuxtImg>
+          preload src="/img/kan.png" loading="lazy"></NuxtImg>
         <h1
           class="absolute ml-[5px] 2xl:ml-[10px] mt-[120px] 2xl:mt-[250px] font-medium text-[15px] 2xl:text-[24px] text-black">
           Kan</h1>
@@ -613,15 +613,15 @@
           <NuxtLink class="fab fa-instagram" to="https://www.instagram.com/kan_g49/" target="_blank"></NuxtLink>
           <NuxtLink class="fab fa-discord" to="https://discord.com/users/605305608085831681" target="_blank"></NuxtLink>
         </div>
-        <NuxtImg
+        <NuxtImg format="webp"
           class="shadow-[0_0_5px_2px_rgba(0,0,0,0.25)] rounded-[10px] w-[107px] h-[205px] 2xl:w-[214px] 2xl:h-[410px]"
           preload src="/img/dev_card_bg.png"></NuxtImg>
       </div>
       <!-- Prite -->
       <div class="hover:translate-y-[-30px] transition-all duration-500">
-        <NuxtImg
+        <NuxtImg format="webp"
           class="object-fit absolute ml-[3.5px] 2xl:ml-[7px] mt-[20px] 2xl:mt-[40px] rounded-full w-[25vw] 2xl:w-[50vw] max-w-[100px] 2xl:max-w-[200px] h-[25vw] 2xl:h-[50vw] max-h-[100px] 2xl:max-h-[200px]"
-          preload src="/img/prite.png" height="100px" width="100px" loading="lazy"></NuxtImg>
+          preload src="/img/prite.png" loading="lazy"></NuxtImg>
         <h1
           class="absolute ml-[5px] 2xl:ml-[10px] mt-[120px] 2xl:mt-[250px] font-medium text-[15px] 2xl:text-[24px] text-black">
           Prite</h1>
@@ -638,7 +638,7 @@
           <NuxtLink class="fab fa-instagram" to="https://www.instagram.com/pxnwat_t/" target="_blank"></NuxtLink>
           <NuxtLink class="fab fa-discord" to="https://discord.com/users/560017469666754560" target="_blank"></NuxtLink>
         </div>
-        <NuxtImg
+        <NuxtImg format="webp"
           class="shadow-[0_0_5px_2px_rgba(0,0,0,0.25)] rounded-[10px] w-[107px] h-[205px] 2xl:w-[214px] 2xl:h-[410px]"
           preload src="/img/dev_card_bg.png"></NuxtImg>
       </div>

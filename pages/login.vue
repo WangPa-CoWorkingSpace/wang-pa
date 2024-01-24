@@ -19,7 +19,7 @@
                         <button
                             class="bg-white w-full flex justify-center items-center p-[5px] rounded-[20px] border-[1px] border-black/50 lg:w-[80%]"
                             :disabled="!isReady || !reCaptcha_success" @click.prevent="() => login()">
-                            <NuxtImg loading="eager" src="/img/google_logo.png" width="23px"></NuxtImg>
+                            <NuxtImg format="webp" loading="eager" src="/img/google_logo.png" width="23px"></NuxtImg>
                             <h4 class="text-[14px] ml-[10px] transition-all duration-200"
                                 :class="{ 'text-[#8888]': !reCaptcha_success }">ดำเนินการต่อด้วย Google</h4>
                         </button>
