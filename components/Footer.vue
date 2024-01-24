@@ -38,10 +38,10 @@
                     <div class="mt-[30px] h-1 w-[200px] bg-white/50"></div>
 
                     <div class="mt-[20px]">
-                        <NuxtLink class="text-[16px] text-white 2xl:text-[19px]" to="">นโยบายความเป็นส่วนตัว</NuxtLink>
+                        <NuxtLink class="text-[16px] text-white 2xl:text-[19px]" to="/cookies">นโยบายความเป็นส่วนตัว</NuxtLink>
                     </div>
                     <div>
-                        <NuxtLink class="text-[16px] text-white 2xl:text-[19px]" to="">นโยบายเกี่ยวกับคุ๊กกี้</NuxtLink>
+                        <NuxtLink class="text-[16px] text-white 2xl:text-[19px]" to="/cookies">นโยบายเกี่ยวกับคุ๊กกี้</NuxtLink>
                     </div>
                 </div>
             </div>

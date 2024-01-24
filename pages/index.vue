@@ -2,6 +2,8 @@
   <Navbar />
 
   <div class="min-h-screen main-gardient">
+    <CookiesPopup/>
+
     <!--Part1 Content -->
     <div class="mx-[40px] lg:mx-[100px] 2xl:mx-[200px]">
       <div class="h-max text-black font-normal pt-[100px]">
