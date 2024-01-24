@@ -88,6 +88,6 @@ button {
   display: block; /* 'absolute' is not a valid value for display */
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%) scale(7); /* Centering and scaling */
+  transform: translate(-50%, -50%) scale(3); /* Centering and scaling */
   transition-duration: 500ms;
 }
