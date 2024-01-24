@@ -47,7 +47,7 @@
                     <Slide v-for="(slide, index) in slides_data_near_me" :key="index">
                         <div class="carousel__item py-8 w-[200px]">
                             <div class="bg-white rounded-[10px] shadow-[0_0_20px_0_rgba(0,0,0,0.25)]">
-                                <NuxtImg class="rounded-t-[10px] w-[200px] h-[175px] object-cover" :src="slide.image"
+                                <NuxtImg format="webp" class="rounded-t-[10px] w-[200px] h-[175px] object-cover" :src="slide.image"
                                     :alt="slide.title" objectFit='contain' loading="lazy" />
                                 <div class="p-4">
                                     <h1
@@ -82,7 +82,7 @@
             <Slide v-for="(slide, index) in slides_data_near_me" :key="index">
                 <div class="carousel__item py-8 w-[270px]">
                     <div class="bg-white rounded-[10px] shadow-[0_0_20px_0_rgba(0,0,0,0.25)]">
-                        <NuxtImg class="rounded-t-[10px] w-[300px] h-[256px] object-cover" :src="slide.image"
+                        <NuxtImg format="webp" class="rounded-t-[10px] w-[300px] h-[256px] object-cover" :src="slide.image"
                             :alt="slide.title" objectFit='contain' loading="lazy" />
                         <div class="p-4">
                             <h1 class="text-black font-medium text-[20px] text-left w-full h-[30px] overflow-hidden">{{

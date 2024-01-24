@@ -17,7 +17,7 @@
             <div v-for="(slide, index) in favorite_Data" :key="index">
                 <div class="w-[150px]">
                     <div class="bg-white rounded-[10px] shadow-[0_0_20px_0_rgba(0,0,0,0.25)]">
-                        <NuxtImg class="rounded-t-[10px] w-[150px] h-[120px] object-cover" :src="slide.image"
+                        <NuxtImg format="webp" class="rounded-t-[10px] w-[150px] h-[120px] object-cover" :src="slide.image"
                             :alt="slide.title" objectFit='contain' loading="lazy" />
                         <div class="p-2">
                             <h1 class="text-black font-medium text-[15px] text-left w-full h-[25px] overflow-hidden">{{
