@@ -597,7 +597,7 @@
       <div class="hover:translate-y-[-30px] transition-all duration-500">
         <NuxtImg
           class="object-fit absolute ml-[3.5px] 2xl:ml-[7px] mt-[20px] 2xl:mt-[40px] rounded-full w-[25vw] 2xl:w-[50vw] max-w-[100px] 2xl:max-w-[200px] h-[25vw] 2xl:h-[50vw] max-h-[100px] 2xl:max-h-[200px]"
-          preload src="/img/kan.png" height="100px" width="100px" loading="lazy"></NuxtImg>
+          preload src="/img/kan.png" loading="lazy"></NuxtImg>
         <h1
           class="absolute ml-[5px] 2xl:ml-[10px] mt-[120px] 2xl:mt-[250px] font-medium text-[15px] 2xl:text-[24px] text-black">
           Kan</h1>
@@ -621,7 +621,7 @@
       <div class="hover:translate-y-[-30px] transition-all duration-500">
         <NuxtImg
           class="object-fit absolute ml-[3.5px] 2xl:ml-[7px] mt-[20px] 2xl:mt-[40px] rounded-full w-[25vw] 2xl:w-[50vw] max-w-[100px] 2xl:max-w-[200px] h-[25vw] 2xl:h-[50vw] max-h-[100px] 2xl:max-h-[200px]"
-          preload src="/img/prite.png" height="100px" width="100px" loading="lazy"></NuxtImg>
+          preload src="/img/prite.png" loading="lazy"></NuxtImg>
         <h1
           class="absolute ml-[5px] 2xl:ml-[10px] mt-[120px] 2xl:mt-[250px] font-medium text-[15px] 2xl:text-[24px] text-black">
           Prite</h1>
