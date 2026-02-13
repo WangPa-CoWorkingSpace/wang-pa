@@ -11,7 +11,7 @@
     "product": "nuxt build && PORT=3000 node .output/server/index.mjs"
   },
   "devDependencies": {
-    "@nuxt/devtools": "latest",
+    "@nuxt/devtools": "2.6.4",
     "@nuxt/image": "^1.1.0",
     "@nuxtjs/tailwindcss": "^6.10.1",
     "nuxt": "^3.8.0",
